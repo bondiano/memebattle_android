@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="white">#FFFFFF</color>
+    <color name="colorPrimary">#3f51b5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ff4081</color>
+    <color name="first_slide_background">#e91e63</color>
+    <color name="first_slide_buttons">#880E4F</color>
+
+    <color name="second_slide_background">#9C27B0</color>
+    <color name="second_slide_buttons">#4a148c</color>
+
+    <color name="third_slide_background">#009688</color>
+    <color name="third_slide_buttons">#004D40</color>
+
+    <color name="fourth_slide_background">#795548</color>
+    <color name="fourth_slide_buttons">#3E2723</color>
+
+    <color name="custom_slide_background">#3f51b5</color>
+    <color name="custom_slide_buttons">#1a237e</color>
+    <color name="title">#4f65dd</color>
+    <color name="black">#000000</color>
+    <color name="cadr_back_title">#78e5e5e5</color>
+    <color name="memblue">#0c7177</color>
+    <color name="memyel">#fce063</color>
+
+    <color name="circle_first">#f3d968</color>
+    <color name="circle_second">#359d92</color>
+    <color name="circle_third">#04082e</color>
+    <color name="circle_fourth">#457696</color>
+    <color name="circle_fifth">#bfe5ee</color>
+    <color name="back_likes">#de363636</color>
+
 </resources>

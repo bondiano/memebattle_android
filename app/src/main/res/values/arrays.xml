@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="modes_game">
+        <item>Правила для крутилки</item>
+        <item>Правила для сетки</item>
+    </string-array>
+    <string-array name="menu_names">
+        <item>Режимы</item>
+        <item>Настройки</item>
+        <item>Магазин</item>
+        <item>Помощь</item>
+        <item>Профиль</item>
+        <item>Рейтинг</item>
+    </string-array>
+    <string-array name="play_names">
+        <item>Игра</item>
+        <item>Рейтинг</item>
+        <item>Назад</item>
+        <item>Правила</item>
+        <item>Профиль</item>
+        <item>Магазин</item>
+    </string-array>
+</resources>

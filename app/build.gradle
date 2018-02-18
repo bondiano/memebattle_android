@@ -16,6 +16,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -23,6 +27,27 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
+
+    compile 'com.arello-mobile:moxy-android:1.5.3'
+    compile 'com.arello-mobile:moxy-app-compat:1.5.3'
+    annotationProcessor 'com.arello-mobile:moxy-compiler:1.5.2'
+
+    compile "com.google.dagger:dagger:2.10"
+    annotationProcessor "com.google.dagger:dagger-compiler:2.10"
+    provided 'javax.annotation:jsr250-api:1.0'
+
+    compile 'ru.terrakok.cicerone:cicerone:1.2.1'
+
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'io.reactivex:rxjava:1.1.6'
+
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
