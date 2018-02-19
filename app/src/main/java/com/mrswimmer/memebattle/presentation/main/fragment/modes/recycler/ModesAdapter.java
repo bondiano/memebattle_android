@@ -1,18 +1,16 @@
-package com.mrswimmer.memebattle.presentation.main.fragment.modes;
+package com.mrswimmer.memebattle.presentation.main.fragment.modes.recycler;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.mrswimmer.memebattle.R;
 import com.mrswimmer.memebattle.data.item.Mode;
 
 import java.util.ArrayList;
 
-public class ModesAdapter extends RecyclerView.Adapter<ModesAdapter.ModesViewHolder> {
+public class ModesAdapter extends RecyclerView.Adapter<ModesViewHolder> {
     private ArrayList<Mode> modeList = new ArrayList<>();
 
     public ModesAdapter(ArrayList<Mode> modeList) {
@@ -34,18 +32,5 @@ public class ModesAdapter extends RecyclerView.Adapter<ModesAdapter.ModesViewHol
     @Override
     public int getItemCount() {
         return modeList.size();
-    }
-
-    public class ModesViewHolder extends RecyclerView.ViewHolder {
-        public TextView Title, Play, Rules, TextTime;
-        public ImageView Image;
-        public ModesViewHolder(View v) {
-            super(v);
-            Title = v.findViewById(R.id.item_title);
-            Play = v.findViewById(R.id.item_play);
-            Rules = v.findViewById(R.id.item_rules);
-            Image = v.findViewById(R.id.item_image);
-            TextTime = v.findViewById(R.id.item_text_timer);
-        }
     }
 }

@@ -12,6 +12,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.mrswimmer.memebattle.R;
 import com.mrswimmer.memebattle.data.item.Mode;
+import com.mrswimmer.memebattle.presentation.main.fragment.modes.recycler.ModesAdapter;
+
 import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
