@@ -37,12 +37,13 @@ public class MainActivity extends MvpAppCompatActivity implements MainActivityVi
         @Override
         protected Fragment createFragment(String screenKey, Object data) {
             switch (screenKey) {
-                case Screens.FIRST_SCREEN :
+                case Screens.FIRST_SCREEN:
                     return new ModesFragment();
                 default:
                     return new ModesFragment();
             }
         }
+
         @Override
         protected void showSystemMessage(String message) {
             Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
@@ -53,4 +54,16 @@ public class MainActivity extends MvpAppCompatActivity implements MainActivityVi
             finish();
         }
     };
+
+    @Override
+    protected void onResumeFragments() {
+        super.onResumeFragments();
+        navigatorHolder.setNavigator(navigator);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        navigatorHolder.removeNavigator();
+    }
 }

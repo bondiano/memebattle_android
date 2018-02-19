@@ -17,7 +17,7 @@ public class Service {
         this.api = api;
     }
 
-    public Subscription registration(final RegistrationCallback callback, RegistrationUser registrationUser) {
+    public Subscription registration(RegistrationUser registrationUser, final RegistrationCallback callback) {
         return api.auth(registrationUser)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
