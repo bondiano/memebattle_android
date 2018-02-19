@@ -18,4 +18,6 @@ public class ModesFragmentPresenter extends MvpPresenter<ModesFragmentView> {
     public ModesFragmentPresenter() {
         App.getComponent().inject(this);
     }
+
+
 }

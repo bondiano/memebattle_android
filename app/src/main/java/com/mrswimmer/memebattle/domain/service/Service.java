@@ -5,7 +5,6 @@ import com.mrswimmer.memebattle.data.api.API;
 import com.mrswimmer.memebattle.data.api.req.RegistrationUser;
 import com.mrswimmer.memebattle.data.api.res.Exres;
 
-import rx.Scheduler;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
