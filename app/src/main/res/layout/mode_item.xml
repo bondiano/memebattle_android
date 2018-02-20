@@ -62,7 +62,7 @@
             android:layout_marginStart="35dp"
             android:text="ПРАВИЛА"
             card_view:customFont="@string/font_main"
-            android:textColor="@color/memblue"
+            android:textColor="@color/main_blue"
             android:textSize="24sp"/>
 
         <com.mrswimmer.memebattle.data.widget_plus.TextViewPlus
@@ -78,7 +78,7 @@
             card_view:customFont="@string/font_main"
             android:text="ИГРАТЬ"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/memblue"
+            android:textColor="@color/main_blue"
             android:textSize="24sp"/>
     </RelativeLayout>
 

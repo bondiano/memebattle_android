@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:name=".App"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.intro.Splash">
+        <activity android:name=".presentation.auth.activity.AuthActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".presentation.intro.FirstStartActivity"/>
         <activity android:name=".presentation.main.activity.MainActivity"/>
+        <activity android:name=".presentation.intro.Splash"/>
     </application>
 
 </manifest>

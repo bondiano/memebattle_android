@@ -30,7 +30,7 @@ public class SlideIntro extends SlideFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.firstslide_layout, container, false);
+        final View view = inflater.inflate(R.layout.intro_slide, container, false);
         Text = view.findViewById(R.id.textintro);
         Text.setText(text);
         return view;
@@ -43,7 +43,7 @@ public class SlideIntro extends SlideFragment {
 
     @Override
     public int buttonsColor() {
-        return R.color.memblue;
+        return R.color.main_blue;
     }
 
     @Override

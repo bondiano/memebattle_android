@@ -14,7 +14,7 @@
         android:text="Режимы и события"
         android:textAlignment="center"
         app:customFont="@string/font_title"
-        android:textColor="@color/memblue"
+        android:textColor="@color/main_blue"
         android:textSize="30sp"/>
 
     <android.support.v7.widget.RecyclerView
