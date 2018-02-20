@@ -32,12 +32,12 @@ public class MainActivity extends MvpAppCompatActivity implements MainActivityVi
         App.getComponent().inject(this);
     }
 
-    private Navigator navigator = new SupportFragmentNavigator(getSupportFragmentManager(), R.id.container) {
+    private Navigator navigator = new SupportFragmentNavigator(getSupportFragmentManager(), R.id.main_container) {
 
         @Override
         protected Fragment createFragment(String screenKey, Object data) {
             switch (screenKey) {
-                case Screens.FIRST_SCREEN:
+                case Screens.MODES_SCREEN:
                     return new ModesFragment();
                 default:
                     return new ModesFragment();

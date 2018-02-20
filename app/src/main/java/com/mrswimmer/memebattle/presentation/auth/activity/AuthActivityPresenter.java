@@ -1,4 +1,4 @@
-package com.mrswimmer.memebattle.presentation.main.activity;
+package com.mrswimmer.memebattle.presentation.auth.activity;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
@@ -10,18 +10,17 @@ import javax.inject.Inject;
 import ru.terrakok.cicerone.Router;
 
 @InjectViewState
-public class MainActivityPresenter extends MvpPresenter<MainActivityView> {
-
+public class AuthActivityPresenter extends MvpPresenter<AuthActivityView> {
     @Inject
     Router router;
 
-    public MainActivityPresenter() {
+    public AuthActivityPresenter() {
         App.getComponent().inject(this);
     }
 
     @Override
     protected void onFirstViewAttach() {
         super.onFirstViewAttach();
-        router.newRootScreen(Screens.MODES_SCREEN);
+        router.newRootScreen(Screens.SIGN_IN_SCREEN);
     }
 }
