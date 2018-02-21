@@ -17,30 +17,22 @@ public class Service {
         this.api = api;
     }
 
-    public Subscription registration(RegistrationUser registrationUser, final RegistrationCallback callback) {
-        return api.auth(registrationUser)
+    public Subscription signIn(RegistrationUser registrationUser, final AuthCallback callback) {
+        return api.signIn(registrationUser)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(callback::onSuccess
-                        /*new Subscriber<Exres>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(Exres exres) {
-                        callback.onSuccess(exres);
-                    }
-                }*/);
+                .subscribe(callback::onSuccess, callback::onError);
     }
 
-    public interface RegistrationCallback {
+    public Subscription signUp(RegistrationUser registrationUser, final AuthCallback callback) {
+        return api.signUp(registrationUser)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(callback::onSuccess, callback::onError);
+    }
+
+    public interface AuthCallback {
         void onSuccess(Exres exres);
+        void onError(Throwable e);
     }
 }

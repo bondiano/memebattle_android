@@ -20,16 +20,40 @@ public class Exres {
     @SerializedName("token_refresh")
     @Expose
     private String token_refresh;
+    @SerializedName("username")
+    @Expose
+    private String username;
+    @SerializedName("coins")
+    @Expose
+    private String coins;
     @SerializedName("_id")
     @Expose
     private int _id;
-    public int getId() {
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getCoins() {
+        return coins;
+    }
+
+    public void setCoins(String coins) {
+        this.coins = coins;
+    }
+
+    public int get_id() {
         return _id;
     }
 
-    public void setId(int id) {
-        this._id = id;
+    public void set_id(int _id) {
+        this._id = _id;
     }
+
     public Boolean getSuccess() {
         return success;
     }

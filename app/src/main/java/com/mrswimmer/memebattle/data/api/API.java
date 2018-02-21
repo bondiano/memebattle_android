@@ -15,9 +15,9 @@ import rx.Observable;
 
 public interface API {
     @POST("auth/signup")
-    Observable<Exres> registration(@Body RegistrationUser user);
+    Observable<Exres> signUp(@Body RegistrationUser user);
     @POST("auth/login")
-    Observable<Exres> auth(@Body RegistrationUser user);
+    Observable<Exres> signIn(@Body RegistrationUser user);
     @POST("auth/refresh-token")
     Observable<Exres> refresh(@Header("Authorization") String secret, @Body Secret refreshTok);
     @POST("game/rating")

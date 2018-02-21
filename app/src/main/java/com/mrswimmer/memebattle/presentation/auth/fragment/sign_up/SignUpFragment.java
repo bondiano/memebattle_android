@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -32,18 +33,6 @@ public class SignUpFragment extends MvpAppCompatFragment implements SignUpFragme
     @BindViews({R.id.sign_up_login, R.id.sign_up_mail, R.id.sign_up_pass, R.id.sign_up_repeat_pass})
     List<EditTextPlus> edits;
 
-    /*@BindView(R.id.sign_up_login)
-    EditTextPlus login;
-
-    @BindView(R.id.sign_up_mail)
-    EditTextPlus mail;
-
-    @BindView(R.id.sign_up_pass)
-    EditTextPlus password;
-
-    @BindView(R.id.sign_up_repeat_pass)
-    EditTextPlus repeatpassword;*/
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -59,5 +48,15 @@ public class SignUpFragment extends MvpAppCompatFragment implements SignUpFragme
     @OnClick(R.id.sign_up_reg)
     void onRegClick() {
         presenter.registration(edits);
+    }
+
+    @OnClick(R.id.sign_up_button_back)
+    void onBackClick() {
+        presenter.backToSignIn();
+    }
+
+    @Override
+    public void showErrorToast(String error) {
+        Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
     }
 }

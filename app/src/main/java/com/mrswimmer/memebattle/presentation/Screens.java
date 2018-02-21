@@ -6,4 +6,6 @@ public interface Screens {
     String THIRD_SCREEN = "third screen";
     String SIGN_IN_SCREEN = "sign in screen";
     String SIGN_UP_SCREEN = "sign up screen";
+    String MAIN_ACTIVITY = "main activity";
+    String SETTINGS_NAME = "settings name";
 }

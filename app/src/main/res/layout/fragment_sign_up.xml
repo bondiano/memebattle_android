@@ -95,7 +95,6 @@
                 android:id="@+id/sign_up_reg"
                 android:layout_width="140dp"
                 android:layout_height="34dp"
-                android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_background_trancparent"
                 android:text="Регистрация"
@@ -104,7 +103,7 @@
 
             <com.mrswimmer.memebattle.data.widget_plus.ButtonPlus
                 android:id="@+id/sign_up_button_back"
-                android:layout_width="match_parent"
+                android:layout_width="140dp"
                 android:layout_height="34dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
