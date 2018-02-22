@@ -5,6 +5,8 @@ import com.mrswimmer.memebattle.di.module.NavigatorModule;
 import com.mrswimmer.memebattle.presentation.auth.activity.AuthActivity;
 import com.mrswimmer.memebattle.presentation.auth.fragment.sign_in.SignInFragmentPresenter;
 import com.mrswimmer.memebattle.presentation.auth.fragment.sign_up.SignUpFragmentPresenter;
+import com.mrswimmer.memebattle.presentation.game.activity.GameActivity;
+import com.mrswimmer.memebattle.presentation.game.activity.GameActivityPresenter;
 import com.mrswimmer.memebattle.presentation.main.activity.MainActivity;
 import com.mrswimmer.memebattle.presentation.main.activity.MainActivityPresenter;
 import com.mrswimmer.memebattle.presentation.main.fragment.modes.ModesFragment;
@@ -24,4 +26,6 @@ public interface AppComponent {
     void inject(AuthActivity authActivity);
     void inject(SignInFragmentPresenter signInFragmentPresenter);
     void inject(SignUpFragmentPresenter signUpFragmentPresenter);
+    void inject(GameActivity gameActivity);
+    void inject(GameActivityPresenter gameActivityPresenter);
 }
