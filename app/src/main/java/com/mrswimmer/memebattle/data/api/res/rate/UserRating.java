@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class UserRating {
 
-    @SerializedName("rating")
+    @SerializedName("icon_rating")
     @Expose
     private int rating;
     @SerializedName("username")

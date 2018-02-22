@@ -5,7 +5,7 @@ public class Mode {
     public String Title;
     public int Image;
     public int Time;
-    int Type;
+    public int Type;
     public int Color;
     /*Типы игры
             0 - бесконечный баттл

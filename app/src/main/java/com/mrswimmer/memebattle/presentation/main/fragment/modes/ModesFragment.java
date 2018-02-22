@@ -47,6 +47,6 @@ public class ModesFragment extends MvpAppCompatFragment implements ModesFragment
 
     @Override
     public void initAdapter(ArrayList<Mode> modes) {
-        recyclerView.setAdapter(new ModesAdapter(modes));
+        recyclerView.setAdapter(new ModesAdapter(modes, getContext()));
     }
 }

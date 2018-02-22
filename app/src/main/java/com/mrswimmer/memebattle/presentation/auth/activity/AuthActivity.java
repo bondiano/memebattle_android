@@ -5,11 +5,10 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
-import com.arellomobile.mvp.MvpAppCompatActivity;
-import com.arellomobile.mvp.presenter.InjectPresenter;
+
 import com.mrswimmer.memebattle.App;
 import com.mrswimmer.memebattle.R;
-import com.mrswimmer.memebattle.presentation.Screens;
+import com.mrswimmer.memebattle.data.settings.Screens;
 import com.mrswimmer.memebattle.presentation.auth.fragment.sign_in.SignInFragment;
 import com.mrswimmer.memebattle.presentation.auth.fragment.sign_up.SignUpFragment;
 import com.mrswimmer.memebattle.presentation.main.activity.MainActivity;

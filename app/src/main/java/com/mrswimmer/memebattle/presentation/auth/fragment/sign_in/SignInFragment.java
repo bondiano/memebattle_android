@@ -1,7 +1,5 @@
 package com.mrswimmer.memebattle.presentation.auth.fragment.sign_in;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -12,9 +10,7 @@ import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.mrswimmer.memebattle.R;
-import com.mrswimmer.memebattle.data.api.res.Exres;
 import com.mrswimmer.memebattle.data.widget_plus.EditTextPlus;
-import com.mrswimmer.memebattle.presentation.Screens;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

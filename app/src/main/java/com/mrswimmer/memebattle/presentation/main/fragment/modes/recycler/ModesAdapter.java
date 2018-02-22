@@ -1,22 +1,31 @@
 package com.mrswimmer.memebattle.presentation.main.fragment.modes.recycler;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.mrswimmer.memebattle.R;
 import com.mrswimmer.memebattle.data.item.Mode;
+import com.mrswimmer.memebattle.data.settings.Screens;
+import com.mrswimmer.memebattle.data.settings.Settings;
+import com.mrswimmer.memebattle.presentation.main.activity.MainActivity;
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
+import ru.terrakok.cicerone.Router;
+
 public class ModesAdapter extends RecyclerView.Adapter<ModesViewHolder> {
     private ArrayList<Mode> modeList = new ArrayList<>();
+    private Context context;
 
-    public ModesAdapter(ArrayList<Mode> modeList) {
+    public ModesAdapter(ArrayList<Mode> modeList, Context context) {
         this.modeList = modeList;
+        this.context = context;
     }
     @Override
     public ModesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -30,22 +39,19 @@ public class ModesAdapter extends RecyclerView.Adapter<ModesViewHolder> {
         Mode mode = modeList.get(position);
         holder.Title.setText(mode.Title);
         holder.Image.setImageResource(mode.Image);
-        holder.Rules.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle("Правила")
-                        .setMessage(modes[position])
-                        .setCancelable(false)
-                        .setPositiveButton("ОК",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                    }
-                                });
-                AlertDialog alert = builder.create();
-                alert.show();
-            }
+        holder.Rules.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle("Правила")
+                    .setMessage(Settings.ARRAY_RULES[mode.Type])
+                    .setCancelable(false)
+                    .setPositiveButton("ОК",
+                            (dialog, id) -> dialog.cancel());
+            AlertDialog alert = builder.create();
+            alert.show();
+        });
+        holder.Play.setOnClickListener(v -> {
+            Intent intent = new Intent(context, MainActivity.class);
+            context.startActivity(intent);
         });
     }
 

@@ -10,7 +10,7 @@ import com.mrswimmer.memebattle.data.api.req.RegistrationUser;
 import com.mrswimmer.memebattle.data.api.res.Exres;
 import com.mrswimmer.memebattle.data.widget_plus.EditTextPlus;
 import com.mrswimmer.memebattle.domain.service.Service;
-import com.mrswimmer.memebattle.presentation.Screens;
+import com.mrswimmer.memebattle.data.settings.Screens;
 
 import java.util.List;
 
