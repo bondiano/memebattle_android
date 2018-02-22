@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
-import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.MvpView;
 import com.mrswimmer.memebattle.App;
 import com.mrswimmer.memebattle.R;
 import com.mrswimmer.memebattle.presentation.Screens;
@@ -15,21 +15,23 @@ import javax.inject.Inject;
 
 import ru.terrakok.cicerone.Navigator;
 import ru.terrakok.cicerone.NavigatorHolder;
+import ru.terrakok.cicerone.Router;
 import ru.terrakok.cicerone.android.SupportFragmentNavigator;
 
-public class MainActivity extends MvpAppCompatActivity implements MainActivityView {
+public class MainActivity extends MvpAppCompatActivity implements MvpView {
 
     @Inject
     NavigatorHolder navigatorHolder;
 
-    @InjectPresenter
-    MainActivityPresenter presenter;
+    @Inject
+    Router router;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         App.getComponent().inject(this);
+        router.newRootScreen(Screens.MODES_SCREEN);
     }
 
     private Navigator navigator = new SupportFragmentNavigator(getSupportFragmentManager(), R.id.main_container) {

@@ -6,7 +6,6 @@ import com.mrswimmer.memebattle.presentation.auth.activity.AuthActivity;
 import com.mrswimmer.memebattle.presentation.auth.fragment.sign_in.SignInFragmentPresenter;
 import com.mrswimmer.memebattle.presentation.auth.fragment.sign_up.SignUpFragmentPresenter;
 import com.mrswimmer.memebattle.presentation.main.activity.MainActivity;
-import com.mrswimmer.memebattle.presentation.main.activity.MainActivityPresenter;
 import com.mrswimmer.memebattle.presentation.main.fragment.modes.ModesFragment;
 import com.mrswimmer.memebattle.presentation.main.fragment.modes.ModesFragmentPresenter;
 

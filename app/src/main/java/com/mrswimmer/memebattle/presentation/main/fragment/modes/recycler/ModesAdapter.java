@@ -1,5 +1,7 @@
 package com.mrswimmer.memebattle.presentation.main.fragment.modes.recycler;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +28,25 @@ public class ModesAdapter extends RecyclerView.Adapter<ModesViewHolder> {
     @Override
     public void onBindViewHolder(ModesViewHolder holder, int position) {
         Mode mode = modeList.get(position);
-        holder.Play.setText("lol");
+        holder.Title.setText(mode.Title);
+        holder.Image.setImageResource(mode.Image);
+        holder.Rules.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Правила")
+                        .setMessage(modes[position])
+                        .setCancelable(false)
+                        .setPositiveButton("ОК",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+        });
     }
 
     @Override
