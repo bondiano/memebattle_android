@@ -25,5 +25,6 @@
         android:layout_marginRight="24dp"
         app:bmb_buttonEnum="textOutsideCircle"
         app:bmb_buttonPlaceEnum="buttonPlace_sc_9_1"
+        app:bmb_normalColor="@color/main_blue"
         app:bmb_piecePlaceEnum="piecePlace_dot_9_1" />
 </RelativeLayout>

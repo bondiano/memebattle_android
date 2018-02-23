@@ -12,18 +12,23 @@ import com.mrswimmer.memebattle.App;
 import com.mrswimmer.memebattle.R;
 import com.mrswimmer.memebattle.data.settings.Screens;
 import com.mrswimmer.memebattle.presentation.game.activity.GameActivity;
+import com.mrswimmer.memebattle.presentation.main.fragment.info.InfoFragment;
 import com.mrswimmer.memebattle.presentation.main.fragment.modes.ModesFragment;
 import com.mrswimmer.memebattle.presentation.main.fragment.rate.RateFragment;
 import com.nightonke.boommenu.BoomMenuButton;
 import javax.inject.Inject;
 import ru.terrakok.cicerone.Navigator;
 import ru.terrakok.cicerone.NavigatorHolder;
+import ru.terrakok.cicerone.Router;
 import ru.terrakok.cicerone.android.SupportFragmentNavigator;
 
 public class MainActivity extends MvpAppCompatActivity implements MainActivityView {
 
     @Inject
     NavigatorHolder navigatorHolder;
+
+    @Inject
+    Router router;
 
     @InjectPresenter
     MainActivityPresenter presenter;
@@ -55,6 +60,8 @@ public class MainActivity extends MvpAppCompatActivity implements MainActivityVi
                     presenter.gotoGame();
                 case Screens.RATE_SCREEN:
                     return new RateFragment();
+                case Screens.INFO_SCREEN:
+                    return new InfoFragment();
                 default:
                     return new ModesFragment();
             }

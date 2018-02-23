@@ -31,4 +31,6 @@
     <color name="circle_fifth">#bfe5ee</color>
     <color name="back_likes">#de363636</color>
 
+    <color name="rules_fragment_back">#eeeeee</color>
+
 </resources>

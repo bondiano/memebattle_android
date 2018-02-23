@@ -35,7 +35,7 @@ public class SignInFragmentPresenter extends MvpPresenter<SignInFragmentView> {
             public void onSuccess(Exres exres) {
                 Log.i("code", exres.getSuccess()+"");
                 saveSettings(exres);
-                router.navigateTo(Screens.MAIN_ACTIVITY);
+                router.replaceScreen(Screens.MAIN_ACTIVITY);
             }
 
             @Override

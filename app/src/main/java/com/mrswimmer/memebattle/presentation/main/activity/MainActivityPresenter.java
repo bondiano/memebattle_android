@@ -42,17 +42,17 @@ public class MainActivityPresenter extends MvpPresenter<MainActivityView> {
                         Log.i("code", index+"");
                         switch (finalI) {
                             case 0 :
-                                router.navigateTo(Screens.SETTINGS_SCREEN); break;
+                                router.replaceScreen(Screens.SETTINGS_SCREEN); break;
                             case 1 :
-                                router.navigateTo(Screens.INFO_SCREEN); break;
+                                router.replaceScreen(Screens.INFO_SCREEN); break;
                             case 2 :
-                                router.navigateTo(Screens.PROFILE_SCREEN); break;
+                                router.replaceScreen(Screens.PROFILE_SCREEN); break;
                             case 3 :
-                                router.navigateTo(Screens.MODES_SCREEN); break;
+                                router.replaceScreen(Screens.MODES_SCREEN); break;
                             case 4 :
-                                router.navigateTo(Screens.RATE_SCREEN); break;
+                                router.replaceScreen(Screens.RATE_SCREEN); break;
                             case 5 :
-                                router.navigateTo(Screens.SHOP_SCREEN); break;
+                                router.replaceScreen(Screens.SHOP_SCREEN); break;
                         }
                     }));
         }
