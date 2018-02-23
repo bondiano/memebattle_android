@@ -8,16 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.mrswimmer.memebattle.R;
-import com.mrswimmer.memebattle.data.item.Mode;
-import com.mrswimmer.memebattle.data.settings.Screens;
 import com.mrswimmer.memebattle.data.settings.Settings;
 import com.mrswimmer.memebattle.presentation.main.activity.MainActivity;
-
 import java.util.ArrayList;
-
-import javax.inject.Inject;
-
-import ru.terrakok.cicerone.Router;
 
 public class ModesAdapter extends RecyclerView.Adapter<ModesViewHolder> {
     private ArrayList<Mode> modeList = new ArrayList<>();

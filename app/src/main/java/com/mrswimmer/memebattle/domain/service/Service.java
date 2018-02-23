@@ -2,8 +2,11 @@ package com.mrswimmer.memebattle.domain.service;
 
 
 import com.mrswimmer.memebattle.data.api.API;
+import com.mrswimmer.memebattle.data.api.req.Id;
 import com.mrswimmer.memebattle.data.api.req.RegistrationUser;
 import com.mrswimmer.memebattle.data.api.res.Exres;
+import com.mrswimmer.memebattle.data.api.res.rate.Rate;
+import com.mrswimmer.memebattle.data.settings.Settings;
 
 import rx.Subscriber;
 import rx.Subscription;
@@ -33,6 +36,18 @@ public class Service {
 
     public interface AuthCallback {
         void onSuccess(Exres exres);
+        void onError(Throwable e);
+    }
+
+    public Subscription getRateList(String secret, Id id, final RateCallback callback) {
+        return api.getRateList(Settings.HEADER + secret, id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(callback::onSuccess, callback::onError);
+    }
+
+    public interface RateCallback {
+        void onSuccess(Rate rate);
         void onError(Throwable e);
     }
 }

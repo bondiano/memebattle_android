@@ -12,7 +12,7 @@ import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.mrswimmer.memebattle.R;
-import com.mrswimmer.memebattle.data.item.Mode;
+import com.mrswimmer.memebattle.presentation.main.fragment.rate.recycler.LineRate;
 import com.mrswimmer.memebattle.presentation.main.fragment.rate.recycler.RateAdapter;
 
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ public class RateFragment extends MvpAppCompatFragment implements RateFragmentVi
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.rate_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_rate, container, false);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class RateFragment extends MvpAppCompatFragment implements RateFragmentVi
     }
 
     @Override
-    public void initAdapter(ArrayList<Mode> modes) {
-        recyclerView.setAdapter(new RateAdapter(modes, getContext()));
+    public void initAdapter(ArrayList<LineRate> lineRates) {
+        recyclerView.setAdapter(new RateAdapter(lineRates));
     }
 }

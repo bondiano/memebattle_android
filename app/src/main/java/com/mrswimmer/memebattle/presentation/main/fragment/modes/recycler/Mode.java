@@ -1,4 +1,4 @@
-package com.mrswimmer.memebattle.data.item;
+package com.mrswimmer.memebattle.presentation.main.fragment.modes.recycler;
 
 
 public class Mode {

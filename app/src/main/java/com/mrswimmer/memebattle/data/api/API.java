@@ -21,7 +21,7 @@ public interface API {
     @POST("auth/refresh-token")
     Observable<Exres> refresh(@Header("Authorization") String secret, @Body Secret refreshTok);
     @POST("icon_game/icon_rating")
-    Observable<Rate> getrate(@Header("Authorization") String secret, @Body Id id);
+    Observable<Rate> getRateList(@Header("Authorization") String secret, @Body Id id);
     @GET("auth/secret")
     Observable<ValidToken> getsecret(@Header("Authorization") String secret);
 }
