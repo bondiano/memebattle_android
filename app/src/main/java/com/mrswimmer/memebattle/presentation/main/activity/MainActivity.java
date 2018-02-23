@@ -62,6 +62,8 @@ public class MainActivity extends MvpAppCompatActivity implements MainActivityVi
                     return new RateFragment();
                 case Screens.INFO_SCREEN:
                     return new InfoFragment();
+                case Screens.SETTINGS_SCREEN:
+                    return new
                 default:
                     return new ModesFragment();
             }
