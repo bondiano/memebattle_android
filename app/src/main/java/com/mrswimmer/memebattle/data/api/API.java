@@ -20,7 +20,7 @@ public interface API {
     Observable<Exres> signIn(@Body RegistrationUser user);
     @POST("auth/refresh-token")
     Observable<Exres> refresh(@Header("Authorization") String secret, @Body Secret refreshTok);
-    @POST("icon_game/icon_rating")
+    @POST("game/rating")
     Observable<Rate> getRateList(@Header("Authorization") String secret, @Body Id id);
     @GET("auth/secret")
     Observable<ValidToken> getsecret(@Header("Authorization") String secret);

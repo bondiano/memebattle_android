@@ -13,6 +13,7 @@ import com.mrswimmer.memebattle.R;
 import com.mrswimmer.memebattle.data.settings.Screens;
 import com.mrswimmer.memebattle.presentation.game.activity.GameActivity;
 import com.mrswimmer.memebattle.presentation.main.fragment.modes.ModesFragment;
+import com.mrswimmer.memebattle.presentation.main.fragment.rate.RateFragment;
 import com.nightonke.boommenu.BoomMenuButton;
 import javax.inject.Inject;
 import ru.terrakok.cicerone.Navigator;
@@ -52,8 +53,8 @@ public class MainActivity extends MvpAppCompatActivity implements MainActivityVi
                     return new ModesFragment();
                 case Screens.GAME_ACTIVITY:
                     presenter.gotoGame();
-                case Screens.INFO_SCREEN:
-                    return new
+                case Screens.RATE_SCREEN:
+                    return new RateFragment();
                 default:
                     return new ModesFragment();
             }

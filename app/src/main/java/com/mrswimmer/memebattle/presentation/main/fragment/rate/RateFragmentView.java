@@ -7,4 +7,5 @@ import java.util.ArrayList;
 
 public interface RateFragmentView extends MvpView {
     void initAdapter(ArrayList<LineRate> lineRates);
+    void showError();
 }

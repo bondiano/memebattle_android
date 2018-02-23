@@ -40,7 +40,7 @@ public class Service {
     }
 
     public Subscription getRateList(String secret, Id id, final RateCallback callback) {
-        return api.getRateList(Settings.HEADER + secret, id)
+        return api.getRateList(secret, id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(callback::onSuccess, callback::onError);

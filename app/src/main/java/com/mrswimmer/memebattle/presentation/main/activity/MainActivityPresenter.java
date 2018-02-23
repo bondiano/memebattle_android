@@ -1,25 +1,19 @@
 package com.mrswimmer.memebattle.presentation.main.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Rect;
 import android.util.Log;
-
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.mrswimmer.memebattle.App;
 import com.mrswimmer.memebattle.R;
 import com.mrswimmer.memebattle.data.settings.Screens;
 import com.mrswimmer.memebattle.data.settings.Settings;
-import com.mrswimmer.memebattle.presentation.game.activity.GameActivity;
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
 import com.nightonke.boommenu.BoomButtons.TextOutsideCircleButton;
 import com.nightonke.boommenu.BoomMenuButton;
 import com.nightonke.boommenu.ButtonEnum;
 import com.nightonke.boommenu.Piece.PiecePlaceEnum;
-
 import javax.inject.Inject;
-
 import ru.terrakok.cicerone.Router;
 
 @InjectViewState
@@ -49,6 +43,16 @@ public class MainActivityPresenter extends MvpPresenter<MainActivityView> {
                         switch (finalI) {
                             case 0 :
                                 router.navigateTo(Screens.SETTINGS_SCREEN); break;
+                            case 1 :
+                                router.navigateTo(Screens.INFO_SCREEN); break;
+                            case 2 :
+                                router.navigateTo(Screens.PROFILE_SCREEN); break;
+                            case 3 :
+                                router.navigateTo(Screens.MODES_SCREEN); break;
+                            case 4 :
+                                router.navigateTo(Screens.RATE_SCREEN); break;
+                            case 5 :
+                                router.navigateTo(Screens.SHOP_SCREEN); break;
                         }
                     }));
         }

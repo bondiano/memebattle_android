@@ -10,12 +10,11 @@ public class Id {
         this.id = id;
     }
 
-    public int getSecret() {
+    public int getId() {
         return id;
     }
 
-    public void setSecret(int secret) {
-        this.id = secret;
+    public void setId(int id) {
+        this.id = id;
     }
-
 }

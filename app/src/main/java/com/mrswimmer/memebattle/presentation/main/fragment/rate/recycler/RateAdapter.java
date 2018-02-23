@@ -24,9 +24,15 @@ public class RateAdapter extends RecyclerView.Adapter<RateViewHolder> {
     @Override
     public void onBindViewHolder(RateViewHolder holder, int position) {
         LineRate lineRate = rateList.get(position);
-        holder.Pos.setText(lineRate.pos);
-        holder.Username.setText(lineRate.user);
-        holder.Coin.setText(lineRate.coins);
+        if(lineRate.user.equals("...")) {
+            holder.Pos.setText("...");
+            holder.Username.setText("");
+            holder.Coin.setText("");
+        } else {
+            holder.Pos.setText(lineRate.pos+"");
+            holder.Username.setText(lineRate.user);
+            holder.Coin.setText(lineRate.coins+"");
+        }
     }
 
     @Override

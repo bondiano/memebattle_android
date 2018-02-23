@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -44,11 +45,16 @@ public class RateFragment extends MvpAppCompatFragment implements RateFragmentVi
         ButterKnife.bind(this, view);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
-        presenter.setAdapter();
+        presenter.getRateList();
     }
 
     @Override
     public void initAdapter(ArrayList<LineRate> lineRates) {
         recyclerView.setAdapter(new RateAdapter(lineRates));
+    }
+
+    @Override
+    public void showError() {
+        Toast.makeText(getContext(), "Ошибка подлючения", Toast.LENGTH_SHORT).show();
     }
 }
