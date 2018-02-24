@@ -1,23 +1,15 @@
 package com.mrswimmer.memebattle.presentation.main.fragment.settings;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.mrswimmer.memebattle.App;
-import com.mrswimmer.memebattle.data.api.req.RegistrationUser;
-import com.mrswimmer.memebattle.data.api.res.Exres;
-import com.mrswimmer.memebattle.data.settings.Screens;
-import com.mrswimmer.memebattle.data.widget_plus.EditTextPlus;
 import com.mrswimmer.memebattle.domain.service.Service;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -36,36 +28,49 @@ public class SettingsFragmentPresenter extends MvpPresenter<SettingsFragmentView
     }
 
     public void share() {
-
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("text/plain");
+        i.putExtra(Intent.EXTRA_TEXT, "Присоединяйтесь к mems.fun!");
+        i.putExtra(Intent.EXTRA_SUBJECT, "Поделиться");
+        i = Intent.createChooser(i, "С помощью");
+        getViewState().gotoActivity(i);
     }
 
     public void setMark() {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse("market://details?id=com.membattle"));
-        getViewState().setMark(intent);
+        getViewState().gotoActivity(intent);
     }
 
     public void aboutVersion() {
-
+        getViewState().showDia(1);
     }
 
-    public void signOut() {
+    public void clearPrefs() {
         SharedPreferences.Editor editor = App.settings.edit();
         editor.putString("username", "no");
         editor.apply();
-        getViewState().signOut();
+        getViewState().gotoAuthActivity();
     }
 
-    public void showDia() {
-        getViewState().showDia();
+    public void signOut() {
+        getViewState().showDia(0);
     }
 
-    public void setBuilder(AlertDialog.Builder builder) {
+    public void setSignOutBuilder(AlertDialog.Builder builder) {
         builder.setTitle("Выход из аккаунта")
                 .setMessage("Вы действительно хотите выйти из аккаунта?")
                 .setPositiveButton("Да", (dialog, which) -> {
-                    signOut();
+                    clearPrefs();
                 }).setNegativeButton("Нет", (dialog, which) -> dialog.cancel());
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    public void setAboutVesionBuilder(AlertDialog.Builder builder) {
+        builder.setTitle("О версии")
+                .setMessage("Что нового?\nБагфикс\nЧто ожидать в следующих версиях?\nМоре товаров в нашем Мемагазине, чтобы вы могли тратить свои мемоины!")
+                .setPositiveButton("Неплохо", (dialog, which) -> dialog.cancel());
         AlertDialog dialog = builder.create();
         dialog.show();
     }

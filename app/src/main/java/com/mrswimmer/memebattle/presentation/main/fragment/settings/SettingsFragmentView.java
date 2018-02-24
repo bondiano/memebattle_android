@@ -6,7 +6,7 @@ import com.arellomobile.mvp.MvpView;
 
 interface SettingsFragmentView extends MvpView {
     void showErrorToast(String error);
-    void signOut();
-    void showDia();
-    void setMark(Intent intent);
+    void gotoAuthActivity();
+    void showDia(int id);
+    void gotoActivity(Intent intent);
 }
