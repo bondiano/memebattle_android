@@ -10,6 +10,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.mrswimmer.memebattle.App;
 import com.mrswimmer.memebattle.R;
 import com.mrswimmer.memebattle.data.settings.Screens;
+import com.mrswimmer.memebattle.presentation.game.fragment.GameFragment;
 import com.mrswimmer.memebattle.presentation.main.activity.MainActivityPresenter;
 import com.mrswimmer.memebattle.presentation.main.fragment.modes.ModesFragment;
 import com.nightonke.boommenu.BoomMenuButton;
@@ -47,8 +48,8 @@ public class GameActivity extends MvpAppCompatActivity implements GameActivityVi
         @Override
         protected Fragment createFragment(String screenKey, Object data) {
             switch (screenKey) {
-                case Screens.MODES_SCREEN:
-                    return new ModesFragment();
+                case Screens.GAME_SCREEN:
+                    return new GameFragment();
                 default:
                     return new ModesFragment();
             }

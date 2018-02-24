@@ -13,6 +13,7 @@ import com.mrswimmer.memebattle.presentation.main.fragment.modes.ModesFragment;
 import com.mrswimmer.memebattle.presentation.main.fragment.modes.ModesFragmentPresenter;
 import com.mrswimmer.memebattle.presentation.main.fragment.rate.RateFragment;
 import com.mrswimmer.memebattle.presentation.main.fragment.rate.RateFragmentPresenter;
+import com.mrswimmer.memebattle.presentation.main.fragment.settings.SettingsFragmentPresenter;
 
 import javax.inject.Singleton;
 
@@ -32,4 +33,5 @@ public interface AppComponent {
     void inject(GameActivityPresenter gameActivityPresenter);
     void inject(RateFragment rateFragment);
     void inject(RateFragmentPresenter rateFragmentPresenter);
+    void inject(SettingsFragmentPresenter settingsFragmentPresenter);
 }

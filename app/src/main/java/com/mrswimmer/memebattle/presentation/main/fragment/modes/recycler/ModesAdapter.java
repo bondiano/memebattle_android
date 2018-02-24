@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.mrswimmer.memebattle.R;
 import com.mrswimmer.memebattle.data.settings.Settings;
+import com.mrswimmer.memebattle.presentation.game.activity.GameActivity;
 import com.mrswimmer.memebattle.presentation.main.activity.MainActivity;
 import java.util.ArrayList;
 
@@ -43,7 +44,7 @@ public class ModesAdapter extends RecyclerView.Adapter<ModesViewHolder> {
             alert.show();
         });
         holder.Play.setOnClickListener(v -> {
-            Intent intent = new Intent(context, MainActivity.class);
+            Intent intent = new Intent(context, GameActivity.class);
             context.startActivity(intent);
         });
     }

@@ -64,7 +64,7 @@ public class MainActivityPresenter extends MvpPresenter<MainActivityView> {
         router.newRootScreen(Screens.MODES_SCREEN);
     }
 
-    public void gotoGame() {
+    void gotoGame() {
         getViewState().gotoGame();
     }
 }

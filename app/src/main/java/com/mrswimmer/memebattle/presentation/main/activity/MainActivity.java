@@ -15,6 +15,7 @@ import com.mrswimmer.memebattle.presentation.game.activity.GameActivity;
 import com.mrswimmer.memebattle.presentation.main.fragment.info.InfoFragment;
 import com.mrswimmer.memebattle.presentation.main.fragment.modes.ModesFragment;
 import com.mrswimmer.memebattle.presentation.main.fragment.rate.RateFragment;
+import com.mrswimmer.memebattle.presentation.main.fragment.settings.SettingsFragment;
 import com.nightonke.boommenu.BoomMenuButton;
 import javax.inject.Inject;
 import ru.terrakok.cicerone.Navigator;
@@ -41,14 +42,12 @@ public class MainActivity extends MvpAppCompatActivity implements MainActivityVi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context = getBaseContext();
         setContentView(R.layout.activity_main);
         App.getComponent().inject(this);
         BoomMenuButton bmb = findViewById(R.id.main_bmb);
         presenter().initBmb(bmb);
     }
 
-    private Context context;
     private Navigator navigator = new SupportFragmentNavigator(getSupportFragmentManager(), R.id.main_container) {
 
         @Override
@@ -63,7 +62,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainActivityVi
                 case Screens.INFO_SCREEN:
                     return new InfoFragment();
                 case Screens.SETTINGS_SCREEN:
-                    return new
+                    return new SettingsFragment();
                 default:
                     return new ModesFragment();
             }
@@ -94,7 +93,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainActivityVi
 
     @Override
     public void gotoGame() {
-        Intent intent = new Intent(context, GameActivity.class);
-        context.startActivity(intent);
+        Intent intent = new Intent(getApplication(), GameActivity.class);
+        getApplication().startActivity(intent);
     }
 }

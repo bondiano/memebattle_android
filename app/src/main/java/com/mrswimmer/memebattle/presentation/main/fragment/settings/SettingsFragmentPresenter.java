@@ -1,6 +1,11 @@
 package com.mrswimmer.memebattle.presentation.main.fragment.settings;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import com.arellomobile.mvp.InjectViewState;
@@ -30,52 +35,38 @@ public class SettingsFragmentPresenter extends MvpPresenter<SettingsFragmentView
         App.getComponent().inject(this);
     }
 
-    public void registration(List<EditTextPlus> edits) {
-        service.signUp(new RegistrationUser(edits.get(0).getText().toString(), edits.get(1).getText().toString(), edits.get(2).getText().toString()), new Service.AuthCallback() {
-            @Override
-            public void onSuccess(Exres exres) {
-                Log.i("code", exres.getSuccess()+"");
-                enter(edits);
-            }
+    public void share() {
 
-            @Override
-            public void onError(Throwable e) {
-                Log.i("code", e + "");
-                getViewState().showErrorToast("Ошибка регистрации");
-            }
-        });
     }
 
-    private void enter(List<EditTextPlus> edits) {
-        service.signIn(new RegistrationUser(edits.get(0).getText().toString(), edits.get(1).getText().toString(), "lol"), new Service.AuthCallback() {
-            @Override
-            public void onSuccess(Exres exres) {
-                Log.i("code", exres.getSuccess()+"");
-                saveSettings(exres);
-                router.navigateTo(Screens.MAIN_ACTIVITY);
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Log.i("code", e + "");
-                getViewState().showErrorToast("Ошибка входа");
-            }
-        });
+    public void setMark() {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("market://details?id=com.membattle"));
+        getViewState().setMark(intent);
     }
 
-    public void backToSignIn() {
-        router.backTo(Screens.SIGN_IN_SCREEN);
+    public void aboutVersion() {
+
     }
 
-    public void saveSettings(Exres exres) {
+    public void signOut() {
         SharedPreferences.Editor editor = App.settings.edit();
-        editor.putString("token_access", exres.getToken_access());
-        editor.putString("token_refresh", exres.getToken_refresh());
-        editor.putString("username", exres.getUsername());
-        editor.putInt("coins", Integer.parseInt(exres.getCoins()));
-        editor.putInt("id", exres.get_id());
+        editor.putString("username", "no");
         editor.apply();
+        getViewState().signOut();
     }
 
+    public void showDia() {
+        getViewState().showDia();
+    }
 
+    public void setBuilder(AlertDialog.Builder builder) {
+        builder.setTitle("Выход из аккаунта")
+                .setMessage("Вы действительно хотите выйти из аккаунта?")
+                .setPositiveButton("Да", (dialog, which) -> {
+                    signOut();
+                }).setNegativeButton("Нет", (dialog, which) -> dialog.cancel());
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 }

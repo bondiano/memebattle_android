@@ -17,6 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".presentation.game.activity.GameActivity"/>
         <activity android:name=".presentation.intro.FirstStartActivity"/>
         <activity android:name=".presentation.main.activity.MainActivity"/>
         <activity android:name=".presentation.auth.activity.AuthActivity"/>
