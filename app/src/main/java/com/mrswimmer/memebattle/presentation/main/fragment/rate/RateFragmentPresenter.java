@@ -1,11 +1,14 @@
 package com.mrswimmer.memebattle.presentation.main.fragment.rate;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.mrswimmer.memebattle.App;
 import com.mrswimmer.memebattle.data.api.req.Id;
+import com.mrswimmer.memebattle.data.api.req.Secret;
+import com.mrswimmer.memebattle.data.api.res.Exres;
 import com.mrswimmer.memebattle.data.api.res.rate.Rate;
 import com.mrswimmer.memebattle.data.settings.Settings;
 import com.mrswimmer.memebattle.presentation.main.fragment.rate.recycler.LineRate;
@@ -14,6 +17,8 @@ import com.mrswimmer.memebattle.domain.service.Service;
 import java.util.ArrayList;
 
 import javax.inject.Inject;
+
+import retrofit2.Retrofit;
 
 @InjectViewState
 public class RateFragmentPresenter extends MvpPresenter<RateFragmentView> {
@@ -28,7 +33,6 @@ public class RateFragmentPresenter extends MvpPresenter<RateFragmentView> {
         ArrayList<LineRate> lineRates = new ArrayList<>();
         String secret = App.settings.getString(Settings.TOKEN_ACCESS, "no");
         Id id = new Id(App.settings.getInt(Settings.ID, 0));
-        Log.i("code", "req: " + Settings.HEADER + secret + " " + id.getId());
         service.getRateList(Settings.HEADER + secret, id,  new Service.RateCallback() {
             @Override
             public void onSuccess(Rate rate) {
@@ -45,9 +49,34 @@ public class RateFragmentPresenter extends MvpPresenter<RateFragmentView> {
 
             @Override
             public void onError(Throwable e) {
-                Log.i("code", e+"");
+                Log.i("code", e.getMessage());
+                if(e.getMessage().equals("HTTP 401 Unauthorized")) {
+                    refrechToken();
+                }
                 getViewState().showError();
             }
         });
     }
+
+    private void refrechToken() {
+        String refresh = App.settings.getString(Settings.TOKEN_REFRESH, "no");
+        Secret secret = new Secret(refresh);
+        service.refreshToken(Settings.HEADER + refresh, secret, new Service.AuthCallback() {
+            @Override
+            public void onSuccess(Exres exres) {
+                Log.i("code", "refresh_success");
+                SharedPreferences.Editor editor = App.settings.edit();
+                editor.putString(Settings.TOKEN_REFRESH, exres.getToken_refresh());
+                editor.putString(Settings.TOKEN_ACCESS, exres.getToken_access());
+                editor.apply();
+                getRateList();
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.i("code", "refresh_error");
+            }
+        });
+    }
+
 }

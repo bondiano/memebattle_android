@@ -14,6 +14,7 @@ import com.mrswimmer.memebattle.data.settings.Screens;
 import com.mrswimmer.memebattle.presentation.game.activity.GameActivity;
 import com.mrswimmer.memebattle.presentation.main.fragment.info.InfoFragment;
 import com.mrswimmer.memebattle.presentation.main.fragment.modes.ModesFragment;
+import com.mrswimmer.memebattle.presentation.main.fragment.profile.ProfileFragment;
 import com.mrswimmer.memebattle.presentation.main.fragment.rate.RateFragment;
 import com.mrswimmer.memebattle.presentation.main.fragment.settings.SettingsFragment;
 import com.nightonke.boommenu.BoomMenuButton;
@@ -63,6 +64,10 @@ public class MainActivity extends MvpAppCompatActivity implements MainActivityVi
                     return new InfoFragment();
                 case Screens.SETTINGS_SCREEN:
                     return new SettingsFragment();
+                case Screens.SHOP_SCREEN:
+                    showToast();
+                case Screens.PROFILE_SCREEN:
+                    return new ProfileFragment();
                 default:
                     return new ModesFragment();
             }
@@ -95,5 +100,9 @@ public class MainActivity extends MvpAppCompatActivity implements MainActivityVi
     public void gotoGame() {
         Intent intent = new Intent(getApplication(), GameActivity.class);
         getApplication().startActivity(intent);
+    }
+
+    void showToast() {
+        Toast.makeText(getApplication(), "Магазин пока не работает!", Toast.LENGTH_SHORT).show();
     }
 }

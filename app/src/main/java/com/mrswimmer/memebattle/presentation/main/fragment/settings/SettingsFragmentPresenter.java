@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.mrswimmer.memebattle.App;
+import com.mrswimmer.memebattle.data.settings.Settings;
 import com.mrswimmer.memebattle.domain.service.Service;
 
 import javax.inject.Inject;
@@ -48,7 +49,7 @@ public class SettingsFragmentPresenter extends MvpPresenter<SettingsFragmentView
 
     public void clearPrefs() {
         SharedPreferences.Editor editor = App.settings.edit();
-        editor.putString("username", "no");
+        editor.putString(Settings.USERNAME, "no");
         editor.apply();
         getViewState().gotoAuthActivity();
     }

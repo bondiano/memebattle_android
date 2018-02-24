@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/main_background"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        >
+
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:paddingTop="25dp"
+            app:srcCompat="@drawable/main_logo"/>
+
+        <com.mrswimmer.memebattle.data.widget_plus.TextViewPlus
+            android:id="@+id/profile_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="username"
+            android:textAlignment="center"
+            android:textColor="@android:color/background_light"
+            android:textSize="28sp"
+            app:customFont="@string/font_title" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+
+            <com.mrswimmer.memebattle.data.widget_plus.TextViewPlus
+                android:id="@+id/profile_coins"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="coins"
+                android:textAlignment="center"
+                android:textColor="@color/main_blue"
+                android:textSize="24sp"
+                app:customFont="@string/font_main" />
+
+            <ImageView
+                android:id="@+id/prof_imc"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/icon_coin"/>
+
+        </LinearLayout>
+
+        <com.mrswimmer.memebattle.data.widget_plus.TextViewPlus
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="В дальнейшем здесь будет отображаться вся информация о пользователе"
+            android:textSize="24dp"
+            app:customFont="@string/font_main" />
+
+    </LinearLayout>
+
+</LinearLayout>
