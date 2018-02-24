@@ -17,4 +17,5 @@ public interface Settings {
     int GAME_ICONS[] = new int[] {R.drawable.icon_game, R.drawable.icon_rules, R.drawable.icon_user, R.drawable.icon_rating, R.drawable.icon_mode, R.drawable.icon_shop};
     String GAME_NAMES[] = new String[] {"Игра", "Правила", "Профиль", "Рейтинг", "Режимы", "Магазин"};
 
+    String CURRENT_MODE = "current mode";
 }

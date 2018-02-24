@@ -66,6 +66,7 @@
         <com.mrswimmer.memebattle.data.widget_plus.TextViewPlus
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="В дальнейшем здесь будет отображаться вся информация о пользователе"
             android:textSize="24dp"
             app:customFont="@string/font_main" />

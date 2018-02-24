@@ -2,6 +2,7 @@ package com.mrswimmer.memebattle.presentation.main.activity;
 
 import android.graphics.Rect;
 import android.util.Log;
+
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.mrswimmer.memebattle.App;
@@ -13,7 +14,9 @@ import com.nightonke.boommenu.BoomButtons.TextOutsideCircleButton;
 import com.nightonke.boommenu.BoomMenuButton;
 import com.nightonke.boommenu.ButtonEnum;
 import com.nightonke.boommenu.Piece.PiecePlaceEnum;
+
 import javax.inject.Inject;
+
 import ru.terrakok.cicerone.Router;
 
 @InjectViewState
@@ -36,23 +39,29 @@ public class MainActivityPresenter extends MvpPresenter<MainActivityView> {
             bmb.addBuilder(new TextOutsideCircleButton.Builder()
                     .normalImageRes(Settings.MAIN_ICONS[i])
                     .normalText(Settings.MAIN_NAMES[i])
-                    .imagePadding(new Rect(30, 30,30, 30))
+                    .imagePadding(new Rect(30, 30, 30, 30))
                     .textSize(13)
                     .listener(index -> {
-                        Log.i("code", index+"");
+                        Log.i("code", index + "");
                         switch (finalI) {
-                            case 0 :
-                                router.replaceScreen(Screens.SETTINGS_SCREEN); break;
-                            case 1 :
-                                router.replaceScreen(Screens.INFO_SCREEN); break;
-                            case 2 :
-                                router.replaceScreen(Screens.PROFILE_SCREEN); break;
-                            case 3 :
-                                router.replaceScreen(Screens.MODES_SCREEN); break;
-                            case 4 :
-                                router.replaceScreen(Screens.RATE_SCREEN); break;
-                            case 5 :
-                                router.replaceScreen(Screens.SHOP_SCREEN); break;
+                            case 0:
+                                router.replaceScreen(Screens.SETTINGS_SCREEN);
+                                break;
+                            case 1:
+                                router.replaceScreen(Screens.INFO_SCREEN);
+                                break;
+                            case 2:
+                                router.replaceScreen(Screens.PROFILE_SCREEN);
+                                break;
+                            case 3:
+                                router.replaceScreen(Screens.MODES_SCREEN);
+                                break;
+                            case 4:
+                                router.replaceScreen(Screens.RATE_SCREEN);
+                                break;
+                            case 5:
+                                router.replaceScreen(Screens.SHOP_SCREEN);
+                                break;
                         }
                     }));
         }

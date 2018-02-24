@@ -45,6 +45,7 @@ public class ModesAdapter extends RecyclerView.Adapter<ModesViewHolder> {
         });
         holder.Play.setOnClickListener(v -> {
             Intent intent = new Intent(context, GameActivity.class);
+            intent.putExtra(Settings.CURRENT_MODE, mode.Type);
             context.startActivity(intent);
         });
     }
