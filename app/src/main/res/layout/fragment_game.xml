@@ -1,18 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/rules_fragment_back"
+                android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp">
+
+            <ImageView
+                android:id="@+id/battle_clockim"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="5dp"
+                app:srcCompat="@drawable/icon_clock"/>
+
+            <com.mrswimmer.memebattle.data.widget_plus.TextViewPlus
+                android:id="@+id/game_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:text="7"
+                app:customFont="@string/font_main"
+                android:textColor="@color/main_blue"
+                android:textSize="22sp"/>
+
+            <Chronometer
+                android:id="@+id/game_chronometer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textAlignment="center"
+                android:textColor="@color/main_blue"
+                android:textSize="8sp"
+                android:visibility="invisible"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="338dp"
+            android:layout_height="218dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/game_top_mem"
+                android:layout_width="338dp"
+                android:layout_height="218dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/stub_mem"/>
+
+            <ImageView
+                android:id="@+id/game_top_like"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:visibility="invisible"
+                app:srcCompat="@drawable/like"/>
+
+            <RelativeLayout
+                android:id="@+id/game_top_after_layout"
+                android:layout_width="338dp"
+                android:layout_height="218dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@color/back_likes"
+                android:visibility="invisible">
+
+                <com.mrswimmer.memebattle.data.widget_plus.TextViewPlus
+                    android:id="@+id/game_top_after_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="Победитель"
+                    app:customFont="@string/font_main"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"/>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/game_top_after_status"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="horizontal">
+
+                    <com.mrswimmer.memebattle.data.widget_plus.TextViewPlus
+                        android:id="@+id/game_top_after_likes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:customFont="@string/font_main"
+                        android:layout_marginRight="5dp"
+                        android:text="33"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp"/>
+
+                    <ImageView
+                        android:id="@+id/battle_imlikef"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/like_small"/>
+                </LinearLayout>
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/game_bottom_mem"
+                android:layout_width="338dp"
+                android:layout_height="218dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/stub_mem"/>
+
+            <ImageView
+                android:id="@+id/game_bottom_like"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:visibility="invisible"
+                app:srcCompat="@drawable/like"/>
+
+            <RelativeLayout
+                android:id="@+id/game_bottom_after_layout"
+                android:layout_width="338dp"
+                android:layout_height="218dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+
+                android:layout_alignParentTop="true"
+                android:background="@color/back_likes"
+                android:visibility="invisible">
+
+                <com.mrswimmer.memebattle.data.widget_plus.TextViewPlus
+                    android:id="@+id/game_bottom_after_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="Победитель"
+                    app:customFont="@string/font_main"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/game_bottom_after_status"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="33dp"
+                    android:orientation="horizontal">
+
+                    <com.mrswimmer.memebattle.data.widget_plus.TextViewPlus
+                        android:id="@+id/game_bottom_after_likes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:text="33"
+                        app:customFont="@string/font_main"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp"/>
+
+                    <ImageView
+                        android:id="@+id/battle_imlikes"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/like_small"/>
+                </LinearLayout>
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

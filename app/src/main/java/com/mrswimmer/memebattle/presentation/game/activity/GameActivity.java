@@ -17,9 +17,7 @@ import com.mrswimmer.memebattle.presentation.main.fragment.modes.ModesFragment;
 import com.mrswimmer.memebattle.presentation.main.fragment.profile.ProfileFragment;
 import com.mrswimmer.memebattle.presentation.main.fragment.rate.RateFragment;
 import com.nightonke.boommenu.BoomMenuButton;
-
 import javax.inject.Inject;
-
 import ru.terrakok.cicerone.Navigator;
 import ru.terrakok.cicerone.NavigatorHolder;
 import ru.terrakok.cicerone.android.SupportFragmentNavigator;

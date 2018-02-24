@@ -7,6 +7,7 @@ import com.mrswimmer.memebattle.presentation.auth.fragment.sign_in.SignInFragmen
 import com.mrswimmer.memebattle.presentation.auth.fragment.sign_up.SignUpFragmentPresenter;
 import com.mrswimmer.memebattle.presentation.game.activity.GameActivity;
 import com.mrswimmer.memebattle.presentation.game.activity.GameActivityPresenter;
+import com.mrswimmer.memebattle.presentation.game.fragment.GameFragmentPresenter;
 import com.mrswimmer.memebattle.presentation.main.activity.MainActivity;
 import com.mrswimmer.memebattle.presentation.main.activity.MainActivityPresenter;
 import com.mrswimmer.memebattle.presentation.main.fragment.modes.ModesFragment;
@@ -34,4 +35,5 @@ public interface AppComponent {
     void inject(RateFragment rateFragment);
     void inject(RateFragmentPresenter rateFragmentPresenter);
     void inject(SettingsFragmentPresenter settingsFragmentPresenter);
+    void inject(GameFragmentPresenter gameFragmentPresenter);
 }
