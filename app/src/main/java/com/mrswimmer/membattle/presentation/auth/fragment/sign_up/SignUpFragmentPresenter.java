@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
+import com.google.gson.Gson;
 import com.mrswimmer.membattle.App;
 import com.mrswimmer.membattle.data.api.req.RegistrationUser;
 import com.mrswimmer.membattle.data.api.res.Exres;
@@ -18,6 +19,8 @@ import javax.inject.Inject;
 
 import ru.terrakok.cicerone.Router;
 
+import static android.content.ContentValues.TAG;
+
 @InjectViewState
 public class SignUpFragmentPresenter extends MvpPresenter<SignUpFragmentView> {
     @Inject
@@ -25,29 +28,37 @@ public class SignUpFragmentPresenter extends MvpPresenter<SignUpFragmentView> {
 
     @Inject
     Service service;
+    private Gson gson = new Gson();
 
     public SignUpFragmentPresenter() {
         App.getComponent().inject(this);
     }
 
     public void registration(List<EditTextPlus> edits) {
-        service.signUp(new RegistrationUser(edits.get(0).getText().toString(), edits.get(1).getText().toString(), edits.get(2).getText().toString()), new Service.AuthCallback() {
-            @Override
-            public void onSuccess(Exres exres) {
-                Log.i("code", exres.getSuccess()+"");
-                enter(edits);
-            }
+        if(edits.get(2).getText().toString().equals(edits.get(3).getText().toString())) {
+            RegistrationUser registrationUser = new RegistrationUser(edits.get(0).getText().toString(), edits.get(2).getText().toString(), edits.get(1).getText().toString());
+            String json = gson.toJson(registrationUser);
+            Log.i("code", json);
+            service.signUp(registrationUser, new Service.AuthCallback() {
+                @Override
+                public void onSuccess(Exres exres) {
+                    Log.i("code", exres.getSuccess()+"");
+                    enter(edits);
+                }
 
-            @Override
-            public void onError(Throwable e) {
-                Log.i("code", e + "");
-                getViewState().showErrorToast("Ошибка регистрации");
-            }
-        });
+                @Override
+                public void onError(Throwable e) {
+                    Log.i("code", e + "");
+                    getViewState().showErrorToast("Ошибка регистрации");
+                }
+            });
+        } else {
+            getViewState().showErrorToast("Пароли должны совпадать!");
+        }
     }
 
     private void enter(List<EditTextPlus> edits) {
-        service.signIn(new RegistrationUser(edits.get(0).getText().toString(), edits.get(1).getText().toString(), "lol"), new Service.AuthCallback() {
+        service.signIn(new RegistrationUser(edits.get(0).getText().toString(), edits.get(2).getText().toString(), "lol"), new Service.AuthCallback() {
             @Override
             public void onSuccess(Exres exres) {
                 Log.i("code", exres.getSuccess()+"");
