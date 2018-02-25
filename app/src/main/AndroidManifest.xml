@@ -9,7 +9,7 @@
         android:roundIcon="@drawable/main_logo"
         android:supportsRtl="true"
         android:name="com.mrswimmer.membattle.App"
-        android:theme="@style/Theme.Design.NoActionBar">
+        android:theme="@style/MemeBattle">
         <activity android:name="com.mrswimmer.membattle.presentation.intro.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

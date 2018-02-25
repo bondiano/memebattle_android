@@ -14,7 +14,8 @@
         android:layout_height="160dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:paddingTop="1dp" />
 
     <com.mrswimmer.membattle.data.widget_plus.TextViewPlus
         android:id="@+id/item_title"
@@ -51,8 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_below="@+id/item_title"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/frame">
+        android:layout_centerHorizontal="true">
 
         <com.mrswimmer.membattle.data.widget_plus.TextViewPlus
             android:id="@+id/item_rules"
@@ -64,9 +64,9 @@
             android:layout_marginLeft="35dp"
             android:layout_marginStart="35dp"
             android:text="ПРАВИЛА"
+            card_view:customFont="@string/font_main"
             android:textColor="@color/main_blue"
-            android:textSize="24sp"
-            card_view:customFont="@string/font_main" />
+            android:textSize="24sp"/>
 
         <com.mrswimmer.membattle.data.widget_plus.TextViewPlus
             android:id="@+id/item_play"
@@ -78,11 +78,11 @@
             android:layout_alignParentRight="true"
             android:layout_marginEnd="42dp"
             android:layout_marginRight="42dp"
+            card_view:customFont="@string/font_main"
             android:text="ИГРАТЬ"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/main_blue"
-            android:textSize="24sp"
-            card_view:customFont="@string/font_main" />
+            android:textSize="24sp"/>
     </RelativeLayout>
 
 </RelativeLayout>
