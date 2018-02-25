@@ -30,7 +30,7 @@ public class GameActivity extends MvpAppCompatActivity implements GameActivityVi
     @InjectPresenter
     GameActivityPresenter presenter;
 
-    int currentMode;
+    public static int currentMode = 0;
 
     @ProvidePresenter
     public GameActivityPresenter presenter() {

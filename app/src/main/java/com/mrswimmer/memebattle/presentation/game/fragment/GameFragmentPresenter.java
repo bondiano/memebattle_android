@@ -1,5 +1,6 @@
 package com.mrswimmer.memebattle.presentation.game.fragment;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.arellomobile.mvp.InjectViewState;
@@ -10,9 +11,13 @@ import com.github.nkzawa.socketio.client.Socket;
 import com.google.gson.Gson;
 import com.mrswimmer.memebattle.App;
 import com.mrswimmer.memebattle.data.api.req.RequestToGame;
+import com.mrswimmer.memebattle.data.api.res.coins.Coins;
+import com.mrswimmer.memebattle.data.api.res.game.PairLikes.PairLikes;
 import com.mrswimmer.memebattle.data.api.res.game.PairMem.PairMem;
 import com.mrswimmer.memebattle.data.settings.Settings;
 import com.mrswimmer.memebattle.domain.service.Service;
+import com.mrswimmer.memebattle.presentation.game.activity.GameActivity;
+import com.mrswimmer.memebattle.presentation.main.activity.MainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,9 +28,12 @@ import javax.inject.Inject;
 
 import ru.terrakok.cicerone.Router;
 
+import static com.mrswimmer.memebattle.data.settings.Settings.ID;
+import static com.mrswimmer.memebattle.data.settings.Settings.TAG;
+
 @InjectViewState
 public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
-    int USER_ID;
+    int USER_ID = App.settings.getInt(ID, 0);
     Gson gson = new Gson();
     @Inject
     Router router;
@@ -44,32 +52,58 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
     public Emitter.Listener onAction = args -> {
         Log.i("game", "onAction  " + args[0]);
         try {
-            String type = getJsonFromArgs(args[0]).getString("type");
+            JSONObject jsonObject = (JSONObject) args[0];
+            String type = jsonObject.getString("type");
             Log.i("game", "type " + type);
             switch (type) {
                 case "@@ws/NEW_PAIR":
-                    onSetMemes(args[0] + "");
+                    onSetMemes(args[0] + "", false);
                     break;
-                /*case "@@ws/GET_MEM_PAIR_SUCCESS":
-                    onSetMemesOnly(args[0] + "");
+                case "@@ws/GET_MEM_PAIR_SUCCESS":
+                    onSetMemes(args[0] + "", true);
                     break;
                 case "@@ws/PAIR_WINNER":
-                    showlikes(args[0] + "");
+                    onResult(args[0] + "");
                     break;
                 case "@@ws/ADD_COIN":
-                    addCoins(args[0] + "");
-                    break;*/
+                    onCoins(args[0] + "");
+                    break;
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
     };
 
-    private void onSetMemes(String args) {
+    private void onCoins(String args) {
+        Coins coins = gson.fromJson(args, Coins.class);
+        SharedPreferences.Editor editor = App.settings.edit();
+        editor.putInt(Settings.COINS, Integer.parseInt(coins.getData().getCoins()));
+        editor.apply();
+    }
+
+    private void onResult(String args) {
+        PairLikes pairLikes = gson.fromJson(args, PairLikes.class);
+        final int topLikes = Integer.parseInt(pairLikes.getData().getLeftLikes());
+        final int bottomLikes = Integer.parseInt(pairLikes.getData().getRightLikes());
+        String topStatus, bottomStatus;
+        if(topLikes>bottomLikes) {
+            topStatus = "Победитель";
+            bottomStatus = "";
+        } else if(topLikes < bottomLikes) {
+            topStatus = "";
+            bottomStatus = "Победитель";
+        } else {
+            topStatus = "";
+            bottomStatus = "";
+        }
+        getViewState().showResult(topLikes + "", bottomLikes + "", topStatus, bottomStatus);
+    }
+
+    private void onSetMemes(String args, boolean firstPair) {
         PairMem pairMem = gson.fromJson(args, PairMem.class);
         String urlTop = pairMem.getData().getLeftMemeImg();
         String urlBottom = pairMem.getData().getRightMemeImg();
-        getViewState().setMemes(urlTop, urlBottom);
+        getViewState().setMemes(urlTop, urlBottom, firstPair);
     }
 
     public Emitter.Listener onError = args -> Log.i("game", "onError  " + args[0]);
@@ -87,14 +121,9 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
         socket.emit("action", json2);
     }
 
-    JSONObject getJsonFromArgs(Object... args) {
-        JSONObject jsonObject = null;
-        try {
-            jsonObject = new JSONObject(String.valueOf(args[0]));
-            Log.i("code", "json: " + jsonObject);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return jsonObject;
+    public void omMemClick(Socket socket, int right) {
+        RequestToGame req = new RequestToGame(USER_ID, right, GameActivity.currentMode, "@@ws/CHOOSE_MEM_REQUEST");
+        String j = gson.toJson(req);
+        socket.emit("action", j);
     }
 }

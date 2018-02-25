@@ -1,30 +1,31 @@
 package com.mrswimmer.memebattle.presentation.game.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
 import com.mrswimmer.memebattle.R;
+import com.mrswimmer.memebattle.data.widget_plus.TextViewPlus;
 import com.mrswimmer.memebattle.domain.service.Service;
 import com.squareup.picasso.Picasso;
 import java.net.URISyntaxException;
 import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import butterknife.OnClick;
 
 public class GameFragment extends MvpAppCompatFragment implements GameFragmentView {
     Socket socket = null;
-
+    boolean canClickMem = false;
     @Inject
     Service service;
 
@@ -35,6 +36,23 @@ public class GameFragment extends MvpAppCompatFragment implements GameFragmentVi
     ImageView topMem;
     @BindView(R.id.game_bottom_mem)
     ImageView bottomMem;
+    @BindView(R.id.game_top_like)
+    ImageView topLike;
+    @BindView(R.id.game_bottom_like)
+    ImageView bottomLike;
+    @BindView(R.id.game_top_after_layout)
+    RelativeLayout topAfterLayout;
+    @BindView(R.id.game_bottom_after_layout)
+    RelativeLayout bottomAfterLayout;
+    @BindView(R.id.game_top_after_status)
+    TextViewPlus topAfterStatus;
+    @BindView(R.id.game_bottom_after_status)
+    TextViewPlus bottomAfterStatus;
+    @BindView(R.id.game_top_after_likes)
+    TextViewPlus topAfterLikes;
+    @BindView(R.id.game_bottom_after_likes)
+    TextViewPlus bottomAfterLikes;
+    private Handler handler;
 
     @ProvidePresenter
     public GameFragmentPresenter presenter() {
@@ -44,6 +62,7 @@ public class GameFragment extends MvpAppCompatFragment implements GameFragmentVi
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        handler = new Handler();
         return inflater.inflate(R.layout.fragment_game, container, false);
     }
 
@@ -58,24 +77,50 @@ public class GameFragment extends MvpAppCompatFragment implements GameFragmentVi
 
     }
 
+    @OnClick(R.id.game_top_mem)
+    void onTopMemClick() {
+        if(canClickMem) {
+            canClickMem = false;
+            presenter.omMemClick(socket, 0);
+            topLike.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @OnClick(R.id.game_bottom_mem)
+    void onBottomMemClick() {
+        if(canClickMem) {
+            canClickMem = false;
+            presenter.omMemClick(socket, 1);
+            bottomLike.setVisibility(View.VISIBLE);
+        }
+    }
+
     @Override
-    public void setMemes(String urlTop, String urlBottom) {
-        Observable.just(urlTop)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(s -> Picasso.with(getActivity())
-                        .load(s)
-                        .placeholder(R.color.white)
-                        .error(R.color.white)
-                        .into(topMem));
-        Observable.just(urlBottom)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(s -> Picasso.with(getActivity())
-                        .load(s)
-                        .placeholder(R.color.white)
-                        .error(R.color.white)
-                        .into(bottomMem));
+    public void setMemes(String urlTop, String urlBottom, boolean firstPair) {
+        if(!firstPair) {
+            canClickMem = true;
+        }
+        handler.post(()->{
+            hideAfter();
+            Picasso.with(getActivity())
+                    .load(urlTop)
+                    .into(topMem);
+            Picasso.with(getActivity())
+                    .load(urlBottom)
+                    .into(bottomMem);
+        });
+    }
+
+    @Override
+    public void showResult(String topLikes, String bottomLikes, String topStatus, String bottomStatus) {
+        handler.post(()->{
+            topAfterLayout.setVisibility(View.VISIBLE);
+            bottomAfterLayout.setVisibility(View.VISIBLE);
+            topAfterLikes.setText(topLikes);
+            bottomAfterLikes.setText(bottomLikes);
+            topAfterStatus.setText(topStatus);
+            bottomAfterStatus.setText(bottomStatus);
+        });
     }
 
     @Override
@@ -103,5 +148,12 @@ public class GameFragment extends MvpAppCompatFragment implements GameFragmentVi
     public void onPause() {
         super.onPause();
         socket.close();
+    }
+
+    void hideAfter() {
+        topAfterLayout.setVisibility(View.INVISIBLE);
+        bottomAfterLayout.setVisibility(View.INVISIBLE);
+        topLike.setVisibility(View.INVISIBLE);
+        bottomLike.setVisibility(View.INVISIBLE);
     }
 }
