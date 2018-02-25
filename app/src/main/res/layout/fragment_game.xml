@@ -30,7 +30,7 @@
                 android:layout_marginRight="5dp"
                 app:srcCompat="@drawable/icon_clock"/>
 
-            <com.mrswimmer.membattle.data.widget_plus.TextViewPlus
+            <com.membattle.data.widget_plus.TextViewPlus
                 android:id="@+id/game_timer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
                 android:background="@color/back_likes"
                 android:visibility="invisible">
 
-                <com.mrswimmer.membattle.data.widget_plus.TextViewPlus
+                <com.membattle.data.widget_plus.TextViewPlus
                     android:id="@+id/game_top_after_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
                     android:layout_centerHorizontal="true"
                     android:orientation="horizontal">
 
-                    <com.mrswimmer.membattle.data.widget_plus.TextViewPlus
+                    <com.membattle.data.widget_plus.TextViewPlus
                         android:id="@+id/game_top_after_likes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -161,7 +161,7 @@
                 android:background="@color/back_likes"
                 android:visibility="invisible">
 
-                <com.mrswimmer.membattle.data.widget_plus.TextViewPlus
+                <com.membattle.data.widget_plus.TextViewPlus
                     android:id="@+id/game_bottom_after_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -180,7 +180,7 @@
                     android:layout_marginTop="33dp"
                     android:orientation="horizontal">
 
-                    <com.mrswimmer.membattle.data.widget_plus.TextViewPlus
+                    <com.membattle.data.widget_plus.TextViewPlus
                         android:id="@+id/game_bottom_after_likes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

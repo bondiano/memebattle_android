@@ -6,7 +6,7 @@
               android:background="@color/white"
               android:orientation="vertical">
 
-    <com.mrswimmer.membattle.data.widget_plus.TextViewPlus
+    <com.membattle.data.widget_plus.TextViewPlus
         android:id="@+id/modes_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

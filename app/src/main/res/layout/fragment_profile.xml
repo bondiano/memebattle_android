@@ -23,7 +23,7 @@
             android:paddingTop="25dp"
             app:srcCompat="@drawable/main_logo"/>
 
-        <com.mrswimmer.membattle.data.widget_plus.TextViewPlus
+        <com.membattle.data.widget_plus.TextViewPlus
             android:id="@+id/profile_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
             android:orientation="horizontal"
             android:paddingTop="10dp">
 
-            <com.mrswimmer.membattle.data.widget_plus.TextViewPlus
+            <com.membattle.data.widget_plus.TextViewPlus
                 android:id="@+id/profile_coins"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
 
         </LinearLayout>
 
-        <com.mrswimmer.membattle.data.widget_plus.TextViewPlus
+        <com.membattle.data.widget_plus.TextViewPlus
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

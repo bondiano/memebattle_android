@@ -12,7 +12,7 @@
     tools:layout_editor_absoluteX="8dp"
     tools:layout_editor_absoluteY="8dp">
 
-    <com.mrswimmer.membattle.data.widget_plus.TextViewPlus
+    <com.membattle.data.widget_plus.TextViewPlus
         app:customFont="@string/font_title"
         android:id="@+id/textReg"
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.mrswimmer.membattle.data.widget_plus.EditTextPlus
+        <com.membattle.data.widget_plus.EditTextPlus
             android:id="@+id/sign_up_login"
             style="@android:style/Widget.Holo.EditText"
             android:layout_width="match_parent"
@@ -42,7 +42,7 @@
             android:textSize="24sp"
             android:theme="@style/Widget.AppCompat.EditText" />
 
-        <com.mrswimmer.membattle.data.widget_plus.EditTextPlus
+        <com.membattle.data.widget_plus.EditTextPlus
             android:id="@+id/sign_up_mail"
             style="@android:style/Widget.Holo.EditText"
             android:layout_width="match_parent"
@@ -56,7 +56,7 @@
             android:textSize="24sp"
             android:theme="@style/Widget.AppCompat.EditText" />
 
-        <com.mrswimmer.membattle.data.widget_plus.EditTextPlus
+        <com.membattle.data.widget_plus.EditTextPlus
             android:id="@+id/sign_up_pass"
             style="@android:style/Widget.Holo.EditText"
             android:layout_width="match_parent"
@@ -70,7 +70,7 @@
             android:textSize="24sp"
             android:theme="@style/Widget.AppCompat.EditText" />
 
-        <com.mrswimmer.membattle.data.widget_plus.EditTextPlus
+        <com.membattle.data.widget_plus.EditTextPlus
             android:id="@+id/sign_up_repeat_pass"
             style="@android:style/Widget.Holo.EditText"
             android:layout_width="match_parent"
@@ -91,7 +91,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <com.mrswimmer.membattle.data.widget_plus.ButtonPlus
+            <com.membattle.data.widget_plus.ButtonPlus
                 android:id="@+id/sign_up_reg"
                 android:layout_width="140dp"
                 android:layout_height="34dp"
@@ -101,7 +101,7 @@
                 android:textColor="@color/main_blue"
                 android:textSize="24sp" />
 
-            <com.mrswimmer.membattle.data.widget_plus.ButtonPlus
+            <com.membattle.data.widget_plus.ButtonPlus
                 android:id="@+id/sign_up_button_back"
                 android:layout_width="140dp"
                 android:layout_height="34dp"
