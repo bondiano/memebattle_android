@@ -10,6 +10,7 @@ import com.github.nkzawa.socketio.client.Socket;
 import com.google.gson.Gson;
 import com.mrswimmer.memebattle.App;
 import com.mrswimmer.memebattle.data.api.req.RequestToGame;
+import com.mrswimmer.memebattle.data.api.res.game.PairMem.PairMem;
 import com.mrswimmer.memebattle.data.settings.Settings;
 import com.mrswimmer.memebattle.domain.service.Service;
 
@@ -25,7 +26,7 @@ import ru.terrakok.cicerone.Router;
 @InjectViewState
 public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
     int USER_ID;
-    Gson gson;
+    Gson gson = new Gson();
     @Inject
     Router router;
 
@@ -49,7 +50,7 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
                 case "@@ws/NEW_PAIR":
                     onSetMemes(args[0] + "");
                     break;
-                case "@@ws/GET_MEM_PAIR_SUCCESS":
+                /*case "@@ws/GET_MEM_PAIR_SUCCESS":
                     onSetMemesOnly(args[0] + "");
                     break;
                 case "@@ws/PAIR_WINNER":
@@ -57,15 +58,18 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
                     break;
                 case "@@ws/ADD_COIN":
                     addCoins(args[0] + "");
-                    break;
+                    break;*/
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
     };
 
-    private void onSetMemes(String s) {
-
+    private void onSetMemes(String args) {
+        PairMem pairMem = gson.fromJson(args, PairMem.class);
+        String urlTop = pairMem.getData().getLeftMemeImg();
+        String urlBottom = pairMem.getData().getRightMemeImg();
+        getViewState().setMemes(urlTop, urlBottom);
     }
 
     public Emitter.Listener onError = args -> Log.i("game", "onError  " + args[0]);
