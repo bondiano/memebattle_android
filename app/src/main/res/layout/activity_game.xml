@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mrswimmer.memebattle.presentation.main.activity.MainActivity">
+    tools:context="com.mrswimmer.membattle.presentation.main.activity.MainActivity">
 
     <FrameLayout
         android:id="@+id/game_container"
@@ -20,10 +20,10 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="21dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginBottom="18dp"
+        android:layout_marginRight="18dp"
         app:bmb_buttonEnum="textOutsideCircle"
         app:bmb_buttonPlaceEnum="buttonPlace_sc_9_1"
+        app:bmb_normalColor="@color/memyel"
         app:bmb_piecePlaceEnum="piecePlace_dot_9_1" />
 </RelativeLayout>

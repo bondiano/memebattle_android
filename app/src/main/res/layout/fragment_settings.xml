@@ -7,7 +7,7 @@
               android:background="@android:color/background_light"
               android:orientation="vertical">
 
-    <com.mrswimmer.memebattle.data.widget_plus.TextViewPlus
+    <com.mrswimmer.membattle.data.widget_plus.TextViewPlus
         android:id="@+id/settitle"
         tools:text="Правила игры"
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
         android:textColor="@color/main_blue"
         android:textSize="30sp"/>
 
-    <com.mrswimmer.memebattle.data.widget_plus.TextViewPlus
+    <com.mrswimmer.membattle.data.widget_plus.TextViewPlus
         android:id="@+id/settings_sign_out"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,19 +34,19 @@
         android:textSize="24sp"
         app:customFont="@string/font_main" />
 
-    <com.mrswimmer.memebattle.data.widget_plus.TextViewPlus
+    <com.mrswimmer.membattle.data.widget_plus.TextViewPlus
         android:id="@+id/settings_about_v"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autoText="false"
         android:background="@drawable/frame"
         android:padding="12dp"
-        android:text="Что нового в версии 2.1?"
+        android:text="Что нового в версии 2.2?"
         android:textColor="@color/main_blue"
         android:textSize="24sp"
         app:customFont="@string/font_main" />
 
-    <com.mrswimmer.memebattle.data.widget_plus.TextViewPlus
+    <com.mrswimmer.membattle.data.widget_plus.TextViewPlus
         android:id="@+id/settings_mark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
         android:textSize="24sp"
         app:customFont="@string/font_main" />
 
-    <com.mrswimmer.memebattle.data.widget_plus.TextViewPlus
+    <com.mrswimmer.membattle.data.widget_plus.TextViewPlus
         android:id="@+id/settings_share"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
