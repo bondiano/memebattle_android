@@ -2,6 +2,8 @@ package com.membattle.presentation.game.fragment;
 
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
@@ -9,6 +11,7 @@ import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.Socket;
 import com.google.gson.Gson;
 import com.membattle.App;
+import com.membattle.R;
 import com.membattle.data.api.req.RequestToGame;
 import com.membattle.data.api.res.coins.Coins;
 import com.membattle.data.api.res.game.PairLikes.PairLikes;
@@ -120,5 +123,9 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
         RequestToGame req = new RequestToGame(USER_ID, right, GameActivity.currentMode, "@@ws/CHOOSE_MEM_REQUEST");
         String j = gson.toJson(req);
         socket.emit("action", j);
+    }
+
+    public boolean zoomMem(int i) {
+        return false;
     }
 }

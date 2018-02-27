@@ -4,9 +4,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -78,6 +81,12 @@ public class GameFragment extends MvpAppCompatFragment implements GameFragmentVi
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+        topMem.setOnLongClickListener(v -> {
+            Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_zoom_mem);
+            topMem.startAnimation(animation);
+            return false;
+        });
+
     }
 
     @Override
@@ -105,7 +114,6 @@ public class GameFragment extends MvpAppCompatFragment implements GameFragmentVi
 
     @Override
     public void setMemes(String urlTop, String urlBottom, boolean firstPair) {
-
         canClickMem = true;
         handler.post(()->{
             hideAfter();
@@ -123,7 +131,7 @@ public class GameFragment extends MvpAppCompatFragment implements GameFragmentVi
 
     @Override
     public void showResult(String topLikes, String bottomLikes, String topStatus, String bottomStatus) {
-        handler.post(()->{
+        handler.post(() -> {
             topAfterLayout.setVisibility(View.VISIBLE);
             bottomAfterLayout.setVisibility(View.VISIBLE);
             topAfterLikes.setText(topLikes);
