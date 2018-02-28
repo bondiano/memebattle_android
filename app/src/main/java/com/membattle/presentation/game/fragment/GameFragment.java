@@ -1,10 +1,11 @@
 package com.membattle.presentation.game.fragment;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
-import android.util.Log;
+import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Chronometer;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -61,6 +63,12 @@ public class GameFragment extends MvpAppCompatFragment implements GameFragmentVi
     Chronometer chronometer;
     @BindView(R.id.game_timer)
     TextViewPlus timer;
+    @BindView(R.id.game_top_zoom_panel)
+    LinearLayout top_zoom_panel;
+    @BindView(R.id.game_top_mem_layout)
+    ConstraintLayout topMemLayout;
+    @BindView(R.id.game_dark_layout)
+    LinearLayout darkLayout;
 
     private Handler handler;
     private int tick = 15;
@@ -83,7 +91,16 @@ public class GameFragment extends MvpAppCompatFragment implements GameFragmentVi
         ButterKnife.bind(this, view);
         topMem.setOnLongClickListener(v -> {
             Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_zoom_mem);
-            topMem.startAnimation(animation);
+            topMemLayout.startAnimation(animation);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                topMemLayout.setTranslationZ(10);
+            }
+            animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_dark_layout);
+            darkLayout.startAnimation(animation);
+            darkLayout.setVisibility(View.VISIBLE);
+            animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_zoom_panel);
+            top_zoom_panel.startAnimation(animation);
+            top_zoom_panel.setVisibility(View.VISIBLE);
             return false;
         });
 
