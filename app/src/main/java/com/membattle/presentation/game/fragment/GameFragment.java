@@ -1,11 +1,13 @@
 package com.membattle.presentation.game.fragment;
 
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,10 +31,12 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnLongClick;
 
 public class GameFragment extends MvpAppCompatFragment implements GameFragmentView {
     Socket socket = null;
     boolean canClickMem = false;
+    int zoom = 0;
     @Inject
     Service service;
 
@@ -89,21 +93,6 @@ public class GameFragment extends MvpAppCompatFragment implements GameFragmentVi
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-        topMem.setOnLongClickListener(v -> {
-            Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_zoom_mem);
-            topMemLayout.startAnimation(animation);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                topMemLayout.setTranslationZ(10);
-            }
-            animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_dark_layout);
-            darkLayout.startAnimation(animation);
-            darkLayout.setVisibility(View.VISIBLE);
-            animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_zoom_panel);
-            top_zoom_panel.startAnimation(animation);
-            top_zoom_panel.setVisibility(View.VISIBLE);
-            return false;
-        });
-
     }
 
     @Override
@@ -111,6 +100,48 @@ public class GameFragment extends MvpAppCompatFragment implements GameFragmentVi
 
     }
 
+    @OnLongClick(R.id.game_top_mem)
+    boolean onTopMemLongClick() {
+        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_zoom_mem);
+        topMemLayout.startAnimation(animation);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            topMemLayout.setTranslationZ(10);
+        }
+        animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_dark_layout);
+        darkLayout.startAnimation(animation);
+        darkLayout.setVisibility(View.VISIBLE);
+        animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_zoom_panel);
+        top_zoom_panel.startAnimation(animation);
+        top_zoom_panel.setVisibility(View.VISIBLE);
+        zoom = 1;
+        return false;
+    }
+
+    @OnClick(R.id.game_dark_layout)
+    void onDarkClick() {
+        switch (zoom) {
+            case 1:
+                hideTop(); break;
+            /*case 2:
+                hideBottom(); break;*/
+        }
+    }
+
+    private void hideTop() {
+        hideDark();
+        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_unzoom_panel);
+        top_zoom_panel.startAnimation(animation);
+        animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_unzoom_mem);
+        topMemLayout.startAnimation(animation);
+        //hideDark();
+    }
+
+    private void hideDark() {
+        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_hide_dark_layout);
+        darkLayout.startAnimation(animation);
+        zoom = 0;
+        handler.postDelayed(() -> darkLayout.setVisibility(View.INVISIBLE), 100);
+    }
     @OnClick(R.id.game_top_mem)
     void onTopMemClick() {
         if(canClickMem) {
