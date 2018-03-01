@@ -3,7 +3,6 @@ package com.membattle.presentation.game.fragment;
 import com.arellomobile.mvp.MvpView;
 
 interface GameFragmentView extends MvpView {
-    void showErrorToast(String error);
 
     void setMemes(String urlTop, String urlBottom, boolean firstPair);
 
