@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,11 +30,10 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnLongClick;
 
 public class GameFragment extends MvpAppCompatFragment implements GameFragmentView {
     Socket socket = null;
-    boolean canClickMem = false;
+    boolean canClickMem = true;
     int zoom = 0;
     @Inject
     Service service;
@@ -65,16 +65,6 @@ public class GameFragment extends MvpAppCompatFragment implements GameFragmentVi
     Chronometer chronometer;
     @BindView(R.id.game_timer)
     TextViewPlus timer;
-    @BindView(R.id.game_top_zoom_panel)
-    LinearLayout top_zoom_panel;
-    @BindView(R.id.game_top_mem_layout)
-    ConstraintLayout topMemLayout;
-    @BindView(R.id.game_dark_layout)
-    LinearLayout darkLayout;
-    @BindView(R.id.game_bottom_mem_layout)
-    ConstraintLayout bottomMemLayout;
-    @BindView(R.id.game_bottom_zoom_panel)
-    LinearLayout bottom_zoom_panel;
 
     private Handler handler;
     private int tick = 15;
@@ -95,77 +85,14 @@ public class GameFragment extends MvpAppCompatFragment implements GameFragmentVi
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-    }
-
-    @OnLongClick(R.id.game_top_mem)
-    boolean onTopMemLongClick() {
-        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_zoom_top_mem);
-        topMemLayout.startAnimation(animation);
-        showDark();
-        animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_zoom_panel);
-        top_zoom_panel.startAnimation(animation);
-        top_zoom_panel.setVisibility(View.VISIBLE);
-        showResult("0","1","lol", "kek");
-        zoom = 1;
-        return false;
-    }
-
-    @OnLongClick(R.id.game_bottom_mem)
-    boolean onBottomMemLongClick() {
-        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_zoom_bottom_mem);
-        bottomMemLayout.startAnimation(animation);
-        showDark();
-        animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_zoom_panel);
-        bottom_zoom_panel.startAnimation(animation);
-        bottom_zoom_panel.setVisibility(View.VISIBLE);
-        zoom = 2;
-        return false;
-    }
-
-    @OnClick(R.id.game_dark_layout)
-    void onDarkClick() {
-        switch (zoom) {
-            case 1:
-                hideTop(); break;
-            case 2:
-                hideBottom(); break;
-        }
-    }
-
-    private void hideTop() {
-        hideDark();
-        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_unzoom_panel);
-        top_zoom_panel.startAnimation(animation);
-        animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_unzoom_top_mem);
-        topMemLayout.startAnimation(animation);
         /*handler.postDelayed(() -> {
             showResult("0","1","lol", "kek");
-        }, 3000);*/
-    }
-
-    private void hideBottom() {
-        hideDark();
-        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_unzoom_panel);
-        bottom_zoom_panel.startAnimation(animation);
-        animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_unzoom_bottom_mem);
-        bottomMemLayout.startAnimation(animation);
-    }
-
-    private void hideDark() {
-        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_hide_dark_layout);
-        darkLayout.startAnimation(animation);
-        zoom = 0;
-        handler.postDelayed(() -> darkLayout.setVisibility(View.INVISIBLE), 100);
-    }
-
-    private void showDark() {
-        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.game_dark_layout);
-        darkLayout.startAnimation(animation);
-        darkLayout.setVisibility(View.VISIBLE);
+        }, 1000);*/
     }
 
     @OnClick(R.id.game_top_mem)
     void onTopMemClick() {
+        Log.i("code", "topmem");
         if(canClickMem) {
             canClickMem = false;
             presenter.omMemClick(socket, 0);

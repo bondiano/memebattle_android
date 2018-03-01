@@ -7,5 +7,9 @@
     <translate
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:fromYDelta="0"
+        android:toYDelta="200"/>
+    <translate
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:fromYDelta="0"
         android:toYDelta="100%"/>
 </set>
