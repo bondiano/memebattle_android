@@ -17,4 +17,5 @@ public interface Screens {
     String GAME_SCREEN = "game screen";
     String BACK = "back";
     String RULES_DIALOG = "rules dialog";
+    String ZOOM_SCREEN = "zoom fragment";
 }

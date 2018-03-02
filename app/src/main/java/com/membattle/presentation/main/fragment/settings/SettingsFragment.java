@@ -78,7 +78,7 @@ public class SettingsFragment extends MvpAppCompatFragment implements SettingsFr
             case 0 :
                 presenter.setSignOutBuilder(builder); break;
             case 1 :
-                presenter.setAboutVesionBuilder(builder); break;
+                presenter.setAboutVersionBuilder(builder); break;
         }
     }
 

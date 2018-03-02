@@ -12,7 +12,8 @@ import com.membattle.App;
 import com.membattle.R;
 import com.membattle.data.settings.Screens;
 import com.membattle.data.settings.Settings;
-import com.membattle.presentation.game.fragment.GameFragment;
+import com.membattle.presentation.game.fragment.game.GameFragment;
+import com.membattle.presentation.game.fragment.zoom.ZoomFragment;
 import com.membattle.presentation.main.fragment.modes.ModesFragment;
 import com.membattle.presentation.main.fragment.profile.ProfileFragment;
 import com.membattle.presentation.main.fragment.rate.RateFragment;
@@ -67,6 +68,8 @@ public class GameActivity extends MvpAppCompatActivity implements GameActivityVi
                     return new GameFragment();
                 case Screens.PROFILE_SCREEN:
                     return new ProfileFragment();
+                case Screens.ZOOM_SCREEN:
+                    return new ZoomFragment();
                 default:
                     return new ModesFragment();
             }

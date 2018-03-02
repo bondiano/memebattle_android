@@ -7,8 +7,9 @@ import com.membattle.presentation.auth.fragment.sign_in.SignInFragmentPresenter;
 import com.membattle.presentation.auth.fragment.sign_up.SignUpFragmentPresenter;
 import com.membattle.presentation.game.activity.GameActivity;
 import com.membattle.presentation.game.activity.GameActivityPresenter;
-import com.membattle.presentation.game.fragment.GameFragment;
-import com.membattle.presentation.game.fragment.GameFragmentPresenter;
+import com.membattle.presentation.game.fragment.game.GameFragment;
+import com.membattle.presentation.game.fragment.game.GameFragmentPresenter;
+import com.membattle.presentation.game.fragment.zoom.ZoomFragmentPresenter;
 import com.membattle.presentation.main.activity.MainActivity;
 import com.membattle.presentation.main.activity.MainActivityPresenter;
 import com.membattle.presentation.main.fragment.modes.ModesFragment;
@@ -38,4 +39,5 @@ public interface AppComponent {
     void inject(SettingsFragmentPresenter settingsFragmentPresenter);
     void inject(GameFragmentPresenter gameFragmentPresenter);
     void inject(GameFragment gameFragment);
+    void inject(ZoomFragmentPresenter zoomFragmentPresenter);
 }

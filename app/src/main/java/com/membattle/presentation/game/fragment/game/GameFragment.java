@@ -1,20 +1,15 @@
-package com.membattle.presentation.game.fragment;
+package com.membattle.presentation.game.fragment.game;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Chronometer;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -23,20 +18,17 @@ import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
 import com.membattle.R;
 import com.membattle.data.widget_plus.TextViewPlus;
-import com.membattle.domain.service.Service;
 import com.squareup.picasso.Picasso;
 import java.net.URISyntaxException;
-import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnLongClick;
 
 public class GameFragment extends MvpAppCompatFragment implements GameFragmentView {
     Socket socket = null;
     boolean canClickMem = true;
     int zoom = 0;
-    @Inject
-    Service service;
 
     @InjectPresenter
     GameFragmentPresenter presenter;
@@ -85,9 +77,6 @@ public class GameFragment extends MvpAppCompatFragment implements GameFragmentVi
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-        /*handler.postDelayed(() -> {
-            showResult("0","1","lol", "kek");
-        }, 1000);*/
     }
 
     @OnClick(R.id.game_top_mem)
@@ -107,6 +96,12 @@ public class GameFragment extends MvpAppCompatFragment implements GameFragmentVi
             presenter.omMemClick(socket, 1);
             bottomLike.setVisibility(View.VISIBLE);
         }
+    }
+
+    @OnLongClick(R.id.game_top_mem)
+    boolean onTopMemLongClick() {
+        presenter.zoomMem(true);
+        return false;
     }
 
     @Override

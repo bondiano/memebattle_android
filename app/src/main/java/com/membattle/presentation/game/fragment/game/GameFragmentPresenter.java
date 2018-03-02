@@ -1,9 +1,7 @@
-package com.membattle.presentation.game.fragment;
+package com.membattle.presentation.game.fragment.game;
 
 import android.content.SharedPreferences;
 import android.util.Log;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
@@ -11,11 +9,11 @@ import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.Socket;
 import com.google.gson.Gson;
 import com.membattle.App;
-import com.membattle.R;
 import com.membattle.data.api.req.RequestToGame;
 import com.membattle.data.api.res.coins.Coins;
 import com.membattle.data.api.res.game.PairLikes.PairLikes;
 import com.membattle.data.api.res.game.PairMem.PairMem;
+import com.membattle.data.settings.Screens;
 import com.membattle.data.settings.Settings;
 import com.membattle.domain.service.Service;
 import com.membattle.presentation.game.activity.GameActivity;
@@ -125,7 +123,7 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
         socket.emit("action", j);
     }
 
-    public boolean zoomMem(int i) {
-        return false;
+    void zoomMem(boolean top) {
+        router.navigateTo(Screens.ZOOM_SCREEN, );
     }
 }
