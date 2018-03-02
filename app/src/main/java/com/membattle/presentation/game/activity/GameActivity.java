@@ -69,7 +69,7 @@ public class GameActivity extends MvpAppCompatActivity implements GameActivityVi
                 case Screens.PROFILE_SCREEN:
                     return new ProfileFragment();
                 case Screens.ZOOM_SCREEN:
-                    return new ZoomFragment();
+                    return new ZoomFragment(data);
                 default:
                     return new ModesFragment();
             }

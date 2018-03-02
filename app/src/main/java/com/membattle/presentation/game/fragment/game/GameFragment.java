@@ -100,6 +100,7 @@ public class GameFragment extends MvpAppCompatFragment implements GameFragmentVi
 
     @OnLongClick(R.id.game_top_mem)
     boolean onTopMemLongClick() {
+
         presenter.zoomMem(true);
         return false;
     }

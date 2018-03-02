@@ -31,6 +31,7 @@ import static com.membattle.data.settings.Settings.ID;
 public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
     int USER_ID = App.settings.getInt(ID, 0);
     Gson gson = new Gson();
+    String urlTop, urlBottom;
     @Inject
     Router router;
 
@@ -97,8 +98,8 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
 
     private void onSetMemes(String args, boolean firstPair) {
         PairMem pairMem = gson.fromJson(args, PairMem.class);
-        String urlTop = pairMem.getData().getLeftMemeImg();
-        String urlBottom = pairMem.getData().getRightMemeImg();
+        urlTop = pairMem.getData().getLeftMemeImg();
+        urlBottom = pairMem.getData().getRightMemeImg();
         getViewState().setMemes(urlTop, urlBottom, firstPair);
     }
 
@@ -124,6 +125,10 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
     }
 
     void zoomMem(boolean top) {
-        router.navigateTo(Screens.ZOOM_SCREEN, );
+        String stubURL = "https://301-1.ru/gen-mems/img_mems/4a4c2a53661ede617bd7437b4e728cbb.jpg";
+        if (top)
+            router.navigateTo(Screens.ZOOM_SCREEN, stubURL);
+        else
+            router.navigateTo(Screens.ZOOM_SCREEN, urlBottom);
     }
 }
