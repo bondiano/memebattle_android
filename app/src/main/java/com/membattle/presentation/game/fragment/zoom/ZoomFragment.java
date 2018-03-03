@@ -11,11 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.membattle.R;
+import com.membattle.data.widget_plus.ButtonPlus;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
@@ -30,6 +32,9 @@ public class ZoomFragment extends MvpAppCompatFragment implements ZoomFragmentVi
 
     @InjectPresenter
     ZoomFragmentPresenter presenter;
+
+    @BindView(R.id.zoom_save)
+    ButtonPlus saveButton;
 
     @SuppressLint("ValidFragment")
     public ZoomFragment(Object data) {
@@ -65,6 +70,18 @@ public class ZoomFragment extends MvpAppCompatFragment implements ZoomFragmentVi
 
     @OnClick(R.id.zoom_save)
     void onSaveClick() {
+        saveButton.setEnabled(false);
         Picasso.with(getActivity()).load(url).into(target);
+    }
+
+    @Override
+    public void successDownloadImage() {
+        Toast.makeText(getActivity(), "Загрузка завершена!", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void errorDownloadImage() {
+        saveButton.setEnabled(true);
+        Toast.makeText(getActivity(), "Ошибка загрузки!", Toast.LENGTH_SHORT).show();
     }
 }

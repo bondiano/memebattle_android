@@ -7,4 +7,7 @@ import com.squareup.picasso.Target;
 
 public interface ZoomFragmentView extends MvpView{
 
+    void successDownloadImage();
+
+    void errorDownloadImage();
 }

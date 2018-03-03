@@ -56,9 +56,11 @@ public class ZoomFragmentPresenter extends MvpPresenter<ZoomFragmentView> {
                     }
 
                 }).start();
+                getViewState().successDownloadImage();
             }
             @Override
             public void onBitmapFailed(Drawable errorDrawable) {
+                getViewState().errorDownloadImage();
             }
 
             @Override
