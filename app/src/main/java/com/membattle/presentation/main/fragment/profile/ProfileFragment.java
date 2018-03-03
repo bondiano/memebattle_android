@@ -25,8 +25,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ProfileFragment extends MvpAppCompatFragment implements ProfileFragmentView {
-    ArrayList<String> listUrls;
-
     @InjectPresenter
     ProfileFragmentPresenter presenter;
 

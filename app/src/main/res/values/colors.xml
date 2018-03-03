@@ -32,5 +32,6 @@
     <color name="back_likes">#de363636</color>
 
     <color name="rules_fragment_back">#eeeeee</color>
+    <color name="empty">#00ffffff</color>
 
 </resources>

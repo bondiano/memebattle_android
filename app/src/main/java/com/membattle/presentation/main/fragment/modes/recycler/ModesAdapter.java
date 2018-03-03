@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import com.membattle.R;
 import com.membattle.data.settings.Settings;
 import com.membattle.presentation.game.activity.GameActivity;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -25,19 +24,19 @@ public class ModesAdapter extends RecyclerView.Adapter<ModesViewHolder> {
     @Override
     public ModesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.mode_item, parent, false);
+                .inflate(R.layout.item_mode, parent, false);
         return new ModesViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(ModesViewHolder holder, int position) {
         Mode mode = modeList.get(position);
-        holder.Title.setText(mode.Title);
-        holder.Image.setImageResource(mode.Image);
+        holder.Title.setText(mode.title);
+        holder.Image.setImageResource(mode.image);
         holder.Rules.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.setTitle("Правила")
-                    .setMessage(Settings.ARRAY_RULES[mode.Type])
+                    .setMessage(Settings.ARRAY_RULES[mode.type])
                     .setCancelable(false)
                     .setPositiveButton("ОК",
                             (dialog, id) -> dialog.cancel());
@@ -46,7 +45,7 @@ public class ModesAdapter extends RecyclerView.Adapter<ModesViewHolder> {
         });
         holder.Play.setOnClickListener(v -> {
             Intent intent = new Intent(context, GameActivity.class);
-            intent.putExtra(Settings.CURRENT_MODE, mode.Type);
+            intent.putExtra(Settings.CURRENT_MODE, mode.type);
             context.startActivity(intent);
         });
     }
