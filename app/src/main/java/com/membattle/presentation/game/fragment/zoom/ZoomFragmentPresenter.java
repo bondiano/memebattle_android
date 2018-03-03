@@ -1,25 +1,17 @@
 package com.membattle.presentation.game.fragment.zoom;
 
-import android.app.DownloadManager;
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Environment;
-import android.util.Log;
-
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.membattle.App;
 import com.membattle.data.settings.Screens;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
-
 import java.io.File;
 import java.io.FileOutputStream;
-
 import javax.inject.Inject;
-
 import ru.terrakok.cicerone.Router;
 
 @InjectViewState
@@ -54,7 +46,6 @@ public class ZoomFragmentPresenter extends MvpPresenter<ZoomFragmentView> {
                     catch (Exception e) {
                         e.printStackTrace();
                     }
-
                 }).start();
                 getViewState().successDownloadImage();
             }

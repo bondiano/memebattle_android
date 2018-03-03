@@ -14,6 +14,7 @@ import com.membattle.presentation.main.activity.MainActivity;
 import com.membattle.presentation.main.activity.MainActivityPresenter;
 import com.membattle.presentation.main.fragment.modes.ModesFragment;
 import com.membattle.presentation.main.fragment.modes.ModesFragmentPresenter;
+import com.membattle.presentation.main.fragment.profile.ProfileFragmentPresenter;
 import com.membattle.presentation.main.fragment.rate.RateFragment;
 import com.membattle.presentation.main.fragment.rate.RateFragmentPresenter;
 import com.membattle.presentation.main.fragment.settings.SettingsFragmentPresenter;
@@ -40,4 +41,5 @@ public interface AppComponent {
     void inject(GameFragmentPresenter gameFragmentPresenter);
     void inject(GameFragment gameFragment);
     void inject(ZoomFragmentPresenter zoomFragmentPresenter);
+    void inject(ProfileFragmentPresenter profileFragmentPresenter);
 }
