@@ -1,18 +1,14 @@
 package com.membattle.presentation.main.fragment.profile.recycler;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 
 import com.membattle.R;
-import com.membattle.data.settings.Settings;
-import com.membattle.presentation.game.activity.GameActivity;
-import com.membattle.presentation.main.fragment.profile.grid.ImageAdapter;
+import com.membattle.presentation.main.fragment.ImageAdapter;
 
 import java.util.ArrayList;
 
@@ -36,8 +32,9 @@ public class StatModesAdapter extends RecyclerView.Adapter<StatModesViewHolder> 
         StatMode statMode = statModes.get(position);
         holder.title.setText(statMode.title);
         holder.grid.setAdapter(new ImageAdapter(context, statModes.get(position).urls));
-        holder.showAllButton.setOnClickListener(v -> );
-
+        holder.showAllButton.setOnClickListener(v -> {
+            Intent intent = new Intent(context, )
+        });
     }
 
     @Override

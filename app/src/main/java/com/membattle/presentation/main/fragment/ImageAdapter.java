@@ -1,4 +1,4 @@
-package com.membattle.presentation.main.fragment.profile.grid;
+package com.membattle.presentation.main.fragment;
 
 import android.content.Context;
 import android.view.View;
@@ -41,7 +41,7 @@ public class ImageAdapter extends BaseAdapter {
                 .load(urls[position])
                 .into(imageView);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        //imageView.setLayoutParams(new GridView.LayoutParams(320, 170));
+        imageView.setLayoutParams(new GridView.LayoutParams(320, 170));
         return imageView;
     }
 }
