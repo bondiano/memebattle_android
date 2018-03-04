@@ -5,8 +5,6 @@ import com.arellomobile.mvp.MvpPresenter;
 import com.membattle.App;
 import com.membattle.R;
 import com.membattle.data.settings.Settings;
-import com.membattle.presentation.main.fragment.modes.recycler.Mode;
-import com.membattle.presentation.main.fragment.profile.recycler.StatMode;
 
 import java.util.ArrayList;
 

@@ -13,8 +13,6 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.membattle.R;
 import com.membattle.data.widget_plus.TextViewPlus;
-import com.membattle.presentation.main.fragment.profile.recycler.StatMode;
-import com.membattle.presentation.main.fragment.profile.recycler.StatModesAdapter;
 
 import java.util.ArrayList;
 
@@ -34,8 +32,6 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileFrag
     TextViewPlus coins;
     @BindView(R.id.profile_username)
     TextViewPlus username;
-    @BindView(R.id.profile_recycler)
-    RecyclerView recyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,9 +45,6 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileFrag
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
         presenter.setFields();
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(layoutManager);
-        presenter.setAdapter();
     }
     @Override
     public void setFields(String username, String coins) {
@@ -59,8 +52,4 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileFrag
         this.coins.setText(coins);
     }
 
-    @Override
-    public void initAdapter(ArrayList<StatMode> statModes) {
-        recyclerView.setAdapter(new StatModesAdapter(statModes, getContext()));
-    }
 }
