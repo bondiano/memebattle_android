@@ -1,5 +1,6 @@
 package com.membattle.di;
 
+import com.membattle.data.base.BaseActivity;
 import com.membattle.di.module.APIModule;
 import com.membattle.di.module.NavigatorModule;
 import com.membattle.presentation.auth.activity.AuthActivity;
@@ -22,6 +23,7 @@ import com.membattle.presentation.main.fragment.settings.SettingsFragmentPresent
 import javax.inject.Singleton;
 
 import dagger.Component;
+import ru.terrakok.cicerone.NavigatorHolder;
 
 @Singleton
 @Component(modules = {NavigatorModule.class, APIModule.class})
@@ -42,4 +44,5 @@ public interface AppComponent {
     void inject(GameFragment gameFragment);
     void inject(ZoomFragmentPresenter zoomFragmentPresenter);
     void inject(ProfileFragmentPresenter profileFragmentPresenter);
+    void inject(BaseActivity baseActivity);
 }
