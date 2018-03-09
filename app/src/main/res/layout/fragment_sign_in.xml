@@ -10,7 +10,7 @@
     tools:layout_editor_absoluteX="8dp"
     tools:layout_editor_absoluteY="8dp">
 
-    <com.membattle.data.widget_plus.TextViewPlus
+    <com.membattle.transitionData.widget_plus.TextViewPlus
         android:id="@+id/titlelogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.membattle.data.widget_plus.EditTextPlus
+        <com.membattle.transitionData.widget_plus.EditTextPlus
             android:id="@+id/sign_in_login"
             style="@android:style/Widget.Holo.EditText"
             android:layout_width="match_parent"
@@ -38,7 +38,7 @@
             android:textColorHint="@android:color/white"
             android:textSize="24sp"/>
 
-        <com.membattle.data.widget_plus.EditTextPlus
+        <com.membattle.transitionData.widget_plus.EditTextPlus
             android:id="@+id/sign_in_password"
             style="@android:style/Widget.Holo.EditText"
             android:layout_width="match_parent"
@@ -57,7 +57,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <com.membattle.data.widget_plus.ButtonPlus
+            <com.membattle.transitionData.widget_plus.ButtonPlus
                 android:id="@+id/sign_in_button_enter"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="140dp"
@@ -68,7 +68,7 @@
                 android:textColor="@color/main_blue"
                 android:textSize="24sp"/>
 
-            <com.membattle.data.widget_plus.ButtonPlus
+            <com.membattle.transitionData.widget_plus.ButtonPlus
                 android:id="@+id/sign_in_button_goto_reg"
                 android:layout_width="140dp"
                 android:layout_height="34dp"

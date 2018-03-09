@@ -17,7 +17,7 @@
         android:layout_alignParentTop="true"
         android:paddingTop="1dp" />
 
-    <com.membattle.data.widget_plus.TextViewPlus
+    <com.membattle.transitionData.widget_plus.TextViewPlus
         android:id="@+id/item_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
         card_view:customFont="@string/font_main"
         tools:text="Бесконечный батл" />
 
-    <com.membattle.data.widget_plus.TextViewPlus
+    <com.membattle.transitionData.widget_plus.TextViewPlus
         android:id="@+id/item_text_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
         android:layout_below="@+id/item_title"
         android:layout_centerHorizontal="true">
 
-        <com.membattle.data.widget_plus.TextViewPlus
+        <com.membattle.transitionData.widget_plus.TextViewPlus
             android:id="@+id/item_rules"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
             android:textColor="@color/main_blue"
             android:textSize="24sp"/>
 
-        <com.membattle.data.widget_plus.TextViewPlus
+        <com.membattle.transitionData.widget_plus.TextViewPlus
             android:id="@+id/item_play"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

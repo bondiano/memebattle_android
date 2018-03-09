@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.membattle.data.widget_plus.TextViewPlus
+            <com.membattle.transitionData.widget_plus.TextViewPlus
                 android:id="@+id/ruletitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
                 app:customFont="@string/font_title"
                 tools:text="Правила игры" />
 
-            <com.membattle.data.widget_plus.TextViewPlus
+            <com.membattle.transitionData.widget_plus.TextViewPlus
                 android:id="@+id/rultext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
