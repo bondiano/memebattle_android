@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.membattle.R;
-import com.membattle.data.widget_plus.TextViewPlus;
+import com.membattle.presentation.widget_plus.TextViewPlus;
 
 import agency.tango.materialintroscreen.SlideFragment;
 

@@ -1,5 +1,7 @@
 package com.membattle.data.settings;
 
+import com.membattle.R;
+
 public interface Screens {
     //GameActivity
     String MAIN_ACTIVITY = "main activity";
@@ -13,9 +15,13 @@ public interface Screens {
     String SIGN_IN_SCREEN = "sign in screen";
     String SIGN_UP_SCREEN = "sign up screen";
     //GameActivity
-    String GAME_ACTIVITY = "main activity";
+    String GAME_ACTIVITY = "game activity";
     String GAME_SCREEN = "game screen";
     String BACK = "back";
     String RULES_DIALOG = "rules dialog";
     String ZOOM_SCREEN = "zoom fragment";
+    //Containers
+    int CONTAINER_AUTH = R.id.auth_container;
+    int CONTAINER_MAIN = R.id.main_container;
+    int CONTAINER_GAME = R.id.game_container;
 }

@@ -3,30 +3,35 @@ package com.membattle.data.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.membattle.data.settings.Screens;
 import javax.inject.Inject;
-
-import ru.terrakok.cicerone.Navigator;
+import butterknife.ButterKnife;
 import ru.terrakok.cicerone.NavigatorHolder;
+import ru.terrakok.cicerone.Router;
 
 public abstract class BaseActivity extends MvpAppCompatActivity {
 
     @Inject
     NavigatorHolder navigatorHolder;
-    private Navigator navigator;
-    private int layoutRes;
+    @Inject
+    Router router;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         injectDependencies();
-        setContentView(layoutRes);
+        setContentView(getLayoutId());
+        ButterKnife.bind(this);
+        router.newRootScreen(Screens.SIGN_IN_SCREEN);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        navigatorHolder.setNavigator(navigator);
+        navigatorHolder.setNavigator(new AppNavigator(getSupportFragmentManager(), getContainerId(), this));
     }
+
+    protected abstract int getContainerId();
 
     @Override
     protected void onPause() {
@@ -35,4 +40,6 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
     }
 
     protected abstract void injectDependencies();
+
+    protected abstract int getLayoutId();
 }

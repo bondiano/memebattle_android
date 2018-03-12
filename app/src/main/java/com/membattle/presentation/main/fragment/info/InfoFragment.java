@@ -7,16 +7,19 @@ import android.view.ViewGroup;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.membattle.R;
-import com.membattle.data.widget_plus.TextViewPlus;
+import com.membattle.presentation.widget_plus.TextViewPlus;
+
+import butterknife.BindView;
 
 public class InfoFragment extends MvpAppCompatFragment {
-    TextViewPlus title, text;
+    @BindView(R.id.rultext)
+    TextViewPlus text;
+    @BindView(R.id.ruletitle)
+    TextViewPlus title;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_rules, container, false);
-        text = v.findViewById(R.id.rultext);
-        title = v.findViewById(R.id.ruletitle);
         text.setText(R.string.description);
         title.setText("Правила игры");
         return v;

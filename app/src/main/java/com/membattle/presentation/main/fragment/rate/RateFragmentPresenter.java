@@ -69,7 +69,6 @@ public class RateFragmentPresenter extends MvpPresenter<RateFragmentView> {
                 editor.apply();
                 getRateList();
             }
-
             @Override
             public void onError(Throwable e) {
                 Log.i("code", "refresh_error");

@@ -10,7 +10,7 @@ import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.membattle.R;
-import com.membattle.data.widget_plus.EditTextPlus;
+import com.membattle.presentation.widget_plus.EditTextPlus;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -17,7 +17,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
 import com.membattle.R;
-import com.membattle.data.widget_plus.TextViewPlus;
+import com.membattle.presentation.widget_plus.TextViewPlus;
 import com.squareup.picasso.Picasso;
 import java.net.URISyntaxException;
 import butterknife.BindView;

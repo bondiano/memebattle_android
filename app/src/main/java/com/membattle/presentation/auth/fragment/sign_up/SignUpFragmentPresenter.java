@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 import com.membattle.App;
 import com.membattle.data.api.req.RegistrationUser;
 import com.membattle.data.api.res.Exres;
-import com.membattle.data.widget_plus.EditTextPlus;
+import com.membattle.presentation.widget_plus.EditTextPlus;
 import com.membattle.domain.service.Service;
 import com.membattle.data.settings.Screens;
 

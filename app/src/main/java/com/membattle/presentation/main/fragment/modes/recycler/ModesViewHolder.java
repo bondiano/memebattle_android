@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.membattle.R;
-import com.membattle.data.widget_plus.TextViewPlus;
+import com.membattle.presentation.widget_plus.TextViewPlus;
 
 
 public class ModesViewHolder extends RecyclerView.ViewHolder {

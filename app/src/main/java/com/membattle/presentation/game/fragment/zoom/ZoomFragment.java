@@ -1,10 +1,7 @@
 package com.membattle.presentation.game.fragment.zoom;
 
 import android.annotation.SuppressLint;
-import android.app.DownloadManager;
-import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,7 +14,7 @@ import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.membattle.R;
-import com.membattle.data.widget_plus.ButtonPlus;
+import com.membattle.presentation.widget_plus.ButtonPlus;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 

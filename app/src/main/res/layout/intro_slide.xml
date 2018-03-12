@@ -13,7 +13,7 @@
         android:layout_height="120dp"
         app:srcCompat="@drawable/main_logo"/>
 
-    <com.membattle.transitionData.widget_plus.TextViewPlus
+    <com.membattle.presentation.widget_plus.TextViewPlus
         android:id="@+id/textintro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
