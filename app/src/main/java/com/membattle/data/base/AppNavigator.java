@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.widget.Toast;
-
 import com.membattle.data.settings.Screens;
 import com.membattle.presentation.auth.fragment.sign_in.SignInFragment;
 import com.membattle.presentation.auth.fragment.sign_up.SignUpFragment;
@@ -34,24 +33,50 @@ public class AppNavigator extends SupportFragmentNavigator {
 
     @Override
     protected Fragment createFragment(String screenKey, Object data) {
+        switch (currentContainer) {
+            case Screens.CONTAINER_MAIN:
+                return mainFragments(screenKey);
+            case Screens.CONTAINER_GAME:
+                return gameFragments(screenKey, data);
+            case Screens.CONTAINER_AUTH:
+                return authFragments(screenKey);
+            default:
+                    authFragments(screenKey);
+        }
+        return null;
+    }
+
+    private Fragment gameFragments(String screenKey, Object data) {
         switch (screenKey) {
-            //auth
-            case Screens.SIGN_IN_SCREEN:
-                return new SignInFragment();
-            case Screens.SIGN_UP_SCREEN:
-                return new SignUpFragment();
-            case Screens.MAIN_ACTIVITY:
-                Intent intent = new Intent(activity, MainActivity.class);
-                activity.startActivity(intent);
-                activity.finish();
-                //Main&Game
+            case Screens.GAME_SCREEN:
+                return new GameFragment();
             case Screens.MODES_SCREEN:
-                switch (currentContainer) {
-                    case Screens.CONTAINER_MAIN:
-                        return new ModesFragment();
-                    case Screens.CONTAINER_GAME:
-                        activity.finish();
-                }
+                activity.finish();
+            case Screens.RATE_SCREEN:
+                return new RateFragment();
+            case Screens.RULES_DIALOG:
+                showRules();
+                return new GameFragment();
+            case Screens.SHOP_SCREEN:
+                showToast();
+                return new GameFragment();
+            case Screens.PROFILE_SCREEN:
+                return new ProfileFragment();
+            case Screens.ZOOM_SCREEN:
+                return new ZoomFragment(data);
+            default:
+                return new ModesFragment();
+        }
+    }
+
+    private void showRules() {
+        
+    }
+
+    private Fragment mainFragments(String screenKey) {
+        switch (screenKey) {
+            case Screens.MODES_SCREEN:
+                return new ModesFragment();
             case Screens.GAME_ACTIVITY:
                 gotoGame();
             case Screens.RATE_SCREEN:
@@ -62,24 +87,28 @@ public class AppNavigator extends SupportFragmentNavigator {
                 return new SettingsFragment();
             case Screens.SHOP_SCREEN:
                 showToast();
-                return new ProfileFragment();
+                return new ModesFragment();
             case Screens.PROFILE_SCREEN:
                 return new ProfileFragment();
-            case Screens.GAME_SCREEN:
-                return new GameFragment();
-            case Screens.ZOOM_SCREEN:
-                return new ZoomFragment(data);
             default:
-                switch (currentContainer) {
-                    case Screens.CONTAINER_MAIN:
-                        return new ModesFragment();
-                    case Screens.CONTAINER_GAME:
-                        return new GameFragment();
-                    case Screens.CONTAINER_AUTH:
-                        return new SignInFragment();
-                }
+                return new ModesFragment();
         }
-        return null;
+    }
+
+    private Fragment authFragments(String screenKey) {
+        switch (screenKey) {
+            case Screens.SIGN_IN_SCREEN :
+                return new SignInFragment();
+            case Screens.SIGN_UP_SCREEN :
+                return new SignUpFragment();
+            case Screens.MAIN_ACTIVITY :
+                Intent intent = new Intent(activity, MainActivity.class);
+                activity.startActivity(intent);
+                activity.finish();
+                return null;
+            default:
+                return new SignInFragment();
+        }
     }
 
     @Override
