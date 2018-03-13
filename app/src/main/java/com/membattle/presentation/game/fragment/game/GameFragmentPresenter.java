@@ -29,15 +29,16 @@ import static com.membattle.data.settings.Settings.ID;
 
 @InjectViewState
 public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
-    int USER_ID = App.settings.getInt(ID, 0);
-    Gson gson = new Gson();
-    String urlTop, urlBottom;
+
     @Inject
     Router router;
-
     @Inject
     Service service;
-
+    @Inject
+    SharedPreferences settings;
+    int USER_ID = settings.getInt(ID, 0);
+    Gson gson = new Gson();
+    String urlTop, urlBottom;
     public Emitter.Listener onConnect = args -> {
         try {
             Log.i("game", "onConnect " + args[0]);
@@ -73,7 +74,7 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
 
     private void onCoins(String args) {
         Coins coins = gson.fromJson(args, Coins.class);
-        SharedPreferences.Editor editor = App.settings.edit();
+        SharedPreferences.Editor editor = settings.edit();
         editor.putInt(Settings.COINS, Integer.parseInt(coins.getData().getCoins()));
         editor.apply();
     }

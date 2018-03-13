@@ -24,6 +24,9 @@ public class SignInFragmentPresenter extends MvpPresenter<SignInFragmentView> {
     @Inject
     Service service;
 
+    @Inject
+    SharedPreferences settings;
+
     public SignInFragmentPresenter() {
         App.getComponent().inject(this);
     }
@@ -51,7 +54,7 @@ public class SignInFragmentPresenter extends MvpPresenter<SignInFragmentView> {
     }
 
     public void saveSettings(Exres exres) {
-        SharedPreferences.Editor editor = App.settings.edit();
+        SharedPreferences.Editor editor = settings.edit();
         editor.putString("token_access", exres.getToken_access());
         editor.putString("token_refresh", exres.getToken_refresh());
         editor.putString("username", exres.getUsername());

@@ -1,5 +1,7 @@
 package com.membattle.presentation.main.fragment.profile;
 
+import android.content.SharedPreferences;
+
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.membattle.App;
@@ -8,8 +10,12 @@ import com.membattle.data.settings.Settings;
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
 @InjectViewState
 public class ProfileFragmentPresenter extends MvpPresenter<ProfileFragmentView> {
+    @Inject
+    SharedPreferences settings;
     public ProfileFragmentPresenter() {
         App.getComponent().inject(this);
     }
@@ -23,8 +29,8 @@ public class ProfileFragmentPresenter extends MvpPresenter<ProfileFragmentView> 
     }
 
     public void setFields() {
-        String username = App.settings.getString(Settings.USERNAME, "guest");
-        String coins = App.settings.getInt(Settings.COINS, 0)+"";
+        String username = settings.getString(Settings.USERNAME, "guest");
+        String coins = settings.getInt(Settings.COINS, 0)+"";
         getViewState().setFields(username, coins);
     }
 

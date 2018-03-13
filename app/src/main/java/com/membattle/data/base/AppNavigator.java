@@ -70,7 +70,7 @@ public class AppNavigator extends SupportFragmentNavigator {
     }
 
     private void showRules() {
-        
+
     }
 
     private Fragment mainFragments(String screenKey) {

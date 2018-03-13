@@ -22,15 +22,16 @@ import javax.inject.Inject;
 public class RateFragmentPresenter extends MvpPresenter<RateFragmentView> {
     @Inject
     Service service;
-
+    @Inject
+    SharedPreferences settings;
     public RateFragmentPresenter() {
         App.getComponent().inject(this);
     }
 
     public void getRateList() {
         ArrayList<LineRate> lineRates = new ArrayList<>();
-        String secret = App.settings.getString(Settings.TOKEN_ACCESS, "no");
-        Id id = new Id(App.settings.getInt(Settings.ID, 0));
+        String secret = settings.getString(Settings.TOKEN_ACCESS, "no");
+        Id id = new Id(settings.getInt(Settings.ID, 0));
         service.getRateList(Settings.HEADER + secret, id,  new Service.RateCallback() {
             @Override
             public void onSuccess(Rate rate) {
@@ -57,13 +58,13 @@ public class RateFragmentPresenter extends MvpPresenter<RateFragmentView> {
     }
 
     private void refrechToken() {
-        String refresh = App.settings.getString(Settings.TOKEN_REFRESH, "no");
+        String refresh = settings.getString(Settings.TOKEN_REFRESH, "no");
         Secret secret = new Secret(refresh);
         service.refreshToken(Settings.HEADER + refresh, secret, new Service.AuthCallback() {
             @Override
             public void onSuccess(Exres exres) {
                 Log.i("code", "refresh_success");
-                SharedPreferences.Editor editor = App.settings.edit();
+                SharedPreferences.Editor editor = settings.edit();
                 editor.putString(Settings.TOKEN_REFRESH, exres.getToken_refresh());
                 editor.putString(Settings.TOKEN_ACCESS, exres.getToken_access());
                 editor.apply();

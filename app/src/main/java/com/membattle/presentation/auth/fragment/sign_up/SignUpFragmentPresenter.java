@@ -23,9 +23,10 @@ import ru.terrakok.cicerone.Router;
 public class SignUpFragmentPresenter extends MvpPresenter<SignUpFragmentView> {
     @Inject
     Router router;
-
     @Inject
     Service service;
+    @Inject
+    SharedPreferences settings;
     private Gson gson = new Gson();
 
     public SignUpFragmentPresenter() {
@@ -77,7 +78,7 @@ public class SignUpFragmentPresenter extends MvpPresenter<SignUpFragmentView> {
     }
 
     public void saveSettings(Exres exres) {
-        SharedPreferences.Editor editor = App.settings.edit();
+        SharedPreferences.Editor editor = settings.edit();
         editor.putString("token_access", exres.getToken_access());
         editor.putString("token_refresh", exres.getToken_refresh());
         editor.putString("username", exres.getUsername());

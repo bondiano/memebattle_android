@@ -7,10 +7,10 @@ import android.content.SharedPreferences;
 import com.membattle.data.settings.Settings;
 import com.membattle.di.AppComponent;
 import com.membattle.di.DaggerAppComponent;
+import com.membattle.di.module.SharedPreferencesModule;
 
 public class App extends Application {
     private static AppComponent component;
-    public static SharedPreferences settings;
     public static AppComponent getComponent() {
         return component;
     }
@@ -18,11 +18,8 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        settings = getApplicationContext().getSharedPreferences(Settings.SETTINGS_NAME, Context.MODE_PRIVATE);
-        component = buildComponent();
-    }
-
-    protected AppComponent buildComponent() {
-        return DaggerAppComponent.create();
+        component = DaggerAppComponent.builder()
+                .sharedPreferencesModule(new SharedPreferencesModule(getApplicationContext()))
+                .build();
     }
 }

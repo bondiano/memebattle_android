@@ -22,7 +22,8 @@ public class SettingsFragmentPresenter extends MvpPresenter<SettingsFragmentView
 
     @Inject
     Service service;
-
+    @Inject
+    SharedPreferences settings;
     public SettingsFragmentPresenter() {
         App.getComponent().inject(this);
     }
@@ -47,7 +48,7 @@ public class SettingsFragmentPresenter extends MvpPresenter<SettingsFragmentView
     }
 
     public void clearPrefs() {
-        SharedPreferences.Editor editor = App.settings.edit();
+        SharedPreferences.Editor editor = settings.edit();
         editor.putString(Settings.USERNAME, "no");
         editor.apply();
         getViewState().gotoAuthActivity();
