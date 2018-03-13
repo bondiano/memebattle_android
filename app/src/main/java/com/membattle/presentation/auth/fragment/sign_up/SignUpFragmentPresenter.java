@@ -7,10 +7,10 @@ import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.google.gson.Gson;
 import com.membattle.App;
-import com.membattle.data.api.req.RegistrationUser;
-import com.membattle.data.api.res.Exres;
+import com.membattle.data.api.model.req.RegistrationUser;
+import com.membattle.data.api.model.res.UserResponse;
+import com.membattle.domain.service.APIService;
 import com.membattle.presentation.widget_plus.EditTextPlus;
-import com.membattle.domain.service.Service;
 import com.membattle.data.settings.Screens;
 
 import java.util.List;
@@ -24,7 +24,7 @@ public class SignUpFragmentPresenter extends MvpPresenter<SignUpFragmentView> {
     @Inject
     Router router;
     @Inject
-    Service service;
+    APIService APIService;
     @Inject
     SharedPreferences settings;
     private Gson gson = new Gson();
@@ -33,35 +33,29 @@ public class SignUpFragmentPresenter extends MvpPresenter<SignUpFragmentView> {
         App.getComponent().inject(this);
     }
 
-    public void registration(List<EditTextPlus> edits) {
-        if(edits.get(2).getText().toString().equals(edits.get(3).getText().toString())) {
-            RegistrationUser registrationUser = new RegistrationUser(edits.get(0).getText().toString(), edits.get(2).getText().toString(), edits.get(1).getText().toString());
-            String json = gson.toJson(registrationUser);
-            Log.i("code", json);
-            service.signUp(registrationUser, new Service.AuthCallback() {
-                @Override
-                public void onSuccess(Exres exres) {
-                    Log.i("code", exres.getSuccess()+"");
-                    enter(edits);
-                }
+    public void registration(String username, String password, String email) {
+        RegistrationUser registrationUser = new RegistrationUser(username, password, email);
+        String json = gson.toJson(registrationUser);
+        Log.i("code", json);
+        APIService.signUp(registrationUser, new APIService.AuthCallback() {
+            @Override
+            public void onSuccess(UserResponse userResponse) {
+                enter(username, password);
+            }
 
-                @Override
-                public void onError(Throwable e) {
-                    Log.i("code", e + "");
-                    getViewState().showErrorToast("Ошибка регистрации");
-                }
-            });
-        } else {
-            getViewState().showErrorToast("Пароли должны совпадать!");
-        }
+            @Override
+            public void onError(Throwable e) {
+                getViewState().showErrorToast("Ошибка регистрации");
+            }
+        });
     }
 
-    private void enter(List<EditTextPlus> edits) {
-        service.signIn(new RegistrationUser(edits.get(0).getText().toString(), edits.get(2).getText().toString(), "lol"), new Service.AuthCallback() {
+    private void enter(String username, String password) {
+        APIService.signIn(new RegistrationUser(username, password, "lol"), new APIService.AuthCallback() {
             @Override
-            public void onSuccess(Exres exres) {
-                Log.i("code", exres.getSuccess()+"");
-                saveSettings(exres);
+            public void onSuccess(UserResponse userResponse) {
+                Log.i("code", userResponse.getSuccess() + "");
+                saveSettings(userResponse);
                 router.navigateTo(Screens.MAIN_ACTIVITY);
             }
 
@@ -77,13 +71,13 @@ public class SignUpFragmentPresenter extends MvpPresenter<SignUpFragmentView> {
         router.backTo(Screens.SIGN_IN_SCREEN);
     }
 
-    public void saveSettings(Exres exres) {
+    public void saveSettings(UserResponse userResponse) {
         SharedPreferences.Editor editor = settings.edit();
-        editor.putString("token_access", exres.getToken_access());
-        editor.putString("token_refresh", exres.getToken_refresh());
-        editor.putString("username", exres.getUsername());
-        editor.putInt("coins", Integer.parseInt(exres.getCoins()));
-        editor.putInt("id", exres.get_id());
+        editor.putString("token_access", userResponse.getToken_access());
+        editor.putString("token_refresh", userResponse.getToken_refresh());
+        editor.putString("username", userResponse.getUsername());
+        editor.putInt("coins", Integer.parseInt(userResponse.getCoins()));
+        editor.putInt("id", userResponse.get_id());
         editor.apply();
     }
 

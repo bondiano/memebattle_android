@@ -1,10 +1,6 @@
 package com.membattle;
 
 import android.app.Application;
-import android.content.Context;
-import android.content.SharedPreferences;
-
-import com.membattle.data.settings.Settings;
 import com.membattle.di.AppComponent;
 import com.membattle.di.DaggerAppComponent;
 import com.membattle.di.module.SharedPreferencesModule;

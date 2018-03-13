@@ -9,13 +9,13 @@ import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.Socket;
 import com.google.gson.Gson;
 import com.membattle.App;
-import com.membattle.data.api.req.RequestToGame;
-import com.membattle.data.api.res.coins.Coins;
-import com.membattle.data.api.res.game.PairLikes.PairLikes;
-import com.membattle.data.api.res.game.PairMem.PairMem;
+import com.membattle.data.api.model.req.RequestToGame;
+import com.membattle.data.api.model.res.coins.Coins;
+import com.membattle.data.api.model.res.game.PairLikes.PairLikes;
+import com.membattle.data.api.model.res.game.PairMem.PairMem;
 import com.membattle.data.settings.Screens;
 import com.membattle.data.settings.Settings;
-import com.membattle.domain.service.Service;
+import com.membattle.domain.service.APIService;
 import com.membattle.presentation.game.activity.GameActivity;
 
 import org.json.JSONException;
@@ -33,7 +33,7 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
     @Inject
     Router router;
     @Inject
-    Service service;
+    APIService APIService;
     @Inject
     SharedPreferences settings;
     int USER_ID = settings.getInt(ID, 0);

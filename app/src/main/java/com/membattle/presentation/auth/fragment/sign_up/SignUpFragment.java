@@ -6,16 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.membattle.R;
 import com.membattle.presentation.widget_plus.EditTextPlus;
-
-import java.util.List;
-
-import butterknife.BindViews;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -28,8 +24,16 @@ public class SignUpFragment extends MvpAppCompatFragment implements SignUpFragme
         return new SignUpFragmentPresenter();
     }
 
-    @BindViews({R.id.sign_up_login, R.id.sign_up_mail, R.id.sign_up_pass, R.id.sign_up_repeat_pass})
-    List<EditTextPlus> edits;
+    @BindView(R.id.sign_up_login)
+    EditTextPlus login;
+    @BindView(R.id.sign_up_mail)
+    EditTextPlus mail;
+    @BindView(R.id.sign_up_pass)
+    EditTextPlus password;
+    @BindView(R.id.sign_up_repeat_pass)
+    EditTextPlus repeatPassword;
+
+    String sLogin, sMail, sPass, sRepeat;
 
     @Nullable
     @Override
@@ -45,7 +49,11 @@ public class SignUpFragment extends MvpAppCompatFragment implements SignUpFragme
 
     @OnClick(R.id.sign_up_reg)
     void onRegClick() {
-        presenter.registration(edits);
+        sLogin = login.getText().toString();
+        sMail = mail.getText().toString();
+        sPass = password.getText().toString();
+        sRepeat = repeatPassword.getText().toString();
+        sendData();
     }
 
     @OnClick(R.id.sign_up_button_back)
@@ -56,5 +64,31 @@ public class SignUpFragment extends MvpAppCompatFragment implements SignUpFragme
     @Override
     public void showErrorToast(String error) {
         Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
+    }
+
+    void sendData() {
+        if (checkOnFillingFields()) {
+            if (checkEqualsPasswords()) {
+                presenter.registration(sLogin, sPass, sMail);
+            } else {
+                showErrorToast("Пароли должны совпадать!");
+            }
+        } else {
+            showErrorToast("Заполните все поля!");
+        }
+    }
+
+    boolean checkEqualsPasswords() {
+        if (sPass.equals(sRepeat)) {
+            return true;
+        }
+        return false;
+    }
+
+    boolean checkOnFillingFields() {
+        if (sLogin.equals("") || sPass.equals("") || sMail.equals("") || sRepeat.equals("")) {
+            return false;
+        }
+        return true;
     }
 }

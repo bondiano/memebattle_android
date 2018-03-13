@@ -1,10 +1,11 @@
-package com.membattle.data.api.res.coins;
+package com.membattle.data.api.model.res.game.PairLikes;
+
 
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Coins {
+public class PairLikes {
 
     @SerializedName("type")
     @Expose

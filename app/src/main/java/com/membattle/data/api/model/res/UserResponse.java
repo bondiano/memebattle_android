@@ -1,9 +1,9 @@
-package com.membattle.data.api.res;
+package com.membattle.data.api.model.res;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Exres {
+public class UserResponse {
 
     @SerializedName("success")
     @Expose

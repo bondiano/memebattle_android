@@ -1,4 +1,4 @@
-package com.membattle.data.api.res.game.PairLikes;
+package com.membattle.data.api.model.res.game.PairLikes;
 
 
 import com.google.gson.annotations.Expose;

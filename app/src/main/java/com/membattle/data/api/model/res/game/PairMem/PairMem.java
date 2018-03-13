@@ -1,11 +1,9 @@
-package com.membattle.data.api.res.game.PairLikes;
-
-
+package com.membattle.data.api.model.res.game.PairMem;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PairLikes {
+public class PairMem {
 
     @SerializedName("type")
     @Expose

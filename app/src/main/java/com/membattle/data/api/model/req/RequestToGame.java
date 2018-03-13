@@ -1,4 +1,4 @@
-package com.membattle.data.api.req;
+package com.membattle.data.api.model.req;
 
 public class RequestToGame {
     public int user_id, game_id;

@@ -1,4 +1,4 @@
-package com.membattle.data.api.res.game.Connect;
+package com.membattle.data.api.model.res.game.Connect;
 
 
 import com.google.gson.annotations.Expose;

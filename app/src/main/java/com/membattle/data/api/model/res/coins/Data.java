@@ -1,4 +1,4 @@
-package com.membattle.data.api.res.coins;
+package com.membattle.data.api.model.res.coins;
 
 
 import com.google.gson.annotations.Expose;

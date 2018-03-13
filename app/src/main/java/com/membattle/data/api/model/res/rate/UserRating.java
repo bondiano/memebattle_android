@@ -1,18 +1,30 @@
-package com.membattle.data.api.res.rate;
+package com.membattle.data.api.model.res.rate;
+
 
 
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class GlobalRating {
+public class UserRating {
 
+    @SerializedName("icon_rating")
+    @Expose
+    private int rating;
     @SerializedName("username")
     @Expose
     private String username;
     @SerializedName("coins")
     @Expose
     private int coins;
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
 
     public String getUsername() {
         return username;

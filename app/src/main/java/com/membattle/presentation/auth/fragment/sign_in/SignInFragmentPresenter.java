@@ -6,10 +6,10 @@ import android.util.Log;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.membattle.App;
-import com.membattle.data.api.req.RegistrationUser;
-import com.membattle.data.api.res.Exres;
+import com.membattle.data.api.model.req.RegistrationUser;
+import com.membattle.data.api.model.res.UserResponse;
+import com.membattle.domain.service.APIService;
 import com.membattle.presentation.widget_plus.EditTextPlus;
-import com.membattle.domain.service.Service;
 import com.membattle.data.settings.Screens;
 
 import javax.inject.Inject;
@@ -22,7 +22,7 @@ public class SignInFragmentPresenter extends MvpPresenter<SignInFragmentView> {
     Router router;
 
     @Inject
-    Service service;
+    APIService APIService;
 
     @Inject
     SharedPreferences settings;
@@ -33,11 +33,11 @@ public class SignInFragmentPresenter extends MvpPresenter<SignInFragmentView> {
 
 
     public void enter(EditTextPlus log, EditTextPlus pass) {
-        service.signIn(new RegistrationUser(log.getText().toString(), pass.getText().toString(), "lol"), new Service.AuthCallback() {
+        APIService.signIn(new RegistrationUser(log.getText().toString(), pass.getText().toString(), "lol"), new APIService.AuthCallback() {
             @Override
-            public void onSuccess(Exres exres) {
-                Log.i("code", exres.getSuccess()+"");
-                saveSettings(exres);
+            public void onSuccess(UserResponse userResponse) {
+                Log.i("code", userResponse.getSuccess()+"");
+                saveSettings(userResponse);
                 router.replaceScreen(Screens.MAIN_ACTIVITY);
             }
 
@@ -53,13 +53,13 @@ public class SignInFragmentPresenter extends MvpPresenter<SignInFragmentView> {
         router.navigateTo(Screens.SIGN_UP_SCREEN);
     }
 
-    public void saveSettings(Exres exres) {
+    public void saveSettings(UserResponse userResponse) {
         SharedPreferences.Editor editor = settings.edit();
-        editor.putString("token_access", exres.getToken_access());
-        editor.putString("token_refresh", exres.getToken_refresh());
-        editor.putString("username", exres.getUsername());
-        editor.putInt("coins", Integer.parseInt(exres.getCoins()));
-        editor.putInt("id", exres.get_id());
+        editor.putString("token_access", userResponse.getToken_access());
+        editor.putString("token_refresh", userResponse.getToken_refresh());
+        editor.putString("username", userResponse.getUsername());
+        editor.putInt("coins", Integer.parseInt(userResponse.getCoins()));
+        editor.putInt("id", userResponse.get_id());
         editor.apply();
     }
 }

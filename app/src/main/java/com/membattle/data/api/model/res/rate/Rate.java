@@ -1,4 +1,4 @@
-package com.membattle.data.api.res.rate;
+package com.membattle.data.api.model.res.rate;
 
 
 import com.google.gson.annotations.Expose;

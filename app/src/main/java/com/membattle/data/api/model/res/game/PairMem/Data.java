@@ -1,4 +1,4 @@
-package com.membattle.data.api.res.game.PairMem;
+package com.membattle.data.api.model.res.game.PairMem;
 
 
 import com.google.gson.annotations.Expose;

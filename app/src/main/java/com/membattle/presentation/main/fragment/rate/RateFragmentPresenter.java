@@ -6,13 +6,13 @@ import android.util.Log;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.membattle.App;
-import com.membattle.data.api.req.Id;
-import com.membattle.data.api.req.Secret;
-import com.membattle.data.api.res.Exres;
-import com.membattle.data.api.res.rate.Rate;
+import com.membattle.data.api.model.req.Id;
+import com.membattle.data.api.model.req.Secret;
+import com.membattle.data.api.model.res.UserResponse;
+import com.membattle.data.api.model.res.rate.Rate;
 import com.membattle.data.settings.Settings;
+import com.membattle.domain.service.APIService;
 import com.membattle.presentation.main.fragment.rate.recycler.LineRate;
-import com.membattle.domain.service.Service;
 
 import java.util.ArrayList;
 
@@ -21,7 +21,7 @@ import javax.inject.Inject;
 @InjectViewState
 public class RateFragmentPresenter extends MvpPresenter<RateFragmentView> {
     @Inject
-    Service service;
+    APIService APIService;
     @Inject
     SharedPreferences settings;
     public RateFragmentPresenter() {
@@ -32,7 +32,7 @@ public class RateFragmentPresenter extends MvpPresenter<RateFragmentView> {
         ArrayList<LineRate> lineRates = new ArrayList<>();
         String secret = settings.getString(Settings.TOKEN_ACCESS, "no");
         Id id = new Id(settings.getInt(Settings.ID, 0));
-        service.getRateList(Settings.HEADER + secret, id,  new Service.RateCallback() {
+        APIService.getRateList(Settings.HEADER + secret, id,  new APIService.RateCallback() {
             @Override
             public void onSuccess(Rate rate) {
                 for (int i=0; i<rate.getGlobalRating().size(); i++) {
@@ -60,13 +60,13 @@ public class RateFragmentPresenter extends MvpPresenter<RateFragmentView> {
     private void refrechToken() {
         String refresh = settings.getString(Settings.TOKEN_REFRESH, "no");
         Secret secret = new Secret(refresh);
-        service.refreshToken(Settings.HEADER + refresh, secret, new Service.AuthCallback() {
+        APIService.refreshToken(Settings.HEADER + refresh, secret, new APIService.AuthCallback() {
             @Override
-            public void onSuccess(Exres exres) {
+            public void onSuccess(UserResponse userResponse) {
                 Log.i("code", "refresh_success");
                 SharedPreferences.Editor editor = settings.edit();
-                editor.putString(Settings.TOKEN_REFRESH, exres.getToken_refresh());
-                editor.putString(Settings.TOKEN_ACCESS, exres.getToken_access());
+                editor.putString(Settings.TOKEN_REFRESH, userResponse.getToken_refresh());
+                editor.putString(Settings.TOKEN_ACCESS, userResponse.getToken_access());
                 editor.apply();
                 getRateList();
             }

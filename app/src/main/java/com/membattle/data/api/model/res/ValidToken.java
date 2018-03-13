@@ -1,4 +1,4 @@
-package com.membattle.data.api.res;
+package com.membattle.data.api.model.res;
 
 
 

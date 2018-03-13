@@ -1,9 +1,10 @@
-package com.membattle.data.api.res.game.PairMem;
+package com.membattle.data.api.model.res.coins;
+
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PairMem {
+public class Coins {
 
     @SerializedName("type")
     @Expose

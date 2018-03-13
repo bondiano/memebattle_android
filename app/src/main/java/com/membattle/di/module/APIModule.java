@@ -1,7 +1,7 @@
 package com.membattle.di.module;
 
-import com.membattle.data.api.API;
-import com.membattle.domain.service.Service;
+import com.membattle.data.api.MemeBattleApi;
+import com.membattle.domain.service.APIService;
 
 import javax.inject.Singleton;
 
@@ -25,16 +25,16 @@ public class APIModule {
     @Provides
     @Singleton
     @SuppressWarnings("unused")
-    public API providesNetworkService(
+    public MemeBattleApi providesNetworkService(
             Retrofit retrofit) {
-        return retrofit.create(API.class);
+        return retrofit.create(MemeBattleApi.class);
     }
     @Provides
     @Singleton
     @SuppressWarnings("unused")
-    public Service providesService(
-            API networkService) {
-        return new Service(networkService);
+    public APIService providesService(
+            MemeBattleApi networkService) {
+        return new APIService(networkService);
     }
 
 }

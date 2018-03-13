@@ -9,7 +9,7 @@ import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.membattle.App;
 import com.membattle.data.settings.Settings;
-import com.membattle.domain.service.Service;
+import com.membattle.domain.service.APIService;
 
 import javax.inject.Inject;
 
@@ -21,7 +21,7 @@ public class SettingsFragmentPresenter extends MvpPresenter<SettingsFragmentView
     Router router;
 
     @Inject
-    Service service;
+    APIService APIService;
     @Inject
     SharedPreferences settings;
     public SettingsFragmentPresenter() {
