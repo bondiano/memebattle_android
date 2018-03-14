@@ -2,16 +2,13 @@ package com.membattle.presentation.auth.fragment.sign_in;
 
 import android.content.SharedPreferences;
 import android.util.Log;
-
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.membattle.App;
 import com.membattle.data.api.model.req.RegistrationUser;
 import com.membattle.data.api.model.res.UserResponse;
 import com.membattle.domain.service.APIService;
-import com.membattle.presentation.widget_plus.EditTextPlus;
 import com.membattle.data.settings.Screens;
-
 import javax.inject.Inject;
 
 import ru.terrakok.cicerone.Router;
@@ -32,8 +29,8 @@ public class SignInFragmentPresenter extends MvpPresenter<SignInFragmentView> {
     }
 
 
-    public void enter(EditTextPlus log, EditTextPlus pass) {
-        APIService.signIn(new RegistrationUser(log.getText().toString(), pass.getText().toString(), "lol"), new APIService.AuthCallback() {
+    public void enter(String log, String pass) {
+        APIService.signIn(new RegistrationUser(log, pass, "lol"), new APIService.AuthCallback() {
             @Override
             public void onSuccess(UserResponse userResponse) {
                 Log.i("code", userResponse.getSuccess()+"");

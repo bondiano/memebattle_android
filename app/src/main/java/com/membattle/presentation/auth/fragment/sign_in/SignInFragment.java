@@ -31,6 +31,7 @@ public class SignInFragment extends MvpAppCompatFragment implements SignInFragme
     @BindView(R.id.sign_in_password)
     EditTextPlus password;
 
+    String sUsername, sPassword;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -45,7 +46,9 @@ public class SignInFragment extends MvpAppCompatFragment implements SignInFragme
 
     @OnClick(R.id.sign_in_button_enter)
     void onEnterClick() {
-        presenter.enter(login, password);
+        sUsername = login.getText().toString();
+        sPassword = password.getText().toString();
+        sendData();
     }
 
     @OnClick(R.id.sign_in_button_goto_reg)
@@ -56,5 +59,19 @@ public class SignInFragment extends MvpAppCompatFragment implements SignInFragme
     @Override
     public void showErrorToast(String error) {
         Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
+    }
+
+    void sendData() {
+        if(checkOnFillingFields()) {
+            presenter.enter(sUsername, sPassword);
+        } else {
+            showErrorToast("Заполните все поля!");
+        }
+    }
+    boolean checkOnFillingFields() {
+        if (sUsername.equals("") || sPassword.equals("")) {
+            return false;
+        }
+        return true;
     }
 }
