@@ -18,6 +18,11 @@ public class SharedPreferencesModule {
     }
 
     @Provides
+    public Context context() {
+        return context;
+    }
+
+    @Provides
     @Singleton
     SharedPreferences provideSharedPreferences() {
         return context.getSharedPreferences("settings", Context.MODE_PRIVATE);

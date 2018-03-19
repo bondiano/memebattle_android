@@ -3,7 +3,6 @@ package com.membattle.presentation.main.fragment.modes.recycler;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
-
 import com.membattle.R;
 import com.membattle.presentation.widget_plus.TextViewPlus;
 

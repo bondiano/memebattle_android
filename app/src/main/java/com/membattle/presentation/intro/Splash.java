@@ -17,8 +17,13 @@ import javax.inject.Inject;
 
 public class Splash extends Activity {
 
-    @Inject
+    //@Inject
     SharedPreferences settings;
+
+    @Inject
+    public Splash(SharedPreferences settings) {
+        this.settings = settings;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

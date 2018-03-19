@@ -35,9 +35,11 @@ public class AppNavigator extends SupportFragmentNavigator {
     protected Fragment createFragment(String screenKey, Object data) {
         switch (currentContainer) {
             case Screens.CONTAINER_MAIN:
-                return mainFragments(screenKey);
+                //return mainFragments(screenKey);
+                return MainFragmentsFactory.getFragmentByKey(screenKey, data);
             case Screens.CONTAINER_GAME:
-                return gameFragments(screenKey, data);
+                //return gameFragments(screenKey, data);
+                return GameFragmentsFactory.getFragmentByKey(screenKey, data);
             case Screens.CONTAINER_AUTH:
                 return authFragments(screenKey);
             default:
@@ -58,7 +60,7 @@ public class AppNavigator extends SupportFragmentNavigator {
                 showRules();
                 return new GameFragment();
             case Screens.SHOP_SCREEN:
-                showToast();
+                showSystemMessage("Магазин пока не работает!");
                 return new GameFragment();
             case Screens.PROFILE_SCREEN:
                 return new ProfileFragment();
@@ -71,28 +73,6 @@ public class AppNavigator extends SupportFragmentNavigator {
 
     private void showRules() {
 
-    }
-
-    private Fragment mainFragments(String screenKey) {
-        switch (screenKey) {
-            case Screens.MODES_SCREEN:
-                return new ModesFragment();
-            case Screens.GAME_ACTIVITY:
-                gotoGame();
-            case Screens.RATE_SCREEN:
-                return new RateFragment();
-            case Screens.INFO_SCREEN:
-                return new InfoFragment();
-            case Screens.SETTINGS_SCREEN:
-                return new SettingsFragment();
-            case Screens.SHOP_SCREEN:
-                showToast();
-                return new ModesFragment();
-            case Screens.PROFILE_SCREEN:
-                return new ProfileFragment();
-            default:
-                return new ModesFragment();
-        }
     }
 
     private Fragment authFragments(String screenKey) {
@@ -124,10 +104,6 @@ public class AppNavigator extends SupportFragmentNavigator {
     public void gotoGame() {
         Intent intent = new Intent(activity, GameActivity.class);
         activity.startActivity(intent);
-    }
-
-    void showToast() {
-        Toast.makeText(activity, "Магазин пока не работает!", Toast.LENGTH_SHORT).show();
     }
 }
 

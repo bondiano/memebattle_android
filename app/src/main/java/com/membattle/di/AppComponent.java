@@ -1,5 +1,7 @@
 package com.membattle.di;
 
+import android.content.Context;
+
 import com.membattle.data.base.BaseActivity;
 import com.membattle.di.module.APIModule;
 import com.membattle.di.module.NavigatorModule;
@@ -30,6 +32,7 @@ import ru.terrakok.cicerone.NavigatorHolder;
 @Singleton
 @Component(modules = {NavigatorModule.class, APIModule.class, SharedPreferencesModule.class})
 public interface AppComponent {
+    Context context();
     void inject(MainActivityPresenter mainActivityPresenter);
     void inject(MainActivity mainActivity);
     void inject(ModesFragment modesFragment);

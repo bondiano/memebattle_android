@@ -30,7 +30,8 @@ public class SignInFragmentPresenter extends MvpPresenter<SignInFragmentView> {
 
 
     public void enter(String log, String pass) {
-        APIService.signIn(new RegistrationUser(log, pass, "lol"), new APIService.AuthCallback() {
+        router.replaceScreen(Screens.MAIN_ACTIVITY);
+        /*APIService.signIn(new RegistrationUser(log, pass, "lol"), new APIService.AuthCallback() {
             @Override
             public void onSuccess(UserResponse userResponse) {
                 Log.i("code", userResponse.getSuccess()+"");
@@ -43,7 +44,7 @@ public class SignInFragmentPresenter extends MvpPresenter<SignInFragmentView> {
                 Log.i("code", e + "");
                 getViewState().showErrorToast("Ошибка входа");
             }
-        });
+        });*/
     }
 
     public void gotoReg() {

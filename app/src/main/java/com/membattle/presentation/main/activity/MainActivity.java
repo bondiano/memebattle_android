@@ -10,6 +10,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.membattle.App;
 import com.membattle.R;
+import com.membattle.data.base.BaseActivity;
 import com.membattle.data.settings.Screens;
 import com.membattle.presentation.game.activity.GameActivity;
 import com.membattle.presentation.main.fragment.info.InfoFragment;
@@ -26,7 +27,7 @@ import ru.terrakok.cicerone.NavigatorHolder;
 import ru.terrakok.cicerone.Router;
 import ru.terrakok.cicerone.android.SupportFragmentNavigator;
 
-public class MainActivity extends MvpAppCompatActivity implements MainActivityView {
+public class MainActivity extends BaseActivity implements MainActivityView {
 
     @Inject
     NavigatorHolder navigatorHolder;
@@ -45,13 +46,18 @@ public class MainActivity extends MvpAppCompatActivity implements MainActivityVi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        App.getComponent().inject(this);
+        /*setContentView(R.layout.activity_main);
+        App.getComponent().inject(this);*/
         BoomMenuButton bmb = findViewById(R.id.main_bmb);
         presenter().initBmb(bmb);
     }
 
-    private Navigator navigator = new SupportFragmentNavigator(getSupportFragmentManager(), R.id.main_container) {
+    @Override
+    protected int getContainerId() {
+        return R.id.main_container;
+    }
+
+    /*private Navigator navigator = new SupportFragmentNavigator(getSupportFragmentManager(), R.id.main_container) {
 
         @Override
         protected Fragment createFragment(String screenKey, Object data) {
@@ -97,6 +103,16 @@ public class MainActivity extends MvpAppCompatActivity implements MainActivityVi
     protected void onPause() {
         super.onPause();
         navigatorHolder.removeNavigator();
+    }*/
+
+    @Override
+    protected void injectDependencies() {
+        App.getComponent().inject(this);
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
     }
 
     @Override
