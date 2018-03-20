@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/MemeBattle">
         <activity
-            android:name=".presentation.intro.Splash"
+            android:name=".presentation.main.activity.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +27,7 @@
             android:name="com.membattle.presentation.intro.FirstStartActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.main.activity.MainActivity"
+            android:name=".presentation.intro.Splash"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.membattle.presentation.auth.activity.AuthActivity"

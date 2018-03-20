@@ -7,6 +7,7 @@ import com.arellomobile.mvp.MvpPresenter;
 import com.membattle.App;
 import com.membattle.R;
 import com.membattle.data.settings.Settings;
+import com.membattle.di.qualifier.Local;
 
 import java.util.ArrayList;
 

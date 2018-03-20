@@ -9,6 +9,8 @@ import com.membattle.App;
 import com.membattle.R;
 import com.membattle.data.settings.Screens;
 import com.membattle.data.settings.Settings;
+import com.membattle.di.qualifier.Global;
+import com.membattle.di.qualifier.Local;
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
 import com.nightonke.boommenu.BoomButtons.TextOutsideCircleButton;
 import com.nightonke.boommenu.BoomMenuButton;
@@ -27,7 +29,14 @@ public class MainActivityPresenter extends MvpPresenter<MainActivityView> {
     }
 
     @Inject
+    @Local
     Router router;
+
+    @Inject
+    @Global
+    Router globalRouter;
+
+
 
     public void initBmb(BoomMenuButton bmb) {
         bmb.setButtonEnum(ButtonEnum.TextOutsideCircle);
@@ -45,7 +54,7 @@ public class MainActivityPresenter extends MvpPresenter<MainActivityView> {
                         Log.i("code", index + "");
                         switch (finalI) {
                             case 0:
-                                router.replaceScreen(Screens.SETTINGS_SCREEN);
+                                globalRouter.navigateTo(Screens.GAME_ACTIVITY);
                                 break;
                             case 1:
                                 router.replaceScreen(Screens.INFO_SCREEN);

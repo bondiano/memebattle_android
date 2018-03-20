@@ -7,6 +7,7 @@ import com.arellomobile.mvp.MvpPresenter;
 import com.membattle.App;
 import com.membattle.data.api.model.req.RegistrationUser;
 import com.membattle.data.api.model.res.UserResponse;
+import com.membattle.di.qualifier.Local;
 import com.membattle.domain.service.APIService;
 import com.membattle.data.settings.Screens;
 import javax.inject.Inject;
@@ -16,6 +17,7 @@ import ru.terrakok.cicerone.Router;
 @InjectViewState
 public class SignInFragmentPresenter extends MvpPresenter<SignInFragmentView> {
     @Inject
+    @Local
     Router router;
 
     @Inject

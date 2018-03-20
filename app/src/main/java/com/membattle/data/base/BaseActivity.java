@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.membattle.data.settings.Screens;
+import com.membattle.di.qualifier.Global;
+import com.membattle.di.qualifier.Local;
+
 import javax.inject.Inject;
 import butterknife.ButterKnife;
 import ru.terrakok.cicerone.NavigatorHolder;
@@ -12,23 +15,31 @@ import ru.terrakok.cicerone.Router;
 public abstract class BaseActivity extends MvpAppCompatActivity {
 
     @Inject
-    NavigatorHolder navigatorHolder;
+    @Local
+    NavigatorHolder localNavigatorHolder;
     @Inject
-    Router router;
-
+    @Global
+    NavigatorHolder globalNavigatorHolder;
+    @Inject
+    @Local
+    Router localRouter;
+    @Inject
+    @Global
+    Router globalRouter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         injectDependencies();
         setContentView(getLayoutId());
         ButterKnife.bind(this);
-        router.newRootScreen(Screens.SIGN_IN_SCREEN);
+        localRouter.newRootScreen(Screens.SIGN_IN_SCREEN);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        navigatorHolder.setNavigator(new AppNavigator(getSupportFragmentManager(), getContainerId(), this));
+        localNavigatorHolder.setNavigator(new LocalNavigator(getSupportFragmentManager(), getContainerId()));
+        globalNavigatorHolder.setNavigator(new GlobalNavigator(this));
     }
 
     protected abstract int getContainerId();
@@ -36,7 +47,8 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        navigatorHolder.removeNavigator();
+        localNavigatorHolder.removeNavigator();
+
     }
 
     protected abstract void injectDependencies();

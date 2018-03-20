@@ -13,6 +13,7 @@ import com.membattle.R;
 import com.membattle.data.base.BaseActivity;
 import com.membattle.data.settings.Screens;
 import com.membattle.data.settings.Settings;
+import com.membattle.di.qualifier.Local;
 import com.membattle.presentation.game.fragment.game.GameFragment;
 import com.membattle.presentation.game.fragment.zoom.ZoomFragment;
 import com.membattle.presentation.main.fragment.modes.ModesFragment;
@@ -30,6 +31,7 @@ import ru.terrakok.cicerone.android.SupportFragmentNavigator;
 public class GameActivity extends BaseActivity implements GameActivityView {
 
     @Inject
+    @Local
     NavigatorHolder navigatorHolder;
 
     @InjectPresenter

@@ -20,12 +20,12 @@ import com.membattle.presentation.main.fragment.settings.SettingsFragment;
 
 import ru.terrakok.cicerone.android.SupportFragmentNavigator;
 
-public class AppNavigator extends SupportFragmentNavigator {
+public class LocalNavigator extends SupportFragmentNavigator {
 
     Activity activity;
     int currentContainer;
 
-    public AppNavigator(FragmentManager fragmentManager, int containerId, Activity activity) {
+    public LocalNavigator(FragmentManager fragmentManager, int containerId) {
         super(fragmentManager, containerId);
         this.activity = activity;
         currentContainer = containerId;
@@ -35,11 +35,11 @@ public class AppNavigator extends SupportFragmentNavigator {
     protected Fragment createFragment(String screenKey, Object data) {
         switch (currentContainer) {
             case Screens.CONTAINER_MAIN:
-                //return mainFragments(screenKey);
-                return MainFragmentsFactory.getFragmentByKey(screenKey, data);
+                return mainFragments(screenKey);
+                //return MainFragmentsFactory.getFragmentByKey(screenKey, data);
             case Screens.CONTAINER_GAME:
-                //return gameFragments(screenKey, data);
-                return GameFragmentsFactory.getFragmentByKey(screenKey, data);
+                return gameFragments(screenKey, data);
+                //return GameFragmentsFactory.getFragmentByKey(screenKey, data);
             case Screens.CONTAINER_AUTH:
                 return authFragments(screenKey);
             default:
@@ -47,13 +47,33 @@ public class AppNavigator extends SupportFragmentNavigator {
         }
         return null;
     }
-
+    public Fragment mainFragments(String screenKey) {
+        switch (screenKey) {
+            case Screens.MODES_SCREEN:
+                return new ModesFragment();/*
+            case Screens.GAME_ACTIVITY:
+                gotoGame();*/
+            case Screens.RATE_SCREEN:
+                return new RateFragment();
+            case Screens.INFO_SCREEN:
+                return new InfoFragment();
+            case Screens.SETTINGS_SCREEN:
+                return new SettingsFragment();
+            case Screens.SHOP_SCREEN:
+                showSystemMessage("Магазин пока не работает!");
+                return new ModesFragment();
+            case Screens.PROFILE_SCREEN:
+                return new ProfileFragment();
+            default:
+                return new ModesFragment();
+        }
+    }
     private Fragment gameFragments(String screenKey, Object data) {
         switch (screenKey) {
             case Screens.GAME_SCREEN:
                 return new GameFragment();
-            case Screens.MODES_SCREEN:
-                activity.finish();
+            /*case Screens.MODES_SCREEN:
+                activity.finish();*/
             case Screens.RATE_SCREEN:
                 return new RateFragment();
             case Screens.RULES_DIALOG:
@@ -81,11 +101,11 @@ public class AppNavigator extends SupportFragmentNavigator {
                 return new SignInFragment();
             case Screens.SIGN_UP_SCREEN :
                 return new SignUpFragment();
-            case Screens.MAIN_ACTIVITY :
+            /*case Screens.MAIN_ACTIVITY :
                 Intent intent = new Intent(activity, MainActivity.class);
                 activity.startActivity(intent);
                 activity.finish();
-                return null;
+                return null;*/
             default:
                 return new SignInFragment();
         }
@@ -93,18 +113,18 @@ public class AppNavigator extends SupportFragmentNavigator {
 
     @Override
     protected void showSystemMessage(String message) {
-        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void exit() {
-        activity.finish();
+        //activity.finish();
     }
-
+/*
     public void gotoGame() {
         Intent intent = new Intent(activity, GameActivity.class);
         activity.startActivity(intent);
-    }
+    }*/
 }
 
 

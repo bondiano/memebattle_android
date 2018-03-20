@@ -7,6 +7,7 @@ import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.membattle.App;
 import com.membattle.data.settings.Screens;
+import com.membattle.di.qualifier.Local;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 import java.io.File;
@@ -17,6 +18,7 @@ import ru.terrakok.cicerone.Router;
 @InjectViewState
 public class ZoomFragmentPresenter extends MvpPresenter<ZoomFragmentView> {
     @Inject
+    @Local
     Router router;
 
     public ZoomFragmentPresenter() {

@@ -15,6 +15,7 @@ import com.membattle.data.api.model.res.game.PairLikes.PairLikes;
 import com.membattle.data.api.model.res.game.PairMem.PairMem;
 import com.membattle.data.settings.Screens;
 import com.membattle.data.settings.Settings;
+import com.membattle.di.qualifier.Local;
 import com.membattle.domain.service.APIService;
 import com.membattle.presentation.game.activity.GameActivity;
 
@@ -31,6 +32,7 @@ import static com.membattle.data.settings.Settings.ID;
 public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
 
     @Inject
+    @Local
     Router router;
     @Inject
     APIService APIService;

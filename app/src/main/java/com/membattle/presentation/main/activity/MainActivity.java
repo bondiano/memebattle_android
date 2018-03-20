@@ -12,6 +12,8 @@ import com.membattle.App;
 import com.membattle.R;
 import com.membattle.data.base.BaseActivity;
 import com.membattle.data.settings.Screens;
+import com.membattle.di.qualifier.Global;
+import com.membattle.di.qualifier.Local;
 import com.membattle.presentation.game.activity.GameActivity;
 import com.membattle.presentation.main.fragment.info.InfoFragment;
 import com.membattle.presentation.main.fragment.modes.ModesFragment;
@@ -30,10 +32,20 @@ import ru.terrakok.cicerone.android.SupportFragmentNavigator;
 public class MainActivity extends BaseActivity implements MainActivityView {
 
     @Inject
+    @Local
     NavigatorHolder navigatorHolder;
 
     @Inject
+    @Local
     Router router;
+
+    @Inject
+    @Global
+    NavigatorHolder globalnavigatorHolder;
+
+    @Inject
+    @Global
+    Router globalRouter;
 
     @InjectPresenter
     MainActivityPresenter presenter;
@@ -57,54 +69,6 @@ public class MainActivity extends BaseActivity implements MainActivityView {
         return R.id.main_container;
     }
 
-    /*private Navigator navigator = new SupportFragmentNavigator(getSupportFragmentManager(), R.id.main_container) {
-
-        @Override
-        protected Fragment createFragment(String screenKey, Object data) {
-            switch (screenKey) {
-                case Screens.MODES_SCREEN:
-                    return new ModesFragment();
-                case Screens.GAME_ACTIVITY:
-                    presenter.gotoGame();
-                case Screens.RATE_SCREEN:
-                    return new RateFragment();
-                case Screens.INFO_SCREEN:
-                    return new InfoFragment();
-                case Screens.SETTINGS_SCREEN:
-                    return new SettingsFragment();
-                case Screens.SHOP_SCREEN:
-                    showToast();
-                    return new ModesFragment();
-                case Screens.PROFILE_SCREEN:
-                    return new ProfileFragment();
-                default:
-                    return new ModesFragment();
-            }
-        }
-
-        @Override
-        protected void showSystemMessage(String message) {
-            Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        protected void exit() {
-            finish();
-        }
-    };
-
-    @Override
-    protected void onResumeFragments() {
-        super.onResumeFragments();
-        navigatorHolder.setNavigator(navigator);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        navigatorHolder.removeNavigator();
-    }*/
-
     @Override
     protected void injectDependencies() {
         App.getComponent().inject(this);
@@ -119,9 +83,5 @@ public class MainActivity extends BaseActivity implements MainActivityView {
     public void gotoGame() {
         Intent intent = new Intent(getApplication(), GameActivity.class);
         getApplication().startActivity(intent);
-    }
-
-    void showToast() {
-        Toast.makeText(getApplication(), "Магазин пока не работает!", Toast.LENGTH_SHORT).show();
     }
 }

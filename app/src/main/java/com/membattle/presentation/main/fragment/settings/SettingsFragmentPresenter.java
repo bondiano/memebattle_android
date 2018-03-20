@@ -9,6 +9,7 @@ import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.membattle.App;
 import com.membattle.data.settings.Settings;
+import com.membattle.di.qualifier.Local;
 import com.membattle.domain.service.APIService;
 
 import javax.inject.Inject;
@@ -18,6 +19,7 @@ import ru.terrakok.cicerone.Router;
 @InjectViewState
 public class SettingsFragmentPresenter extends MvpPresenter<SettingsFragmentView> {
     @Inject
+    @Local
     Router router;
 
     @Inject

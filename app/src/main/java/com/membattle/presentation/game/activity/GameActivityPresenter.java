@@ -9,6 +9,7 @@ import com.membattle.App;
 import com.membattle.R;
 import com.membattle.data.settings.Screens;
 import com.membattle.data.settings.Settings;
+import com.membattle.di.qualifier.Local;
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
 import com.nightonke.boommenu.BoomButtons.TextOutsideCircleButton;
 import com.nightonke.boommenu.BoomMenuButton;
@@ -25,6 +26,7 @@ public class GameActivityPresenter extends MvpPresenter<GameActivityView> {
     }
 
     @Inject
+    @Local
     Router router;
 
     public void initBmb(BoomMenuButton bmb) {

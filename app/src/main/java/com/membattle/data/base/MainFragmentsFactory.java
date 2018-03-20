@@ -10,11 +10,12 @@ import com.membattle.presentation.main.fragment.rate.RateFragment;
 import com.membattle.presentation.main.fragment.settings.SettingsFragment;
 
 class MainFragmentsFactory {
-    public static Fragment getFragmentByKey(String screenKey, Object data) {
+    /*public static Fragment getFragmentByKey(String screenKey, Object data) {
         switch (screenKey) {
             case Screens.MODES_SCREEN:
                 return new ModesFragment();
             case Screens.GAME_ACTIVITY:
+                ActivityFactory.startActivityByID(Screens.GAME_ACTIVITY);
                 gotoGame();
             case Screens.RATE_SCREEN:
                 return new RateFragment();
@@ -30,5 +31,5 @@ class MainFragmentsFactory {
             default:
                 return new ModesFragment();
         }
-    }
+    }*/
 }

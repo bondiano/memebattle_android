@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.membattle.App;
 import com.membattle.data.api.model.req.RegistrationUser;
 import com.membattle.data.api.model.res.UserResponse;
+import com.membattle.di.qualifier.Local;
 import com.membattle.domain.service.APIService;
 import com.membattle.presentation.widget_plus.EditTextPlus;
 import com.membattle.data.settings.Screens;
@@ -22,6 +23,7 @@ import ru.terrakok.cicerone.Router;
 @InjectViewState
 public class SignUpFragmentPresenter extends MvpPresenter<SignUpFragmentView> {
     @Inject
+    @Local
     Router router;
     @Inject
     APIService APIService;
