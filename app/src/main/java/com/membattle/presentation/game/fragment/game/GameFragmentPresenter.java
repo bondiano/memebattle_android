@@ -38,7 +38,8 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
     APIService APIService;
     @Inject
     SharedPreferences settings;
-    int USER_ID = settings.getInt(ID, 0);
+
+    int USER_ID;
     Gson gson = new Gson();
     String urlTop, urlBottom;
     public Emitter.Listener onConnect = args -> {
@@ -110,6 +111,7 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
 
     public GameFragmentPresenter() {
         App.getComponent().inject(this);
+        USER_ID = settings.getInt(ID, 0);
     }
 
     public void connectToGame(Socket socket) {

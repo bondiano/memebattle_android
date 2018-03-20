@@ -36,8 +36,6 @@ public class MainActivityPresenter extends MvpPresenter<MainActivityView> {
     @Global
     Router globalRouter;
 
-
-
     public void initBmb(BoomMenuButton bmb) {
         bmb.setButtonEnum(ButtonEnum.TextOutsideCircle);
         bmb.setPiecePlaceEnum(PiecePlaceEnum.DOT_6_1);
@@ -54,7 +52,7 @@ public class MainActivityPresenter extends MvpPresenter<MainActivityView> {
                         Log.i("code", index + "");
                         switch (finalI) {
                             case 0:
-                                globalRouter.navigateTo(Screens.GAME_ACTIVITY);
+                                router.replaceScreen(Screens.SETTINGS_SCREEN);
                                 break;
                             case 1:
                                 router.replaceScreen(Screens.INFO_SCREEN);
@@ -80,9 +78,5 @@ public class MainActivityPresenter extends MvpPresenter<MainActivityView> {
     protected void onFirstViewAttach() {
         super.onFirstViewAttach();
         router.newRootScreen(Screens.MODES_SCREEN);
-    }
-
-    void gotoGame() {
-        getViewState().gotoGame();
     }
 }

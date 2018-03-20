@@ -19,6 +19,7 @@ import com.membattle.presentation.main.activity.MainActivity;
 import com.membattle.presentation.main.activity.MainActivityPresenter;
 import com.membattle.presentation.main.fragment.modes.ModesFragment;
 import com.membattle.presentation.main.fragment.modes.ModesFragmentPresenter;
+import com.membattle.presentation.main.fragment.modes.recycler.ModesAdapter;
 import com.membattle.presentation.main.fragment.profile.ProfileFragmentPresenter;
 import com.membattle.presentation.main.fragment.rate.RateFragment;
 import com.membattle.presentation.main.fragment.rate.RateFragmentPresenter;
@@ -51,4 +52,5 @@ public interface AppComponent {
     void inject(ProfileFragmentPresenter profileFragmentPresenter);
     void inject(BaseActivity baseActivity);
     void inject(Splash splash);
+    void inject(ModesAdapter modesAdapter);
 }

@@ -7,19 +7,32 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.membattle.App;
 import com.membattle.R;
+import com.membattle.data.settings.Screens;
 import com.membattle.data.settings.Settings;
+import com.membattle.di.qualifier.Global;
 import com.membattle.presentation.game.activity.GameActivity;
 
 import java.util.ArrayList;
+
+import javax.inject.Inject;
+
+import ru.terrakok.cicerone.Router;
 
 public class ModesAdapter extends RecyclerView.Adapter<ModesViewHolder> {
     private ArrayList<Mode> modeList = new ArrayList<>();
     private Context context;
 
+    @Inject
+    @Global
+    Router globalRouter;
+
     public ModesAdapter(ArrayList<Mode> modeList, Context context) {
         this.modeList = modeList;
         this.context = context;
+        App.getComponent().inject(this);
     }
     @Override
     public ModesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -44,9 +57,10 @@ public class ModesAdapter extends RecyclerView.Adapter<ModesViewHolder> {
             alert.show();
         });
         holder.Play.setOnClickListener(v -> {
-            Intent intent = new Intent(context, GameActivity.class);
+            globalRouter.navigateTo(Screens.GAME_ACTIVITY, mode.type);
+            /*Intent intent = new Intent(context, GameActivity.class);
             intent.putExtra(Settings.CURRENT_MODE, mode.type);
-            context.startActivity(intent);
+            context.startActivity(intent);*/
         });
     }
 

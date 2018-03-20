@@ -31,6 +31,7 @@ import ru.terrakok.cicerone.android.SupportFragmentNavigator;
 
 public class MainActivity extends BaseActivity implements MainActivityView {
 
+
     @Inject
     @Local
     NavigatorHolder navigatorHolder;

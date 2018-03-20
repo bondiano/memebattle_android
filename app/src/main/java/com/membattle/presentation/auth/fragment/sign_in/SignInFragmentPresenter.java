@@ -7,6 +7,7 @@ import com.arellomobile.mvp.MvpPresenter;
 import com.membattle.App;
 import com.membattle.data.api.model.req.RegistrationUser;
 import com.membattle.data.api.model.res.UserResponse;
+import com.membattle.di.qualifier.Global;
 import com.membattle.di.qualifier.Local;
 import com.membattle.domain.service.APIService;
 import com.membattle.data.settings.Screens;
@@ -21,6 +22,10 @@ public class SignInFragmentPresenter extends MvpPresenter<SignInFragmentView> {
     Router router;
 
     @Inject
+    @Global
+    Router globalRouter;
+
+    @Inject
     APIService APIService;
 
     @Inject
@@ -32,7 +37,7 @@ public class SignInFragmentPresenter extends MvpPresenter<SignInFragmentView> {
 
 
     public void enter(String log, String pass) {
-        router.replaceScreen(Screens.MAIN_ACTIVITY);
+        globalRouter.navigateTo(Screens.MAIN_ACTIVITY);
         /*APIService.signIn(new RegistrationUser(log, pass, "lol"), new APIService.AuthCallback() {
             @Override
             public void onSuccess(UserResponse userResponse) {

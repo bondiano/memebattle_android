@@ -1,4 +1,4 @@
-package com.membattle.data.base;
+package com.membattle.domain.utils;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -22,12 +22,10 @@ import ru.terrakok.cicerone.android.SupportFragmentNavigator;
 
 public class LocalNavigator extends SupportFragmentNavigator {
 
-    Activity activity;
     int currentContainer;
 
     public LocalNavigator(FragmentManager fragmentManager, int containerId) {
         super(fragmentManager, containerId);
-        this.activity = activity;
         currentContainer = containerId;
     }
 
@@ -36,10 +34,8 @@ public class LocalNavigator extends SupportFragmentNavigator {
         switch (currentContainer) {
             case Screens.CONTAINER_MAIN:
                 return mainFragments(screenKey);
-                //return MainFragmentsFactory.getFragmentByKey(screenKey, data);
             case Screens.CONTAINER_GAME:
                 return gameFragments(screenKey, data);
-                //return GameFragmentsFactory.getFragmentByKey(screenKey, data);
             case Screens.CONTAINER_AUTH:
                 return authFragments(screenKey);
             default:
@@ -50,9 +46,7 @@ public class LocalNavigator extends SupportFragmentNavigator {
     public Fragment mainFragments(String screenKey) {
         switch (screenKey) {
             case Screens.MODES_SCREEN:
-                return new ModesFragment();/*
-            case Screens.GAME_ACTIVITY:
-                gotoGame();*/
+                return new ModesFragment();
             case Screens.RATE_SCREEN:
                 return new RateFragment();
             case Screens.INFO_SCREEN:
@@ -72,13 +66,8 @@ public class LocalNavigator extends SupportFragmentNavigator {
         switch (screenKey) {
             case Screens.GAME_SCREEN:
                 return new GameFragment();
-            /*case Screens.MODES_SCREEN:
-                activity.finish();*/
             case Screens.RATE_SCREEN:
                 return new RateFragment();
-            case Screens.RULES_DIALOG:
-                showRules();
-                return new GameFragment();
             case Screens.SHOP_SCREEN:
                 showSystemMessage("Магазин пока не работает!");
                 return new GameFragment();
@@ -91,21 +80,12 @@ public class LocalNavigator extends SupportFragmentNavigator {
         }
     }
 
-    private void showRules() {
-
-    }
-
     private Fragment authFragments(String screenKey) {
         switch (screenKey) {
             case Screens.SIGN_IN_SCREEN :
                 return new SignInFragment();
             case Screens.SIGN_UP_SCREEN :
                 return new SignUpFragment();
-            /*case Screens.MAIN_ACTIVITY :
-                Intent intent = new Intent(activity, MainActivity.class);
-                activity.startActivity(intent);
-                activity.finish();
-                return null;*/
             default:
                 return new SignInFragment();
         }
@@ -113,18 +93,11 @@ public class LocalNavigator extends SupportFragmentNavigator {
 
     @Override
     protected void showSystemMessage(String message) {
-        //Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void exit() {
-        //activity.finish();
     }
-/*
-    public void gotoGame() {
-        Intent intent = new Intent(activity, GameActivity.class);
-        activity.startActivity(intent);
-    }*/
 }
 
 
