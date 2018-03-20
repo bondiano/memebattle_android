@@ -47,10 +47,6 @@ public class GameActivity extends BaseActivity implements GameActivityView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*setContentView(R.layout.activity_game);
-        Intent i = getIntent();
-        currentMode = i.getIntExtra(Settings.CURRENT_MODE, 0);
-        App.getComponent().inject(this);*/
         BoomMenuButton bmb = findViewById(R.id.game_bmb);
         presenter().initBmb(bmb);
     }
@@ -69,56 +65,6 @@ public class GameActivity extends BaseActivity implements GameActivityView {
     protected int getLayoutId() {
         return R.layout.activity_game;
     }
-
-    /*private Navigator navigator = new SupportFragmentNavigator(getSupportFragmentManager(), R.id.game_container) {
-
-        @Override
-        protected Fragment createFragment(String screenKey, Object data) {
-            switch (screenKey) {
-                case Screens.GAME_SCREEN:
-                    return new GameFragment();
-                case Screens.MODES_SCREEN:
-                    finish();
-                case Screens.RATE_SCREEN:
-                    return new RateFragment();
-                case Screens.RULES_DIALOG:
-                    showRules();
-                    return new GameFragment();
-                case Screens.SHOP_SCREEN:
-                    showToast();
-                    return new GameFragment();
-                case Screens.PROFILE_SCREEN:
-                    return new ProfileFragment();
-                case Screens.ZOOM_SCREEN:
-                    return new ZoomFragment(data);
-                default:
-                    return new ModesFragment();
-            }
-        }
-
-        @Override
-        protected void showSystemMessage(String message) {
-            Toast.makeText(GameActivity.this, message, Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        protected void exit() {
-            finish();
-        }
-    };*/
-
-/*
-    @Override
-    protected void onResumeFragments() {
-        super.onResumeFragments();
-        navigatorHolder.setNavigator(navigator);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        navigatorHolder.removeNavigator();
-    }*/
 
     void showToast() {
         Toast.makeText(getApplication(), "Магазин пока не работает!", Toast.LENGTH_SHORT).show();

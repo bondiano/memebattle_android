@@ -9,6 +9,7 @@ import com.membattle.App;
 import com.membattle.R;
 import com.membattle.data.settings.Screens;
 import com.membattle.data.settings.Settings;
+import com.membattle.di.qualifier.Global;
 import com.membattle.di.qualifier.Local;
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
 import com.nightonke.boommenu.BoomButtons.TextOutsideCircleButton;
@@ -29,6 +30,10 @@ public class GameActivityPresenter extends MvpPresenter<GameActivityView> {
     @Local
     Router router;
 
+    @Inject
+    @Global
+    Router globalRouter;
+
     public void initBmb(BoomMenuButton bmb) {
         bmb.setButtonEnum(ButtonEnum.TextOutsideCircle);
         bmb.setPiecePlaceEnum(PiecePlaceEnum.DOT_6_1);
@@ -48,7 +53,7 @@ public class GameActivityPresenter extends MvpPresenter<GameActivityView> {
                                 router.replaceScreen(Screens.GAME_SCREEN);
                                 break;
                             case 1:
-                                router.replaceScreen(Screens.RULES_DIALOG);
+                                globalRouter.showSystemMessage(Settings.ARRAY_RULES[]);
                                 break;
                             case 2:
                                 router.replaceScreen(Screens.PROFILE_SCREEN);
@@ -57,7 +62,7 @@ public class GameActivityPresenter extends MvpPresenter<GameActivityView> {
                                 router.replaceScreen(Screens.RATE_SCREEN);
                                 break;
                             case 4:
-                                router.replaceScreen(Screens.MODES_SCREEN);
+                                globalRouter.backTo(Screens.MAIN_ACTIVITY);
                                 break;
                             case 5:
                                 router.replaceScreen(Screens.SHOP_SCREEN);
