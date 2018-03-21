@@ -16,6 +16,9 @@ import com.nightonke.boommenu.BoomButtons.TextOutsideCircleButton;
 import com.nightonke.boommenu.BoomMenuButton;
 import com.nightonke.boommenu.ButtonEnum;
 import com.nightonke.boommenu.Piece.PiecePlaceEnum;
+
+import java.util.Set;
+
 import javax.inject.Inject;
 import ru.terrakok.cicerone.Router;
 
@@ -53,7 +56,7 @@ public class GameActivityPresenter extends MvpPresenter<GameActivityView> {
                                 router.replaceScreen(Screens.GAME_SCREEN);
                                 break;
                             case 1:
-                                globalRouter.showSystemMessage(Settings.ARRAY_RULES[mode]);
+                                globalRouter.navigateTo(Screens.RULES_DIALOG, Settings.ARRAY_RULES[mode]);
                                 break;
                             case 2:
                                 router.replaceScreen(Screens.PROFILE_SCREEN);
@@ -65,7 +68,7 @@ public class GameActivityPresenter extends MvpPresenter<GameActivityView> {
                                 globalRouter.backTo(Screens.MAIN_ACTIVITY);
                                 break;
                             case 5:
-                                router.replaceScreen(Screens.SHOP_SCREEN);
+                                globalRouter.showSystemMessage(Screens.SHOP_SCREEN);
                                 break;
                         }
                     }));

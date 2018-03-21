@@ -1,4 +1,4 @@
-package com.membattle.presentation.intro;
+package com.membattle.presentation.splash.intro;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -13,16 +13,16 @@ import com.membattle.presentation.widget_plus.TextViewPlus;
 import agency.tango.materialintroscreen.SlideFragment;
 
 
-public class SlideIntro extends SlideFragment {
+public class IntroFragment extends SlideFragment {
     String text;
     TextViewPlus Text;
 
-    public SlideIntro() {
+    public IntroFragment() {
         super();
     }
 
     @SuppressLint("ValidFragment")
-    public SlideIntro(String text) {
+    public IntroFragment(String text) {
         super();
         this.text = text;
     }

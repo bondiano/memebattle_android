@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,42 +7,36 @@
     android:background="@color/rules_fragment_back"
     android:orientation="vertical">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <com.membattle.presentation.widget_plus.TextViewPlus
+            android:id="@+id/ruletitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="15dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/main_blue"
+            android:textSize="30sp"
+            app:customFont="@string/font_title"
+            tools:text="Правила игры" />
 
-            <com.membattle.presentation.widget_plus.TextViewPlus
-                android:id="@+id/ruletitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="TextView"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textColor="@color/main_blue"
-                android:textSize="30sp"
-                app:customFont="@string/font_title"
-                tools:text="Правила игры" />
+        <com.membattle.presentation.widget_plus.TextViewPlus
+            android:id="@+id/rultext"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/main_blue"
+            android:textSize="18sp"
+            app:customFont="@string/font_bigtext"
+            tools:text="@string/rules" />
 
-            <com.membattle.presentation.widget_plus.TextViewPlus
-                android:id="@+id/rultext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:text="TextView"
-                android:textAlignment="viewStart"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textColor="@color/main_blue"
-                android:textSize="18sp"
-                app:customFont="@string/font_bigtext"
-                tools:text="@string/rules" />
+    </LinearLayout>
 
-        </LinearLayout>
-
-    </ScrollView>
-</LinearLayout>
+</ScrollView>

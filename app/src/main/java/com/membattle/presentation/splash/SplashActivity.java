@@ -1,4 +1,4 @@
-package com.membattle.presentation.intro;
+package com.membattle.presentation.splash;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,10 +12,11 @@ import com.membattle.App;
 import com.membattle.R;
 import com.membattle.presentation.auth.activity.AuthActivity;
 import com.membattle.presentation.main.activity.MainActivity;
+import com.membattle.presentation.splash.intro.IntroActivity;
 
 import javax.inject.Inject;
 
-public class Splash extends Activity {
+public class SplashActivity extends Activity {
 
     @Inject
     SharedPreferences settings;
@@ -32,13 +33,13 @@ public class Splash extends Activity {
                 overridePendingTransition(0,0);
                 TaskStackBuilder.create(getApplicationContext())
                         .addNextIntentWithParentStack(new Intent(getApplicationContext(), AuthActivity.class))
-                        .addNextIntent(new Intent(getApplicationContext(), FirstStartActivity.class))
+                        .addNextIntent(new Intent(getApplicationContext(), IntroActivity.class))
                         .startActivities();
                 finish();
             }
             else {
                 overridePendingTransition(0,0);
-                Intent i = new Intent(Splash.this, MainActivity.class);
+                Intent i = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(i);
                 finish();
             }
