@@ -34,7 +34,7 @@ public class GameActivityPresenter extends MvpPresenter<GameActivityView> {
     @Global
     Router globalRouter;
 
-    public void initBmb(BoomMenuButton bmb) {
+    public void initBmb(BoomMenuButton bmb, int mode) {
         bmb.setButtonEnum(ButtonEnum.TextOutsideCircle);
         bmb.setPiecePlaceEnum(PiecePlaceEnum.DOT_6_1);
         bmb.setButtonPlaceEnum(ButtonPlaceEnum.SC_6_1);
@@ -53,7 +53,7 @@ public class GameActivityPresenter extends MvpPresenter<GameActivityView> {
                                 router.replaceScreen(Screens.GAME_SCREEN);
                                 break;
                             case 1:
-                                globalRouter.showSystemMessage(Settings.ARRAY_RULES[]);
+                                globalRouter.showSystemMessage(Settings.ARRAY_RULES[mode]);
                                 break;
                             case 2:
                                 router.replaceScreen(Screens.PROFILE_SCREEN);

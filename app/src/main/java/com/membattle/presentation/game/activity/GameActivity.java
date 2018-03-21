@@ -48,7 +48,7 @@ public class GameActivity extends BaseActivity implements GameActivityView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         BoomMenuButton bmb = findViewById(R.id.game_bmb);
-        presenter().initBmb(bmb);
+        presenter().initBmb(bmb, currentMode);
     }
 
     @Override
