@@ -2,6 +2,8 @@ package com.membattle.data.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
@@ -64,6 +66,19 @@ public abstract class BaseActivity extends MvpAppCompatActivity implements BaseV
 
     @Override
     public void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        Log.i("code", "toast");
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showDialog(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+        builder.setTitle(title)
+                .setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton("ОК",
+                        (dialog, id) -> dialog.cancel());
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }

@@ -67,7 +67,8 @@ public class MainActivityPresenter extends MvpPresenter<MainActivityView> {
                                 router.replaceScreen(Screens.RATE_SCREEN);
                                 break;
                             case 5:
-                                router.replaceScreen(Screens.SHOP_SCREEN);
+                                globalRouter.navigateTo(Screens.SHOP_SCREEN);
+                                //getViewState().showToast("Магазин пока не работает!");
                                 break;
                         }
                     }));

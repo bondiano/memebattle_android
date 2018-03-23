@@ -40,14 +40,6 @@ public class MainActivity extends BaseActivity implements MainActivityView {
     @Local
     Router router;
 
-    @Inject
-    @Global
-    NavigatorHolder globalnavigatorHolder;
-
-    @Inject
-    @Global
-    Router globalRouter;
-
     @InjectPresenter
     MainActivityPresenter presenter;
 
@@ -59,8 +51,6 @@ public class MainActivity extends BaseActivity implements MainActivityView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*setContentView(R.layout.activity_main);
-        App.getComponent().inject(this);*/
         BoomMenuButton bmb = findViewById(R.id.main_bmb);
         presenter().initBmb(bmb);
     }

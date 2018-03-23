@@ -20,13 +20,14 @@ import ru.terrakok.cicerone.commands.SystemMessage;
 
 public class GlobalNavigator implements Navigator {
     Activity activity;
+
     public GlobalNavigator(Activity activity) {
         this.activity = activity;
     }
 
     @Override
     public void applyCommand(Command command) {
-        Log.i("code", command.getClass()+"");
+        Log.i("code", command.getClass() + "");
         if (command instanceof Forward) {
             Intent intent;
             switch (((Forward) command).getScreenKey()) {
@@ -44,16 +45,20 @@ public class GlobalNavigator implements Navigator {
                 case Screens.RULES_DIALOG:
                     showDialog(String.valueOf(((Forward) command).getTransitionData()));
                     break;
+                case Screens.SHOP_SCREEN:
+                    showToast("Магазин пока не работает!");
             }
-        } else if(command instanceof BackTo) {
+        } else if (command instanceof BackTo) {
             activity.finish();
-        } else if(command instanceof SystemMessage) {
+        } else if (command instanceof SystemMessage) {
             showToast("Магазин пока не работает!");
         }
     }
+
     void showToast(String message) {
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
     }
+
     void showDialog(String text) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("Правила")

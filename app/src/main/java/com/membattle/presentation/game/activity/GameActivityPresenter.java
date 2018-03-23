@@ -1,8 +1,10 @@
 package com.membattle.presentation.game.activity;
 
+import android.content.Context;
 import android.graphics.Rect;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.membattle.App;
@@ -20,6 +22,7 @@ import com.nightonke.boommenu.Piece.PiecePlaceEnum;
 import java.util.Set;
 
 import javax.inject.Inject;
+
 import ru.terrakok.cicerone.Router;
 
 @InjectViewState
@@ -57,6 +60,7 @@ public class GameActivityPresenter extends MvpPresenter<GameActivityView> {
                                 break;
                             case 1:
                                 globalRouter.navigateTo(Screens.RULES_DIALOG, Settings.ARRAY_RULES[mode]);
+                                //getViewState().showDialog("Правила", Settings.ARRAY_RULES[mode]);
                                 break;
                             case 2:
                                 router.replaceScreen(Screens.PROFILE_SCREEN);
@@ -68,6 +72,8 @@ public class GameActivityPresenter extends MvpPresenter<GameActivityView> {
                                 globalRouter.backTo(Screens.MAIN_ACTIVITY);
                                 break;
                             case 5:
+                                globalRouter.navigateTo(Screens.SHOP_SCREEN);
+                                //getViewState().showToast("Магазин пока не работает!");
                                 break;
                         }
                     }));
@@ -78,15 +84,5 @@ public class GameActivityPresenter extends MvpPresenter<GameActivityView> {
     protected void onFirstViewAttach() {
         super.onFirstViewAttach();
         router.newRootScreen(Screens.GAME_SCREEN);
-    }
-
-    public void setRulesBuilder(AlertDialog.Builder builder, int currentMode) {
-        builder.setTitle("Правила")
-                .setMessage(Settings.ARRAY_RULES[currentMode])
-                .setCancelable(false)
-                .setPositiveButton("ОК",
-                        (dialog, id) -> dialog.cancel());
-        AlertDialog alert = builder.create();
-        alert.show();
     }
 }
