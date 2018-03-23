@@ -19,6 +19,8 @@ import com.github.nkzawa.socketio.client.Socket;
 import com.membattle.R;
 import com.membattle.presentation.widget_plus.TextViewPlus;
 import com.squareup.picasso.Picasso;
+import com.yandex.metrica.YandexMetrica;
+
 import java.net.URISyntaxException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -81,6 +83,7 @@ public class GameFragment extends MvpAppCompatFragment implements GameFragmentVi
 
     @OnClick(R.id.game_top_mem)
     void onTopMemClick() {
+        YandexMetrica.reportEvent("topmemclick");
         Log.i("code", "topmem");
         if(canClickMem) {
             canClickMem = false;

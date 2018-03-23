@@ -68,7 +68,6 @@ public class GameActivityPresenter extends MvpPresenter<GameActivityView> {
                                 globalRouter.backTo(Screens.MAIN_ACTIVITY);
                                 break;
                             case 5:
-                                globalRouter.showSystemMessage(Screens.SHOP_SCREEN);
                                 break;
                         }
                     }));

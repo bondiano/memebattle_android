@@ -66,12 +66,12 @@ public class GameActivity extends BaseActivity implements GameActivityView {
         return R.layout.activity_game;
     }
 
-    void showToast() {
+    /*void showToast() {
         Toast.makeText(getApplication(), "Магазин пока не работает!", Toast.LENGTH_SHORT).show();
     }
 
     void showRules() {
         AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
         presenter.setRulesBuilder(builder, currentMode);
-    }
+    }*/
 }

@@ -61,4 +61,6 @@ dependencies {
     compile 'com.github.nkzawa:socket.io-client:0.3.0'
 
     compile 'com.squareup.picasso:picasso:2.5.2'
+
+    compile 'com.yandex.android:mobmetricalib:2.80'
 }
