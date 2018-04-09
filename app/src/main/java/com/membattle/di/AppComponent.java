@@ -2,7 +2,7 @@ package com.membattle.di;
 
 import android.content.Context;
 
-import com.membattle.data.base.BaseActivity;
+import com.membattle.presentation.base.BaseActivity;
 import com.membattle.di.module.APIModule;
 import com.membattle.di.module.NavigatorModule;
 import com.membattle.di.module.SharedPreferencesModule;

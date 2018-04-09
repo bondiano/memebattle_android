@@ -1,4 +1,4 @@
-package com.membattle.data.base;
+package com.membattle.presentation.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,12 +7,13 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy;
+import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 import com.membattle.data.settings.Screens;
 import com.membattle.di.qualifier.Global;
 import com.membattle.di.qualifier.Local;
 import com.membattle.domain.utils.GlobalNavigator;
 import com.membattle.domain.utils.LocalNavigator;
-import com.yandex.metrica.YandexMetrica;
 
 import javax.inject.Inject;
 
@@ -65,9 +66,10 @@ public abstract class BaseActivity extends MvpAppCompatActivity implements BaseV
     protected abstract int getLayoutId();
 
     @Override
+    @StateStrategyType(OneExecutionStateStrategy.class)
     public void showToast(String message) {
         Log.i("code", "toast");
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -2,7 +2,7 @@ package com.membattle.presentation.auth.activity;
 
 import com.membattle.App;
 import com.membattle.R;
-import com.membattle.data.base.BaseActivity;
+import com.membattle.presentation.base.BaseActivity;
 import com.membattle.data.settings.Screens;
 import com.membattle.di.qualifier.Local;
 

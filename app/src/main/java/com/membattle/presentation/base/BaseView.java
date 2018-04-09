@@ -1,8 +1,8 @@
-package com.membattle.data.base;
+package com.membattle.presentation.base;
 
 import com.arellomobile.mvp.MvpView;
 
 public interface BaseView extends MvpView {
-    void showToast(String message);
+    public void showToast(String message);
     void showDialog(String title, String message);
 }

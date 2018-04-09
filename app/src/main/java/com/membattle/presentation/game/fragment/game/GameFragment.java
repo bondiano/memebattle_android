@@ -17,6 +17,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
 import com.membattle.R;
+import com.membattle.presentation.base.BaseFragment;
 import com.membattle.presentation.widget_plus.TextViewPlus;
 import com.squareup.picasso.Picasso;
 import com.yandex.metrica.YandexMetrica;
@@ -27,7 +28,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnLongClick;
 
-public class GameFragment extends MvpAppCompatFragment implements GameFragmentView {
+public class GameFragment extends BaseFragment implements GameFragmentView {
     Socket socket = null;
     boolean canClickMem = true;
     int zoom = 0;
@@ -68,17 +69,15 @@ public class GameFragment extends MvpAppCompatFragment implements GameFragmentVi
         return new GameFragmentPresenter();
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        handler = new Handler();
-        return inflater.inflate(R.layout.fragment_game, container, false);
-    }
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
+        handler = new Handler();
+    }
+
+    @Override
+    protected int getLayoutID() {
+        return R.layout.fragment_game;
     }
 
     @OnClick(R.id.game_top_mem)

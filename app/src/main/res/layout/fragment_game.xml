@@ -6,90 +6,137 @@
     android:layout_height="match_parent"
     android:background="@color/rules_fragment_back">
 
-    <ImageView
-        android:id="@+id/game_top_mem"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="338dp"
-        android:layout_height="220dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="38dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/battle_clockim"
-        app:srcCompat="@color/cardview_light_background" />
+        android:layout_height="270dp"
+        android:layout_marginTop="64dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/game_top_like"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="8dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/game_top_after_layout"
-        app:layout_constraintEnd_toEndOf="@+id/game_top_after_layout"
-        app:layout_constraintStart_toStartOf="@+id/game_top_mem"
-        app:layout_constraintTop_toTopOf="@+id/game_top_mem"
-        app:srcCompat="@drawable/like" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="338dp"
+            android:layout_height="70dp"
+            app:layout_constraintTop_toBottomOf="@+id/game_top_after_layout"
+            tools:layout_editor_absoluteX="0dp">
 
-    <RelativeLayout
-        android:id="@+id/game_top_after_layout"
-        android:layout_width="338dp"
-        android:layout_height="220dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="@color/back_likes"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/game_top_mem"
-        app:layout_constraintTop_toTopOf="@+id/game_top_mem">
+            <LinearLayout
+                android:layout_width="84dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        <com.membattle.presentation.widget_plus.TextViewPlus
-            android:id="@+id/game_top_after_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:srcCompat="@drawable/ic_zoom_in"
+                    tools:layout_editor_absoluteX="16dp" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
+            </LinearLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/game_top_like"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="Победитель"
-            android:textColor="@android:color/white"
-            android:textSize="30sp"
-            app:customFont="@string/font_main" />
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/game_top_mem"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+            app:layout_constraintTop_toTopOf="@+id/game_top_mem"
+            app:srcCompat="@drawable/like" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/game_top_after_status"
-            android:layout_centerHorizontal="true"
-            android:orientation="horizontal">
+        <RelativeLayout
+            android:id="@+id/game_top_after_layout"
+            android:layout_width="338dp"
+            android:layout_height="200dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/back_likes"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@+id/game_top_mem"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/game_top_mem">
 
             <com.membattle.presentation.widget_plus.TextViewPlus
-                android:id="@+id/game_top_after_likes"
+                android:id="@+id/game_top_after_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginRight="5dp"
-                android:text="33"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="Победитель"
                 android:textColor="@android:color/white"
-                android:textSize="24sp"
+                android:textSize="30sp"
                 app:customFont="@string/font_main" />
 
-            <ImageView
-                android:id="@+id/battle_imlikef"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center"
-                app:srcCompat="@drawable/like_small" />
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/game_top_after_status"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal">
 
-    </RelativeLayout>
+                <com.membattle.presentation.widget_plus.TextViewPlus
+                    android:id="@+id/game_top_after_likes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="5dp"
+                    android:text="33"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    app:customFont="@string/font_main" />
+
+                <ImageView
+                    android:id="@+id/battle_imlikef"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/like_small" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/game_top_mem"
+            android:layout_width="338dp"
+            android:layout_height="200dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/battle_clockim"
+            app:srcCompat="@color/cardview_light_background" />
+    </android.support.constraint.ConstraintLayout>
 
     <ImageView
         android:id="@+id/game_bottom_mem"
         android:layout_width="338dp"
-        android:layout_height="220dp"
+        android:layout_height="200dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
