@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Chronometer;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -32,6 +33,7 @@ public class GameFragment extends BaseFragment implements GameFragmentView {
     Socket socket = null;
     boolean canClickMem = true;
     int zoom = 0;
+    boolean change = false;
 
     @InjectPresenter
     GameFragmentPresenter presenter;
@@ -61,6 +63,15 @@ public class GameFragment extends BaseFragment implements GameFragmentView {
     @BindView(R.id.game_timer)
     TextViewPlus timer;
 
+    @BindView(R.id.game_top_zoom)
+    LinearLayout topZoom;
+    @BindView(R.id.game_top_share)
+    LinearLayout topShare;
+    @BindView(R.id.game_top_download)
+    LinearLayout topDownload;
+    @BindView(R.id.game_top_prooral)
+    LinearLayout topProoral;
+
     private Handler handler;
     private int tick = 15;
 
@@ -73,6 +84,7 @@ public class GameFragment extends BaseFragment implements GameFragmentView {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         handler = new Handler();
+        startTick();
     }
 
     @Override
@@ -102,7 +114,6 @@ public class GameFragment extends BaseFragment implements GameFragmentView {
 
     @OnLongClick(R.id.game_top_mem)
     boolean onTopMemLongClick() {
-
         presenter.zoomMem(true);
         return false;
     }
@@ -172,6 +183,7 @@ public class GameFragment extends BaseFragment implements GameFragmentView {
 
     void startTick() {
         chronometer.stop();
+        tick = 15;//длина баттла
         timer.setText("15");
         chronometer.start();
         chronometer.setOnChronometerTickListener(chronometer -> {
@@ -183,9 +195,22 @@ public class GameFragment extends BaseFragment implements GameFragmentView {
                 elapsedMillis = 0;
                 if (tick == 0) {
                     chronometer.stop();
-                    tick = 15;//длина баттла
+                    if(change) {
+                        topMem.setImageResource(R.drawable.meme1);
+                        bottomMem.setImageResource(R.drawable.meme2);
+                    } else {
+                        topMem.setImageResource(R.drawable.meme2);
+                        bottomMem.setImageResource(R.drawable.meme1);
+                    }
+                    change = !change;
+                    startTick();
                 }
             }
         });
+    }
+
+    @OnClick(R.id.game_top_zoom)
+    void onTopZoomClick() {
+        presenter.zoomMem(true);
     }
 }

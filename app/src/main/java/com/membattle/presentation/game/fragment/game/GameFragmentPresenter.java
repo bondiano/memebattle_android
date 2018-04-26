@@ -18,6 +18,7 @@ import com.membattle.data.settings.Settings;
 import com.membattle.di.qualifier.Global;
 import com.membattle.di.qualifier.Local;
 import com.membattle.domain.service.APIService;
+import com.membattle.domain.service.SettingsService;
 import com.membattle.presentation.game.activity.GameActivity;
 
 import org.json.JSONException;
@@ -35,11 +36,17 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
     @Inject
     @Local
     Router router;
+    @Inject
+    @Global
+    Router globalRouter;
 
     @Inject
     APIService APIService;
+
     @Inject
     SharedPreferences settings;
+    @Inject
+    SettingsService settingsService;
 
     int USER_ID;
     Gson gson = new Gson();
@@ -89,10 +96,10 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
         final int topLikes = Integer.parseInt(pairLikes.getData().getLeftLikes());
         final int bottomLikes = Integer.parseInt(pairLikes.getData().getRightLikes());
         String topStatus, bottomStatus;
-        if(topLikes>bottomLikes) {
+        if (topLikes > bottomLikes) {
             topStatus = "Победитель";
             bottomStatus = "";
-        } else if(topLikes < bottomLikes) {
+        } else if (topLikes < bottomLikes) {
             topStatus = "";
             bottomStatus = "Победитель";
         } else {
@@ -132,9 +139,13 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
     }
 
     void zoomMem(boolean top) {
-        String stubURL = "https://301-1.ru/gen-mems/img_mems/4a4c2a53661ede617bd7437b4e728cbb.jpg";
-        if (top)
-            router.navigateTo(Screens.ZOOM_SCREEN, stubURL);
+        String stubURL = "https://sun1-3.userapi.com/c840537/v840537418/78c6c/-tQlZSiA1B0.jpg";
+        if (top) {
+            settingsService.setZoomImage(stubURL);
+            globalRouter.navigateTo(Screens.ZOOM_SCREEN);
+            //router.navigateTo(Screens.ZOOM_SCREEN, stubURL);
+        }
+
         else
             router.navigateTo(Screens.ZOOM_SCREEN, urlBottom);
     }

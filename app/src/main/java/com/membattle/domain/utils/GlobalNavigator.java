@@ -2,6 +2,7 @@ package com.membattle.domain.utils;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.widget.Toast;
@@ -9,6 +10,8 @@ import android.widget.Toast;
 import com.membattle.data.settings.Screens;
 import com.membattle.data.settings.Settings;
 import com.membattle.presentation.game.activity.GameActivity;
+import com.membattle.presentation.game.fragment.zoom.ZoomFragment;
+import com.membattle.presentation.game.zoom.ZoomActivity;
 import com.membattle.presentation.main.activity.MainActivity;
 
 import ru.terrakok.cicerone.Navigator;
@@ -47,6 +50,9 @@ public class GlobalNavigator implements Navigator {
                     break;
                 case Screens.SHOP_SCREEN:
                     showToast("Магазин пока не работает!");
+                case Screens.ZOOM_SCREEN:
+                    intent = new Intent(activity, ZoomActivity.class);
+                    activity.startActivity(intent);
             }
         } else if (command instanceof BackTo) {
             activity.finish();

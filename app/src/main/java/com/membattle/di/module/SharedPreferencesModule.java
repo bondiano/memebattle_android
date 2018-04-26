@@ -3,6 +3,8 @@ package com.membattle.di.module;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.membattle.domain.service.SettingsService;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -26,5 +28,11 @@ public class SharedPreferencesModule {
     @Singleton
     SharedPreferences provideSharedPreferences() {
         return context.getSharedPreferences("settings", Context.MODE_PRIVATE);
+    }
+
+    @Provides
+    @Singleton
+    SettingsService settingsService(SharedPreferences sharedPreferences) {
+        return new SettingsService(sharedPreferences);
     }
 }

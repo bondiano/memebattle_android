@@ -1,7 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/back_likes">
 
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="340dp"
+    android:theme="@style/AppTheme"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/zoom_mem">
+
+        <LinearLayout
+            android:id="@+id/game_top_zoom"
+            android:layout_width="84dp"
+
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="1dp">
+
+            <ImageView
+                android:id="@+id/zoom_minus"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:srcCompat="@drawable/ic_zoom_out"
+                tools:layout_editor_absoluteX="16dp" />
+
+            <com.membattle.presentation.widget_plus.TextViewPlus
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Уменьшить"
+                android:textColor="@color/main_blue"
+                android:textSize="18sp"
+                app:customFont="@string/font_main" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/zoom_download"
+            android:layout_width="84dp"
+
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:srcCompat="@drawable/ic_download"
+                tools:layout_editor_absoluteX="16dp" />
+
+            <com.membattle.presentation.widget_plus.TextViewPlus
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Скачать"
+                android:textColor="@color/main_blue"
+                android:textSize="18sp"
+                app:customFont="@string/font_main" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/zoom_share"
+            android:layout_width="84dp"
+
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:srcCompat="@drawable/ic_sharing_big_symbol"
+                tools:layout_editor_absoluteX="16dp" />
+
+            <com.membattle.presentation.widget_plus.TextViewPlus
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Поделиться"
+                android:textColor="@color/main_blue"
+                android:textSize="18sp"
+                app:customFont="@string/font_main" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/zoom_prooral"
+            android:layout_width="84dp"
+
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:srcCompat="@drawable/ic_laughing"
+                tools:layout_editor_absoluteX="16dp" />
+
+            <com.membattle.presentation.widget_plus.TextViewPlus
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Проорал"
+                android:textColor="@color/main_blue"
+                android:textSize="18sp"
+                app:customFont="@string/font_main" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/zoom_mem"
+        android:layout_width="0dp"
+        android:layout_height="220dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/meme2" />
 </android.support.constraint.ConstraintLayout>
