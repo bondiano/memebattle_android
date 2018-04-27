@@ -11,10 +11,8 @@ import com.membattle.data.api.model.req.RegistrationUser;
 import com.membattle.data.api.model.res.UserResponse;
 import com.membattle.di.qualifier.Local;
 import com.membattle.domain.service.APIService;
-import com.membattle.presentation.widget_plus.EditTextPlus;
 import com.membattle.data.settings.Screens;
-
-import java.util.List;
+import com.membattle.domain.service.SettingsService;
 
 import javax.inject.Inject;
 
@@ -28,7 +26,8 @@ public class SignUpFragmentPresenter extends MvpPresenter<SignUpFragmentView> {
     @Inject
     APIService APIService;
     @Inject
-    SharedPreferences settings;
+    SettingsService settingsService;
+
     private Gson gson = new Gson();
 
     public SignUpFragmentPresenter() {
@@ -57,7 +56,7 @@ public class SignUpFragmentPresenter extends MvpPresenter<SignUpFragmentView> {
             @Override
             public void onSuccess(UserResponse userResponse) {
                 Log.i("code", userResponse.getSuccess() + "");
-                saveSettings(userResponse);
+                settingsService.initUser(userResponse.getTokenAccess(), userResponse.getTokenRefresh(), userResponse.getUsername(), Integer.parseInt(userResponse.getCoins()), userResponse.getId());
                 router.navigateTo(Screens.MAIN_ACTIVITY);
             }
 
@@ -72,16 +71,4 @@ public class SignUpFragmentPresenter extends MvpPresenter<SignUpFragmentView> {
     public void backToSignIn() {
         router.backTo(Screens.SIGN_IN_SCREEN);
     }
-
-    public void saveSettings(UserResponse userResponse) {
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString("token_access", userResponse.getToken_access());
-        editor.putString("token_refresh", userResponse.getToken_refresh());
-        editor.putString("username", userResponse.getUsername());
-        editor.putInt("coins", Integer.parseInt(userResponse.getCoins()));
-        editor.putInt("id", userResponse.get_id());
-        editor.apply();
-    }
-
-
 }

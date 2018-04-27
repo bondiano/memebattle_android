@@ -46,7 +46,7 @@ public class UserResponse {
         this.coins = coins;
     }
 
-    public int get_id() {
+    public int getId() {
         return _id;
     }
 
@@ -78,7 +78,7 @@ public class UserResponse {
         this.error = error;
     }
 
-    public String getToken_access() {
+    public String getTokenAccess() {
         return token_access;
     }
 
@@ -86,7 +86,7 @@ public class UserResponse {
         this.token_access = token_access;
     }
 
-    public String getToken_refresh() {
+    public String getTokenRefresh() {
         return token_refresh;
     }
 

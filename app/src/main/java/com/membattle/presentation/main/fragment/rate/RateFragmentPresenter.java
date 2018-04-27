@@ -65,8 +65,8 @@ public class RateFragmentPresenter extends MvpPresenter<RateFragmentView> {
             public void onSuccess(UserResponse userResponse) {
                 Log.i("code", "refresh_success");
                 SharedPreferences.Editor editor = settings.edit();
-                editor.putString(Settings.TOKEN_REFRESH, userResponse.getToken_refresh());
-                editor.putString(Settings.TOKEN_ACCESS, userResponse.getToken_access());
+                editor.putString(Settings.TOKEN_REFRESH, userResponse.getTokenRefresh());
+                editor.putString(Settings.TOKEN_ACCESS, userResponse.getTokenAccess());
                 editor.apply();
                 getRateList();
             }

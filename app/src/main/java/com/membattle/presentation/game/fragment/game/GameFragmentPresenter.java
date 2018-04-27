@@ -42,9 +42,6 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
 
     @Inject
     APIService APIService;
-
-    @Inject
-    SharedPreferences settings;
     @Inject
     SettingsService settingsService;
 
@@ -86,9 +83,7 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
 
     private void onCoins(String args) {
         Coins coins = gson.fromJson(args, Coins.class);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putInt(Settings.COINS, Integer.parseInt(coins.getData().getCoins()));
-        editor.apply();
+        settingsService.setCoins(Integer.parseInt(coins.getData().getCoins()));
     }
 
     private void onResult(String args) {
@@ -120,7 +115,7 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
 
     public GameFragmentPresenter() {
         App.getComponent().inject(this);
-        USER_ID = settings.getInt(ID, 0);
+        USER_ID = s;
     }
 
     public void connectToGame(Socket socket) {
