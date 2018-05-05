@@ -45,7 +45,6 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
     @Inject
     SettingsService settingsService;
 
-    int USER_ID;
     Gson gson = new Gson();
     String urlTop, urlBottom;
     public Emitter.Listener onConnect = args -> {
@@ -115,20 +114,19 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
 
     public GameFragmentPresenter() {
         App.getComponent().inject(this);
-        USER_ID = s;
     }
 
     public void connectToGame(Socket socket) {
-        RequestToGame requestToGame = new RequestToGame(USER_ID, 0, 0, "@@ws/CONNECT_TO_GAME_REQUEST");
+        RequestToGame requestToGame = new RequestToGame(settingsService.getUserId(), 0, 0, "@@ws/CONNECT_TO_GAME_REQUEST");
         String json = gson.toJson(requestToGame);
         socket.emit("action", json);
-        RequestToGame requestToGame2 = new RequestToGame(USER_ID, 0, 0, "@@ws/GET_MEM_PAIR_REQUEST");
+        RequestToGame requestToGame2 = new RequestToGame(settingsService.getUserId(), 0, 0, "@@ws/GET_MEM_PAIR_REQUEST");
         String json2 = gson.toJson(requestToGame2);
         socket.emit("action", json2);
     }
 
     public void omMemClick(Socket socket, int right) {
-        RequestToGame req = new RequestToGame(USER_ID, right, GameActivity.currentMode, "@@ws/CHOOSE_MEM_REQUEST");
+        RequestToGame req = new RequestToGame(settingsService.getUserId(), right, GameActivity.currentMode, "@@ws/CHOOSE_MEM_REQUEST");
         String j = gson.toJson(req);
         socket.emit("action", j);
     }

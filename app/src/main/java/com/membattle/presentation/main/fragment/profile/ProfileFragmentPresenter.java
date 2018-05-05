@@ -8,6 +8,7 @@ import com.membattle.App;
 import com.membattle.R;
 import com.membattle.data.settings.Settings;
 import com.membattle.di.qualifier.Local;
+import com.membattle.domain.service.SettingsService;
 
 import java.util.ArrayList;
 
@@ -16,22 +17,23 @@ import javax.inject.Inject;
 @InjectViewState
 public class ProfileFragmentPresenter extends MvpPresenter<ProfileFragmentView> {
     @Inject
-    SharedPreferences settings;
+    SettingsService settingsService;
+
     public ProfileFragmentPresenter() {
         App.getComponent().inject(this);
     }
 
     public String[] getUrls() {
         String[] arrayList = new String[100];
-        for(int i=0; i<6; i++) {
-            arrayList[i]="https://301-1.ru/gen-mems/img_mems/4a4c2a53661ede617bd7437b4e728cbb.jpg";
+        for (int i = 0; i < 6; i++) {
+            arrayList[i] = "https://301-1.ru/gen-mems/img_mems/4a4c2a53661ede617bd7437b4e728cbb.jpg";
         }
         return arrayList;
     }
 
     public void setFields() {
-        String username = settings.getString(Settings.USERNAME, "guest");
-        String coins = settings.getInt(Settings.COINS, 0)+"";
+        String username = settingsService.getUsername();
+        String coins = settingsService.getCoins()+"";
         getViewState().setFields(username, coins);
     }
 

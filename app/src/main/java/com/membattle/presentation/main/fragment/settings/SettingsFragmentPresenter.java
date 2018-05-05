@@ -1,16 +1,15 @@
 package com.membattle.presentation.main.fragment.settings;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.membattle.App;
-import com.membattle.data.settings.Settings;
 import com.membattle.di.qualifier.Local;
 import com.membattle.domain.service.APIService;
+import com.membattle.domain.service.SettingsService;
 
 import javax.inject.Inject;
 
@@ -25,7 +24,7 @@ public class SettingsFragmentPresenter extends MvpPresenter<SettingsFragmentView
     @Inject
     APIService APIService;
     @Inject
-    SharedPreferences settings;
+    SettingsService settingsService;
     public SettingsFragmentPresenter() {
         App.getComponent().inject(this);
     }
@@ -50,9 +49,7 @@ public class SettingsFragmentPresenter extends MvpPresenter<SettingsFragmentView
     }
 
     public void clearPrefs() {
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString(Settings.USERNAME, "no");
-        editor.apply();
+        settingsService.signOut();
         getViewState().gotoAuthActivity();
     }
 

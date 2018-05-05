@@ -6,6 +6,7 @@ import com.membattle.data.settings.Settings;
 import com.membattle.di.AppComponent;
 import com.membattle.di.DaggerAppComponent;
 import com.membattle.di.module.SharedPreferencesModule;
+import com.vk.sdk.VKSdk;
 import com.yandex.metrica.YandexMetrica;
 
 public class App extends Application {
@@ -20,6 +21,7 @@ public class App extends Application {
         component = DaggerAppComponent.builder()
                 .sharedPreferencesModule(new SharedPreferencesModule(getApplicationContext()))
                 .build();
+        VKSdk.initialize(getApplicationContext());
         // Initialisation AppMetrica SDK
         YandexMetrica.activate(getApplicationContext(), Settings.API_key);
         // Tracking user activity

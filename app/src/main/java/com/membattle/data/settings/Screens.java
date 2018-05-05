@@ -24,4 +24,5 @@ public interface Screens {
     int CONTAINER_AUTH = R.id.auth_container;
     int CONTAINER_MAIN = R.id.main_container;
     int CONTAINER_GAME = R.id.game_container;
+    String SHARE_IMAGE = "share image";
 }

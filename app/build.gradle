@@ -65,4 +65,5 @@ dependencies {
     compile 'com.yandex.android:mobmetricalib:2.80'
 
     compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.vk:androidsdk:1.6.8'
 }

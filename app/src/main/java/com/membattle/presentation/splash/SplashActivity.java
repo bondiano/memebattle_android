@@ -11,24 +11,28 @@ import android.util.Log;
 
 import com.membattle.App;
 import com.membattle.R;
+import com.membattle.domain.service.SettingsService;
 import com.membattle.presentation.auth.activity.AuthActivity;
 import com.membattle.presentation.main.activity.MainActivity;
 import com.membattle.presentation.splash.intro.IntroActivity;
+import com.vk.sdk.util.VKUtil;
 
 import javax.inject.Inject;
 
 public class SplashActivity extends Activity {
 
     @Inject
-    SharedPreferences settings;
+    SettingsService settingsService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         App.getComponent().inject(this);
+        String[] fingerprints = VKUtil.getCertificateFingerprint(this, this.getPackageName());
+        Log.i("code", "fingerprint: " + fingerprints[0]);
         new Handler().postDelayed(() -> {
-            String login = settings.getString("username", "no");
+            String login = settingsService.getUsername();
             Log.i("code", "first: "+login);
             if(login.equals("no")){
                 overridePendingTransition(0,0);

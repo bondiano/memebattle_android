@@ -42,4 +42,37 @@ public class SettingsService {
         editor.putInt(COINS, coins);
         editor.apply();
     }
+
+    public int getUserId() {
+        return sharedPreferences.getInt(ID, 0);
+    }
+
+    public String getUsername() {
+        return sharedPreferences.getString(USERNAME, ERROR);
+    }
+
+    public int getCoins() {
+        return sharedPreferences.getInt(COINS, 0);
+    }
+
+    public String getTokenRefresh() {
+        return sharedPreferences.getString(TOKEN_REFRESH, ERROR);
+    }
+
+    public void updateTokens(String tokenRefresh, String tokenAccess) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(TOKEN_REFRESH, tokenRefresh);
+        editor.putString(TOKEN_ACCESS, tokenAccess);
+        editor.apply();
+    }
+
+    public String getTokenAccess() {
+        return sharedPreferences.getString(TOKEN_ACCESS, ERROR);
+    }
+
+    public void signOut() {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(USERNAME, "no");
+        editor.apply();
+    }
 }

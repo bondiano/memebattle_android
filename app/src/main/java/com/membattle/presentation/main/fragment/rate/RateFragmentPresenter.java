@@ -1,6 +1,5 @@
 package com.membattle.presentation.main.fragment.rate;
 
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.arellomobile.mvp.InjectViewState;
@@ -12,6 +11,7 @@ import com.membattle.data.api.model.res.UserResponse;
 import com.membattle.data.api.model.res.rate.Rate;
 import com.membattle.data.settings.Settings;
 import com.membattle.domain.service.APIService;
+import com.membattle.domain.service.SettingsService;
 import com.membattle.presentation.main.fragment.rate.recycler.LineRate;
 
 import java.util.ArrayList;
@@ -23,15 +23,15 @@ public class RateFragmentPresenter extends MvpPresenter<RateFragmentView> {
     @Inject
     APIService APIService;
     @Inject
-    SharedPreferences settings;
+    SettingsService settingsService;
     public RateFragmentPresenter() {
         App.getComponent().inject(this);
     }
 
     public void getRateList() {
         ArrayList<LineRate> lineRates = new ArrayList<>();
-        String secret = settings.getString(Settings.TOKEN_ACCESS, "no");
-        Id id = new Id(settings.getInt(Settings.ID, 0));
+        String secret = settingsService.getTokenAccess();
+        Id id = new Id(settingsService.getUserId());
         APIService.getRateList(Settings.HEADER + secret, id,  new APIService.RateCallback() {
             @Override
             public void onSuccess(Rate rate) {
@@ -58,16 +58,13 @@ public class RateFragmentPresenter extends MvpPresenter<RateFragmentView> {
     }
 
     private void refrechToken() {
-        String refresh = settings.getString(Settings.TOKEN_REFRESH, "no");
+        String refresh = settingsService.getTokenRefresh();
         Secret secret = new Secret(refresh);
         APIService.refreshToken(Settings.HEADER + refresh, secret, new APIService.AuthCallback() {
             @Override
             public void onSuccess(UserResponse userResponse) {
                 Log.i("code", "refresh_success");
-                SharedPreferences.Editor editor = settings.edit();
-                editor.putString(Settings.TOKEN_REFRESH, userResponse.getTokenRefresh());
-                editor.putString(Settings.TOKEN_ACCESS, userResponse.getTokenAccess());
-                editor.apply();
+                settingsService.updateTokens(userResponse.getTokenRefresh(), userResponse.getTokenAccess());
                 getRateList();
             }
             @Override
