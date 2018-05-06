@@ -1,11 +1,11 @@
-package com.membattle.data.api;
+package com.membattle.data.api.meme;
 
-import com.membattle.data.api.model.req.Id;
-import com.membattle.data.api.model.req.RegistrationUser;
-import com.membattle.data.api.model.req.Secret;
-import com.membattle.data.api.model.res.UserResponse;
-import com.membattle.data.api.model.res.rate.Rate;
-import com.membattle.data.api.model.res.ValidToken;
+import com.membattle.data.api.meme.model.req.Id;
+import com.membattle.data.api.meme.model.req.RegistrationUser;
+import com.membattle.data.api.meme.model.req.Secret;
+import com.membattle.data.api.meme.model.res.UserResponse;
+import com.membattle.data.api.meme.model.res.rate.Rate;
+import com.membattle.data.api.meme.model.res.ValidToken;
 
 import retrofit2.http.Body;
 import retrofit2.http.GET;
