@@ -2,6 +2,7 @@ package com.membattle.di;
 
 import android.content.Context;
 
+import com.membattle.di.module.SocketModule;
 import com.membattle.presentation.base.BaseActivity;
 import com.membattle.di.module.APIModule;
 import com.membattle.di.module.NavigatorModule;
@@ -32,7 +33,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 @Singleton
-@Component(modules = {NavigatorModule.class, APIModule.class, SharedPreferencesModule.class})
+@Component(modules = {NavigatorModule.class, APIModule.class, SharedPreferencesModule.class, SocketModule.class})
 public interface AppComponent {
     Context context();
 

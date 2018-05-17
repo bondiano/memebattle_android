@@ -30,6 +30,8 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.net.URISyntaxException;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -102,6 +104,7 @@ public class GameFragment extends BaseFragment implements GameFragmentView {
     void onTopMemClick() {
         YandexMetrica.reportEvent("topmemclick");
         Log.i("code", "topmem");
+        presenter.emit();
         if (canClickMem) {
             canClickMem = false;
             //presenter.omMemClick(socket, 0);
@@ -121,6 +124,7 @@ public class GameFragment extends BaseFragment implements GameFragmentView {
     @OnLongClick(R.id.game_top_mem)
     boolean onTopMemLongClick() {
         presenter.zoomMem(true);
+
         return false;
     }
 

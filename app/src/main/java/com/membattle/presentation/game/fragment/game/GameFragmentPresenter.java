@@ -17,6 +17,7 @@ import com.membattle.di.qualifier.Global;
 import com.membattle.di.qualifier.Local;
 import com.membattle.domain.service.APIService;
 import com.membattle.domain.service.SettingsService;
+import com.membattle.domain.service.SocketService;
 import com.membattle.presentation.game.activity.GameActivity;
 
 import org.json.JSONException;
@@ -40,6 +41,8 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
     APIService APIService;
     @Inject
     SettingsService settingsService;
+    @Inject
+    SocketService socketService;
 
     Gson gson = new Gson();
     String urlTop, urlBottom;
@@ -137,5 +140,9 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
 
         else
             router.navigateTo(Screens.ZOOM_SCREEN, urlBottom);
+    }
+
+    public void emit() {
+        socketService.emit();
     }
 }

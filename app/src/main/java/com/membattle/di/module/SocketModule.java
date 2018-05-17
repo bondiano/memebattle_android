@@ -20,7 +20,7 @@ public class SocketModule {
 
     public SocketModule() {
         try {
-            socket = IO.socket("https://api.mems.fun/");
+            socket = IO.socket("http://139.59.156.1:8000/");
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
@@ -28,7 +28,7 @@ public class SocketModule {
 
     @Provides
     @Singleton
-    SocketService socketService(Socket socket) {
+    SocketService socketService() {
         return new SocketService(socket);
     }
 }
