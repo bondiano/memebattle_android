@@ -12,6 +12,7 @@ import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
@@ -23,14 +24,19 @@ import com.membattle.presentation.widget_plus.TextViewPlus;
 import com.squareup.picasso.Picasso;
 import com.yandex.metrica.YandexMetrica;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.net.URISyntaxException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnLongClick;
 
 public class GameFragment extends BaseFragment implements GameFragmentView {
-    Socket socket = null;
+    //Socket socket = null;
     boolean canClickMem = true;
     int zoom = 0;
     boolean change = false;
@@ -96,18 +102,18 @@ public class GameFragment extends BaseFragment implements GameFragmentView {
     void onTopMemClick() {
         YandexMetrica.reportEvent("topmemclick");
         Log.i("code", "topmem");
-        if(canClickMem) {
+        if (canClickMem) {
             canClickMem = false;
-            presenter.omMemClick(socket, 0);
+            //presenter.omMemClick(socket, 0);
             topLike.setVisibility(View.VISIBLE);
         }
     }
 
     @OnClick(R.id.game_bottom_mem)
     void onBottomMemClick() {
-        if(canClickMem) {
+        if (canClickMem) {
             canClickMem = false;
-            presenter.omMemClick(socket, 1);
+            //presenter.omMemClick(socket, 1);
             bottomLike.setVisibility(View.VISIBLE);
         }
     }
@@ -121,9 +127,9 @@ public class GameFragment extends BaseFragment implements GameFragmentView {
     @Override
     public void setMemes(String urlTop, String urlBottom, boolean firstPair) {
         canClickMem = true;
-        handler.post(()->{
+        handler.post(() -> {
             hideAfter();
-            if(!firstPair) {
+            if (!firstPair) {
                 startTick();
             }
             Picasso.with(getActivity())
@@ -147,10 +153,16 @@ public class GameFragment extends BaseFragment implements GameFragmentView {
         });
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(String event) {
+        Log.i("code", "onConnectInFragment " + event);
+    }
+
     @Override
     public void onResume() {
         super.onResume();
-        try {
+        EventBus.getDefault().register(this);
+        /*try {
             socket = IO.socket("https://api.mems.fun/");
         } catch (URISyntaxException e) {
             e.printStackTrace();
@@ -159,19 +171,21 @@ public class GameFragment extends BaseFragment implements GameFragmentView {
         socket.on("connect", presenter.onConnect);
         socket.on("action", presenter.onAction);
         socket.on("error", presenter.onError);
-        socket.connect();
+        socket.connect();*/
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        socket.close();
+        EventBus.getDefault().unregister(this);
+        //socket.close();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        socket.close();
+        EventBus.getDefault().unregister(this);
+        //socket.close();
     }
 
     void hideAfter() {
@@ -195,7 +209,7 @@ public class GameFragment extends BaseFragment implements GameFragmentView {
                 elapsedMillis = 0;
                 if (tick == 0) {
                     chronometer.stop();
-                    if(change) {
+                    if (change) {
                         topMem.setImageResource(R.drawable.meme1);
                         bottomMem.setImageResource(R.drawable.meme2);
                     } else {

@@ -1,16 +1,9 @@
 package com.membattle.presentation.main.fragment.profile;
 
-import android.content.SharedPreferences;
-
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.membattle.App;
-import com.membattle.R;
-import com.membattle.data.settings.Settings;
-import com.membattle.di.qualifier.Local;
 import com.membattle.domain.service.SettingsService;
-
-import java.util.ArrayList;
 
 import javax.inject.Inject;
 

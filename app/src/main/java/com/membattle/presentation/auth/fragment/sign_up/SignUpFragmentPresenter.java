@@ -1,14 +1,13 @@
 package com.membattle.presentation.auth.fragment.sign_up;
 
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.google.gson.Gson;
 import com.membattle.App;
-import com.membattle.data.api.model.req.RegistrationUser;
-import com.membattle.data.api.model.res.UserResponse;
+import com.membattle.data.api.meme.model.req.RegistrationUser;
+import com.membattle.data.api.meme.model.res.UserResponse;
 import com.membattle.di.qualifier.Local;
 import com.membattle.domain.service.APIService;
 import com.membattle.data.settings.Screens;

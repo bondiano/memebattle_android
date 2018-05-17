@@ -1,6 +1,5 @@
 package com.membattle.presentation.game.fragment.game;
 
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.arellomobile.mvp.InjectViewState;
@@ -9,12 +8,11 @@ import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.Socket;
 import com.google.gson.Gson;
 import com.membattle.App;
-import com.membattle.data.api.model.req.RequestToGame;
-import com.membattle.data.api.model.res.coins.Coins;
-import com.membattle.data.api.model.res.game.PairLikes.PairLikes;
-import com.membattle.data.api.model.res.game.PairMem.PairMem;
+import com.membattle.data.api.meme.model.req.RequestToGame;
+import com.membattle.data.api.meme.model.res.coins.Coins;
+import com.membattle.data.api.meme.model.res.game.PairLikes.PairLikes;
+import com.membattle.data.api.meme.model.res.game.PairMem.PairMem;
 import com.membattle.data.settings.Screens;
-import com.membattle.data.settings.Settings;
 import com.membattle.di.qualifier.Global;
 import com.membattle.di.qualifier.Local;
 import com.membattle.domain.service.APIService;
@@ -27,8 +25,6 @@ import org.json.JSONObject;
 import javax.inject.Inject;
 
 import ru.terrakok.cicerone.Router;
-
-import static com.membattle.data.settings.Settings.ID;
 
 @InjectViewState
 public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {

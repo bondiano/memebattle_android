@@ -1,11 +1,11 @@
 package com.membattle.domain.service;
 
-import com.membattle.data.api.MemeBattleApi;
-import com.membattle.data.api.model.req.Id;
-import com.membattle.data.api.model.req.RegistrationUser;
-import com.membattle.data.api.model.req.Secret;
-import com.membattle.data.api.model.res.UserResponse;
-import com.membattle.data.api.model.res.rate.Rate;
+import com.membattle.data.api.meme.MemeBattleApi;
+import com.membattle.data.api.meme.model.req.Id;
+import com.membattle.data.api.meme.model.req.RegistrationUser;
+import com.membattle.data.api.meme.model.req.Secret;
+import com.membattle.data.api.meme.model.res.UserResponse;
+import com.membattle.data.api.meme.model.res.rate.Rate;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;

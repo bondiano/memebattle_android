@@ -1,8 +1,6 @@
 package com.membattle.presentation.game.activity;
 
-import android.content.Context;
 import android.graphics.Rect;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import com.arellomobile.mvp.InjectViewState;
@@ -18,8 +16,6 @@ import com.nightonke.boommenu.BoomButtons.TextOutsideCircleButton;
 import com.nightonke.boommenu.BoomMenuButton;
 import com.nightonke.boommenu.ButtonEnum;
 import com.nightonke.boommenu.Piece.PiecePlaceEnum;
-
-import java.util.Set;
 
 import javax.inject.Inject;
 

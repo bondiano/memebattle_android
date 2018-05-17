@@ -1,7 +1,9 @@
 package com.membattle.di.module;
 
-import com.membattle.data.api.MemeBattleApi;
+import com.membattle.data.api.meme.MemeBattleApi;
+import com.membattle.data.api.vk.VkAPI;
 import com.membattle.domain.service.APIService;
+import com.membattle.domain.service.VkAPIService;
 
 import javax.inject.Singleton;
 
@@ -13,28 +15,30 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
 public class APIModule {
+
     @Provides
     @Singleton
-    Retrofit provideCall() {
-        return new Retrofit.Builder()
+    @SuppressWarnings("unused")
+    public APIService providesService() {
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.mems.fun/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
-    }
-    @Provides
-    @Singleton
-    @SuppressWarnings("unused")
-    public MemeBattleApi providesNetworkService(
-            Retrofit retrofit) {
-        return retrofit.create(MemeBattleApi.class);
-    }
-    @Provides
-    @Singleton
-    @SuppressWarnings("unused")
-    public APIService providesService(
-            MemeBattleApi networkService) {
-        return new APIService(networkService);
+        MemeBattleApi memeBattleApi = retrofit.create(MemeBattleApi.class);
+        return new APIService(memeBattleApi);
     }
 
+    @Provides
+    @Singleton
+    @SuppressWarnings("unused")
+    public VkAPIService providesServiceVk() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.vk.com/method/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+        VkAPI vkApi = retrofit.create(VkAPI.class);
+        return new VkAPIService(vkApi);
+    }
 }

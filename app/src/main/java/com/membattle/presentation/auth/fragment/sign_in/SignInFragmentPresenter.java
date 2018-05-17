@@ -1,11 +1,8 @@
 package com.membattle.presentation.auth.fragment.sign_in;
 
-import android.content.SharedPreferences;
-
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.membattle.App;
-import com.membattle.data.api.model.res.UserResponse;
 import com.membattle.di.qualifier.Global;
 import com.membattle.di.qualifier.Local;
 import com.membattle.domain.service.APIService;

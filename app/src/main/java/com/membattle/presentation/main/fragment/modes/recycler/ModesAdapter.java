@@ -2,7 +2,6 @@ package com.membattle.presentation.main.fragment.modes.recycler;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +12,6 @@ import com.membattle.R;
 import com.membattle.data.settings.Screens;
 import com.membattle.data.settings.Settings;
 import com.membattle.di.qualifier.Global;
-import com.membattle.presentation.game.activity.GameActivity;
 
 import java.util.ArrayList;
 
