@@ -10,10 +10,6 @@ import com.membattle.di.module.SharedPreferencesModule;
 import com.vk.sdk.VKSdk;
 import com.yandex.metrica.YandexMetrica;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
 public class App extends Application {
     private static AppComponent component;
     public static AppComponent getComponent() {
@@ -32,6 +28,5 @@ public class App extends Application {
         // Tracking user activity
         YandexMetrica.enableActivityAutoTracking(this);
     }
-
 
 }

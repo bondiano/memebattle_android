@@ -10,7 +10,6 @@ import com.membattle.presentation.auth.fragment.sign_in.SignInFragment;
 import com.membattle.presentation.auth.fragment.sign_up.SignUpFragment;
 import com.membattle.presentation.game.activity.GameActivity;
 import com.membattle.presentation.game.fragment.game.GameFragment;
-import com.membattle.presentation.game.fragment.zoom.ZoomFragment;
 import com.membattle.presentation.main.activity.MainActivity;
 import com.membattle.presentation.main.fragment.info.InfoFragment;
 import com.membattle.presentation.main.fragment.modes.ModesFragment;
@@ -73,8 +72,6 @@ public class LocalNavigator extends SupportFragmentNavigator {
                 return new GameFragment();
             case Screens.PROFILE_SCREEN:
                 return new ProfileFragment();
-            case Screens.ZOOM_SCREEN:
-                return new ZoomFragment(data);
             default:
                 return new ModesFragment();
         }

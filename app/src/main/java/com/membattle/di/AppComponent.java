@@ -14,9 +14,9 @@ import com.membattle.presentation.game.activity.GameActivity;
 import com.membattle.presentation.game.activity.GameActivityPresenter;
 import com.membattle.presentation.game.fragment.game.GameFragment;
 import com.membattle.presentation.game.fragment.game.GameFragmentPresenter;
-import com.membattle.presentation.game.fragment.zoom.ZoomFragmentPresenter;
 import com.membattle.presentation.game.zoom.ZoomActivity;
 import com.membattle.presentation.game.zoom.ZoomActivityPresenter;
+import com.membattle.presentation.main.fragment.info.InfoFragment;
 import com.membattle.presentation.splash.SplashActivity;
 import com.membattle.presentation.main.activity.MainActivity;
 import com.membattle.presentation.main.activity.MainActivityPresenter;
@@ -65,8 +65,6 @@ public interface AppComponent {
 
     void inject(GameFragment gameFragment);
 
-    void inject(ZoomFragmentPresenter zoomFragmentPresenter);
-
     void inject(ProfileFragmentPresenter profileFragmentPresenter);
 
     void inject(BaseActivity baseActivity);
@@ -78,4 +76,6 @@ public interface AppComponent {
     void inject(ZoomActivity zoomActivity);
 
     void inject(ZoomActivityPresenter zoomActivityPresenter);
+
+    void inject(InfoFragment infoFragment);
 }

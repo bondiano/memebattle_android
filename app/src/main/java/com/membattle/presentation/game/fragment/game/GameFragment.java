@@ -18,7 +18,9 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
+import com.membattle.App;
 import com.membattle.R;
+import com.membattle.domain.utils.SocketListener;
 import com.membattle.presentation.base.BaseFragment;
 import com.membattle.presentation.widget_plus.TextViewPlus;
 import com.squareup.picasso.Picasso;
@@ -37,7 +39,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnLongClick;
 
-public class GameFragment extends BaseFragment implements GameFragmentView {
+public class GameFragment extends BaseFragment implements GameFragmentView, SocketListener {
     //Socket socket = null;
     boolean canClickMem = true;
     int zoom = 0;
@@ -159,13 +161,13 @@ public class GameFragment extends BaseFragment implements GameFragmentView {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(String event) {
-        Log.i("code", "onConnectInFragment " + event);
+        Log.i("code", "onGameFragment " + event);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        EventBus.getDefault().register(this);
+        //EventBus.getDefault().register(this);
         /*try {
             socket = IO.socket("https://api.mems.fun/");
         } catch (URISyntaxException e) {
@@ -181,7 +183,7 @@ public class GameFragment extends BaseFragment implements GameFragmentView {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        EventBus.getDefault().unregister(this);
+        //EventBus.getDefault().unregister(this);
         //socket.close();
     }
 
@@ -230,5 +232,10 @@ public class GameFragment extends BaseFragment implements GameFragmentView {
     @OnClick(R.id.game_top_zoom)
     void onTopZoomClick() {
         presenter.zoomMem(true);
+    }
+
+    @Override
+    public void injectDependencies(){
+        App.getComponent().inject(this);
     }
 }

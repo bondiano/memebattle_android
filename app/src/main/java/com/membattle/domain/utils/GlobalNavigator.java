@@ -10,7 +10,6 @@ import android.widget.Toast;
 import com.membattle.data.settings.Screens;
 import com.membattle.data.settings.Settings;
 import com.membattle.presentation.game.activity.GameActivity;
-import com.membattle.presentation.game.fragment.zoom.ZoomFragment;
 import com.membattle.presentation.game.zoom.ZoomActivity;
 import com.membattle.presentation.main.activity.MainActivity;
 
