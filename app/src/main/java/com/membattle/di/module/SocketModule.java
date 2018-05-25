@@ -3,7 +3,7 @@ package com.membattle.di.module;
 
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
-import com.membattle.domain.service.SocketService;
+import com.membattle.domain.interactor.SocketService;
 
 import java.net.URISyntaxException;
 
@@ -11,8 +11,6 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import com.github.nkzawa.socketio.client.IO;
-import com.github.nkzawa.socketio.client.Socket;
 
 @Module
 public class SocketModule {

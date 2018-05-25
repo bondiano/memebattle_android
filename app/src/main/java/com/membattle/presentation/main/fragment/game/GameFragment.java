@@ -1,23 +1,18 @@
-package com.membattle.presentation.game.fragment.game;
+package com.membattle.presentation.main.fragment.game;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
-import com.github.nkzawa.socketio.client.IO;
-import com.github.nkzawa.socketio.client.Socket;
 import com.membattle.App;
 import com.membattle.R;
 import com.membattle.domain.utils.SocketListener;
@@ -26,16 +21,10 @@ import com.membattle.presentation.widget_plus.TextViewPlus;
 import com.squareup.picasso.Picasso;
 import com.yandex.metrica.YandexMetrica;
 
-import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.net.URISyntaxException;
-
-import javax.inject.Inject;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnLongClick;
 
@@ -181,16 +170,9 @@ public class GameFragment extends BaseFragment implements GameFragmentView, Sock
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        //EventBus.getDefault().unregister(this);
-        //socket.close();
-    }
-
-    @Override
     public void onPause() {
         super.onPause();
-        EventBus.getDefault().unregister(this);
+        //EventBus.getDefault().unregister(this);
         //socket.close();
     }
 

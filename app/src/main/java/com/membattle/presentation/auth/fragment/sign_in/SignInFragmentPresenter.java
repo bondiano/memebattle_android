@@ -5,9 +5,9 @@ import com.arellomobile.mvp.MvpPresenter;
 import com.membattle.App;
 import com.membattle.di.qualifier.Global;
 import com.membattle.di.qualifier.Local;
-import com.membattle.domain.service.APIService;
+import com.membattle.domain.interactor.APIService;
 import com.membattle.data.settings.Screens;
-import com.membattle.domain.service.SettingsService;
+import com.membattle.domain.interactor.SettingsService;
 
 import javax.inject.Inject;
 

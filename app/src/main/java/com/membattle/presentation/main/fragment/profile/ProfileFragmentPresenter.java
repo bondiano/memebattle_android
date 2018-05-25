@@ -3,7 +3,7 @@ package com.membattle.presentation.main.fragment.profile;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.membattle.App;
-import com.membattle.domain.service.SettingsService;
+import com.membattle.domain.interactor.SettingsService;
 
 import javax.inject.Inject;
 

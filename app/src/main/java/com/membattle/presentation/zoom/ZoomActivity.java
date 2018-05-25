@@ -1,4 +1,4 @@
-package com.membattle.presentation.game.zoom;
+package com.membattle.presentation.zoom;
 
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -12,7 +12,7 @@ import com.membattle.App;
 import com.membattle.R;
 import com.membattle.data.settings.Screens;
 import com.membattle.di.qualifier.Global;
-import com.membattle.domain.service.SettingsService;
+import com.membattle.domain.interactor.SettingsService;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 

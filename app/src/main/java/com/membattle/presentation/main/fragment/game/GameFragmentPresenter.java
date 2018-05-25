@@ -1,4 +1,4 @@
-package com.membattle.presentation.game.fragment.game;
+package com.membattle.presentation.main.fragment.game;
 
 import android.util.Log;
 
@@ -15,10 +15,10 @@ import com.membattle.data.api.meme.model.res.game.PairMem.PairMem;
 import com.membattle.data.settings.Screens;
 import com.membattle.di.qualifier.Global;
 import com.membattle.di.qualifier.Local;
-import com.membattle.domain.service.APIService;
-import com.membattle.domain.service.SettingsService;
-import com.membattle.domain.service.SocketService;
-import com.membattle.presentation.game.activity.GameActivity;
+import com.membattle.domain.interactor.APIService;
+import com.membattle.domain.interactor.SettingsService;
+import com.membattle.domain.interactor.SocketService;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -125,9 +125,9 @@ public class GameFragmentPresenter extends MvpPresenter<GameFragmentView> {
     }
 
     public void omMemClick(Socket socket, int right) {
-        RequestToGame req = new RequestToGame(settingsService.getUserId(), right, GameActivity.currentMode, "@@ws/CHOOSE_MEM_REQUEST");
+        /*RequestToGame req = new RequestToGame(settingsService.getUserId(), right, GameActivity.currentMode, "@@ws/CHOOSE_MEM_REQUEST");
         String j = gson.toJson(req);
-        socket.emit("action", j);
+        socket.emit("action", j);*/
     }
 
     void zoomMem(boolean top) {

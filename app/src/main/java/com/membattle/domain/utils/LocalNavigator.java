@@ -1,16 +1,12 @@
 package com.membattle.domain.utils;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.widget.Toast;
+
 import com.membattle.data.settings.Screens;
 import com.membattle.presentation.auth.fragment.sign_in.SignInFragment;
 import com.membattle.presentation.auth.fragment.sign_up.SignUpFragment;
-import com.membattle.presentation.game.activity.GameActivity;
-import com.membattle.presentation.game.fragment.game.GameFragment;
-import com.membattle.presentation.main.activity.MainActivity;
+import com.membattle.presentation.main.fragment.game.GameFragment;
 import com.membattle.presentation.main.fragment.info.InfoFragment;
 import com.membattle.presentation.main.fragment.modes.ModesFragment;
 import com.membattle.presentation.main.fragment.profile.ProfileFragment;
@@ -33,8 +29,6 @@ public class LocalNavigator extends SupportFragmentNavigator {
         switch (currentContainer) {
             case Screens.CONTAINER_MAIN:
                 return mainFragments(screenKey);
-            case Screens.CONTAINER_GAME:
-                return gameFragments(screenKey, data);
             case Screens.CONTAINER_AUTH:
                 return authFragments(screenKey);
             default:
@@ -44,6 +38,8 @@ public class LocalNavigator extends SupportFragmentNavigator {
     }
     public Fragment mainFragments(String screenKey) {
         switch (screenKey) {
+            case Screens.GAME_SCREEN:
+                return new GameFragment();
             case Screens.MODES_SCREEN:
                 return new ModesFragment();
             case Screens.RATE_SCREEN:
@@ -55,21 +51,6 @@ public class LocalNavigator extends SupportFragmentNavigator {
             case Screens.SHOP_SCREEN:
                 showSystemMessage("Магазин пока не работает!");
                 return new ModesFragment();
-            case Screens.PROFILE_SCREEN:
-                return new ProfileFragment();
-            default:
-                return new ModesFragment();
-        }
-    }
-    private Fragment gameFragments(String screenKey, Object data) {
-        switch (screenKey) {
-            case Screens.GAME_SCREEN:
-                return new GameFragment();
-            case Screens.RATE_SCREEN:
-                return new RateFragment();
-            case Screens.SHOP_SCREEN:
-                showSystemMessage("Магазин пока не работает!");
-                return new GameFragment();
             case Screens.PROFILE_SCREEN:
                 return new ProfileFragment();
             default:

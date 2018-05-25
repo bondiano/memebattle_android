@@ -10,12 +10,10 @@ import com.membattle.di.module.SharedPreferencesModule;
 import com.membattle.presentation.auth.activity.AuthActivity;
 import com.membattle.presentation.auth.fragment.sign_in.SignInFragmentPresenter;
 import com.membattle.presentation.auth.fragment.sign_up.SignUpFragmentPresenter;
-import com.membattle.presentation.game.activity.GameActivity;
-import com.membattle.presentation.game.activity.GameActivityPresenter;
-import com.membattle.presentation.game.fragment.game.GameFragment;
-import com.membattle.presentation.game.fragment.game.GameFragmentPresenter;
-import com.membattle.presentation.game.zoom.ZoomActivity;
-import com.membattle.presentation.game.zoom.ZoomActivityPresenter;
+import com.membattle.presentation.main.fragment.game.GameFragment;
+import com.membattle.presentation.main.fragment.game.GameFragmentPresenter;
+import com.membattle.presentation.zoom.ZoomActivity;
+import com.membattle.presentation.zoom.ZoomActivityPresenter;
 import com.membattle.presentation.main.fragment.info.InfoFragment;
 import com.membattle.presentation.splash.SplashActivity;
 import com.membattle.presentation.main.activity.MainActivity;
@@ -50,10 +48,6 @@ public interface AppComponent {
     void inject(SignInFragmentPresenter signInFragmentPresenter);
 
     void inject(SignUpFragmentPresenter signUpFragmentPresenter);
-
-    void inject(GameActivity gameActivity);
-
-    void inject(GameActivityPresenter gameActivityPresenter);
 
     void inject(RateFragment rateFragment);
 

@@ -10,8 +10,8 @@ import com.membattle.data.api.meme.model.req.Secret;
 import com.membattle.data.api.meme.model.res.UserResponse;
 import com.membattle.data.api.meme.model.res.rate.Rate;
 import com.membattle.data.settings.Settings;
-import com.membattle.domain.service.APIService;
-import com.membattle.domain.service.SettingsService;
+import com.membattle.domain.interactor.APIService;
+import com.membattle.domain.interactor.SettingsService;
 import com.membattle.presentation.main.fragment.rate.recycler.LineRate;
 
 import java.util.ArrayList;

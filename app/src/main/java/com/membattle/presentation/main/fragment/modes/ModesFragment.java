@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ModesFragment extends BaseFragment implements ModesFragmentView, SocketListener {
+public class ModesFragment extends BaseFragment implements ModesFragmentView {
     @InjectPresenter
     ModesFragmentPresenter presenter;
 

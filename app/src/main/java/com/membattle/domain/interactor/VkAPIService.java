@@ -1,4 +1,4 @@
-package com.membattle.domain.service;
+package com.membattle.domain.interactor;
 
 import com.membattle.data.api.vk.VkAPI;
 import com.membattle.data.api.vk.model.res.profile_info.ProfileInfo;

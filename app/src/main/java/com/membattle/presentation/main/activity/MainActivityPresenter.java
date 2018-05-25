@@ -1,21 +1,16 @@
 package com.membattle.presentation.main.activity;
 
-import android.graphics.Rect;
-import android.util.Log;
+import android.support.design.widget.NavigationView;
+import android.view.MenuItem;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.membattle.App;
 import com.membattle.R;
 import com.membattle.data.settings.Screens;
-import com.membattle.data.settings.Settings;
 import com.membattle.di.qualifier.Global;
 import com.membattle.di.qualifier.Local;
-import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
-import com.nightonke.boommenu.BoomButtons.TextOutsideCircleButton;
-import com.nightonke.boommenu.BoomMenuButton;
-import com.nightonke.boommenu.ButtonEnum;
-import com.nightonke.boommenu.Piece.PiecePlaceEnum;
+import com.membattle.domain.interactor.SettingsService;
 
 import javax.inject.Inject;
 
@@ -36,43 +31,44 @@ public class MainActivityPresenter extends MvpPresenter<MainActivityView> {
     @Global
     Router globalRouter;
 
-    public void initBmb(BoomMenuButton bmb) {
-        bmb.setButtonEnum(ButtonEnum.TextOutsideCircle);
-        bmb.setPiecePlaceEnum(PiecePlaceEnum.DOT_6_1);
-        bmb.setButtonPlaceEnum(ButtonPlaceEnum.SC_6_1);
-        bmb.setDimColor(R.color.main_blue);
-        for (int i = 0; i < bmb.getButtonPlaceEnum().buttonNumber(); i++) {
-            final int finalI = i;
-            bmb.addBuilder(new TextOutsideCircleButton.Builder()
-                    .normalImageRes(Settings.MAIN_ICONS[i])
-                    .normalText(Settings.MAIN_NAMES[i])
-                    .imagePadding(new Rect(30, 30, 30, 30))
-                    .textSize(13)
-                    .listener(index -> {
-                        Log.i("code", index + "");
-                        switch (finalI) {
-                            case 0:
-                                router.replaceScreen(Screens.SETTINGS_SCREEN);
-                                break;
-                            case 1:
-                                router.replaceScreen(Screens.INFO_SCREEN);
-                                break;
-                            case 2:
-                                router.replaceScreen(Screens.PROFILE_SCREEN);
-                                break;
-                            case 3:
-                                router.replaceScreen(Screens.MODES_SCREEN);
-                                break;
-                            case 4:
-                                router.replaceScreen(Screens.RATE_SCREEN);
-                                break;
-                            case 5:
-                                //globalRouter.navigateTo(Screens.SHOP_SCREEN);
-                                getViewState().showToast("Магазин пока не работает!");
-                                break;
-                        }
-                    }));
+    @Inject
+    SettingsService settingsService;
+
+    public void setupDrawerContent(NavigationView navigationView) {
+        navigationView.setCheckedItem(0);
+        navigationView.setNavigationItemSelectedListener(
+                menuItem -> {
+                    selectDrawerItem(menuItem);
+                    return true;
+                });
+    }
+
+    private void selectDrawerItem(MenuItem menuItem) {
+        switch(menuItem.getItemId()) {
+            case R.id.nav_main:
+                router.replaceScreen(Screens.MODES_SCREEN);
+                break;
+            case R.id.nav_rate:
+                router.replaceScreen(Screens.RATE_SCREEN);
+                break;
+            case R.id.nav_shop:
+                break;
+            case R.id.nav_settings:
+                router.replaceScreen(Screens.SETTINGS_SCREEN);
+                break;
+
+            default:
         }
+        menuItem.setChecked(true);
+        getViewState().checkDrawerItem(menuItem);
+    }
+
+    public String getUsername() {
+        return settingsService.getUsername();
+    }
+
+    public void share() {
+        //globalRouter.navigateTo(Screens.SHARE);
     }
 
     @Override

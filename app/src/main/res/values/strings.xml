@@ -2,6 +2,9 @@
     <string name="app_name">MemeBattle</string>
     <string name="title_activity_navigation">NavigationActivity</string>
 
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
@@ -31,5 +34,6 @@
 Если картинка, за которую проголосовал пользователь, выиграет свой поединок, то он получает MemCoins. Схема начисления очков такова - чем упорнее была борьба, тем больше получит победитель. Можно получить от 1 до 5 баллов.
 
 Определение позиции пользователя в таблице лидеров: основной критерий - MemCoins, доп.критерий - время, затраченное на выбор (чем меньше, тем лучше)</string>
+    <string name="drawer_item_title_main">Главная</string>
     <integer name="com_vk_sdk_AppId">6470102</integer>
 </resources>

@@ -1,4 +1,4 @@
-package com.membattle.domain.service;
+package com.membattle.domain.interactor;
 
 import android.content.SharedPreferences;
 

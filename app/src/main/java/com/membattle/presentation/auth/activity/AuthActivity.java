@@ -6,7 +6,7 @@ import android.util.Log;
 import com.membattle.App;
 import com.membattle.R;
 import com.membattle.data.api.vk.model.res.profile_info.ProfileInfo;
-import com.membattle.domain.service.VkAPIService;
+import com.membattle.domain.interactor.VkAPIService;
 import com.membattle.presentation.base.BaseActivity;
 import com.membattle.data.settings.Screens;
 import com.membattle.di.qualifier.Local;

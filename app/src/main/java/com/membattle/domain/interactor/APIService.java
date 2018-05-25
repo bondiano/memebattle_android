@@ -1,4 +1,4 @@
-package com.membattle.domain.service;
+package com.membattle.domain.interactor;
 
 import com.membattle.data.api.meme.MemeBattleApi;
 import com.membattle.data.api.meme.model.req.Id;

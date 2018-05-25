@@ -1,6 +1,7 @@
 package com.membattle;
 
 import android.app.Application;
+import android.content.pm.ApplicationInfo;
 import android.widget.Toast;
 
 import com.membattle.data.settings.Settings;
@@ -28,5 +29,6 @@ public class App extends Application {
         // Tracking user activity
         YandexMetrica.enableActivityAutoTracking(this);
     }
+
 
 }

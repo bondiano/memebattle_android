@@ -1,4 +1,4 @@
-package com.membattle.presentation.game.zoom;
+package com.membattle.presentation.zoom;
 
 import com.arellomobile.mvp.MvpView;
 import com.membattle.presentation.base.BaseView;

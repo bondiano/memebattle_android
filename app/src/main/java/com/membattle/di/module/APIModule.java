@@ -2,8 +2,8 @@ package com.membattle.di.module;
 
 import com.membattle.data.api.meme.MemeBattleApi;
 import com.membattle.data.api.vk.VkAPI;
-import com.membattle.domain.service.APIService;
-import com.membattle.domain.service.VkAPIService;
+import com.membattle.domain.interactor.APIService;
+import com.membattle.domain.interactor.VkAPIService;
 
 import javax.inject.Singleton;
 

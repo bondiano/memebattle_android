@@ -2,19 +2,16 @@ package com.membattle.domain.utils;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.membattle.data.settings.Screens;
 import com.membattle.data.settings.Settings;
-import com.membattle.presentation.game.activity.GameActivity;
-import com.membattle.presentation.game.zoom.ZoomActivity;
+import com.membattle.presentation.zoom.ZoomActivity;
 import com.membattle.presentation.main.activity.MainActivity;
 
 import ru.terrakok.cicerone.Navigator;
-import ru.terrakok.cicerone.commands.Back;
 import ru.terrakok.cicerone.commands.BackTo;
 import ru.terrakok.cicerone.commands.Command;
 import ru.terrakok.cicerone.commands.Forward;
@@ -33,12 +30,6 @@ public class GlobalNavigator implements Navigator {
         if (command instanceof Forward) {
             Intent intent;
             switch (((Forward) command).getScreenKey()) {
-                case Screens.GAME_ACTIVITY:
-                    int mode = (int) ((Forward) command).getTransitionData();
-                    intent = new Intent(activity, GameActivity.class);
-                    intent.putExtra(Settings.CURRENT_MODE, mode);
-                    activity.startActivity(intent);
-                    break;
                 case Screens.MAIN_ACTIVITY:
                     intent = new Intent(activity, MainActivity.class);
                     activity.startActivity(intent);

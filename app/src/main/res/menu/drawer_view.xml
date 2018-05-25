@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_main"
+            android:title="@string/drawer_item_title_main" />
+        <item
+            android:id="@+id/nav_rate"
+            android:title="Рейтинг" />
+        <item
+            android:id="@+id/nav_shop"
+            android:enabled="false"
+            android:title="Магазин" />
+    </group>
+
+    <item android:title="Дополнительно">
+        <menu>
+            <item
+                android:id="@+id/nav_settings"
+                android:title="Настройки" />
+        </menu>
+    </item>
+</menu>

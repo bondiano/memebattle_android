@@ -23,9 +23,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.game.activity.GameActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".presentation.splash.intro.IntroActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -35,7 +32,7 @@
             android:name=".presentation.auth.activity.AuthActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.game.zoom.ZoomActivity"
+            android:name=".presentation.zoom.ZoomActivity"
             android:theme="@style/Theme.AppCompat.Light.Dialog" />
         <activity
             android:name="com.vk.sdk.VKServiceActivity"

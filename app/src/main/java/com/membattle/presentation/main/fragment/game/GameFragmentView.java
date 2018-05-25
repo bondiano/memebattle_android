@@ -1,4 +1,4 @@
-package com.membattle.presentation.game.fragment.game;
+package com.membattle.presentation.main.fragment.game;
 
 import com.arellomobile.mvp.MvpView;
 

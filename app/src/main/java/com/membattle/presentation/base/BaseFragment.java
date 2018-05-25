@@ -3,27 +3,20 @@ package com.membattle.presentation.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
-import com.github.nkzawa.socketio.client.Socket;
-import com.membattle.App;
-import com.membattle.di.qualifier.Local;
-import com.membattle.domain.service.SocketService;
+import com.membattle.domain.interactor.SocketService;
 import com.membattle.domain.utils.SocketListener;
 
 import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
-import butterknife.OnPageChange;
 
 public abstract class BaseFragment extends MvpAppCompatFragment implements BaseView {
 
@@ -83,4 +76,5 @@ public abstract class BaseFragment extends MvpAppCompatFragment implements BaseV
             EventBus.getDefault().unregister(this);
         }
     }
+
 }

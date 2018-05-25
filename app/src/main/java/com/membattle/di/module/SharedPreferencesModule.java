@@ -3,7 +3,7 @@ package com.membattle.di.module;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.membattle.domain.service.SettingsService;
+import com.membattle.domain.interactor.SettingsService;
 
 import javax.inject.Singleton;
 

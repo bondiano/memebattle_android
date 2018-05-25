@@ -1,4 +1,4 @@
-package com.membattle.presentation.game.zoom;
+package com.membattle.presentation.zoom;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
