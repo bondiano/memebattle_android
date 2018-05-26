@@ -15,6 +15,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.membattle.App;
 import com.membattle.R;
+import com.membattle.data.api.meme.model.res.game.PairMem.PairMem;
 import com.membattle.domain.utils.SocketListener;
 import com.membattle.presentation.base.BaseFragment;
 import com.membattle.presentation.widget_plus.TextViewPlus;
@@ -149,31 +150,8 @@ public class GameFragment extends BaseFragment implements GameFragmentView, Sock
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(String event) {
-        Log.i("code", "onGameFragment " + event);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        //EventBus.getDefault().register(this);
-        /*try {
-            socket = IO.socket("https://api.mems.fun/");
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-        socket.on(Socket.EVENT_CONNECT, args -> presenter.connectToGame(socket));
-        socket.on("connect", presenter.onConnect);
-        socket.on("action", presenter.onAction);
-        socket.on("error", presenter.onError);
-        socket.connect();*/
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        //EventBus.getDefault().unregister(this);
-        //socket.close();
+    public void onMessageEvent(PairMem pairMem) {
+        Log.i("code", "onGameFragment " + pairMem.toString());
     }
 
     void hideAfter() {

@@ -15,7 +15,9 @@
         <item name="android:statusBarColor">@color/main_blue</item>
         <item name="colorControlHighlight">@color/white</item>
         <item name="colorControlActivated">@color/white</item>
+        <item name="android:navigationBarColor">@color/main_blue</item>
+        <item name="android:colorForeground">@color/main_blue</item>
+        <item name="colorPrimaryDark">@color/main_blue</item>
+        <item name="android:colorBackground">@color/rules_fragment_back</item>
     </style>
-
-
 </resources>

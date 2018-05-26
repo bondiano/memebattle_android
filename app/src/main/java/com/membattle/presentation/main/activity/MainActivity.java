@@ -7,11 +7,15 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.style.TypefaceSpan;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -21,11 +25,16 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.membattle.App;
 import com.membattle.R;
+import com.membattle.domain.font.CustomTypefaceSpan;
+import com.membattle.domain.utils.SocketListener;
 import com.membattle.presentation.base.BaseActivity;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseActivity implements MainActivityView {
+public class MainActivity extends BaseActivity implements MainActivityView, SocketListener{
 
     ActionBarDrawerToggle drawerToggle;
 
@@ -60,6 +69,21 @@ public class MainActivity extends BaseActivity implements MainActivityView {
         username.setText(presenter.getUsername());
         ImageView share = headerLayout.findViewById(R.id.header_share);
         share.setOnClickListener(v -> presenter.share());
+        Menu m = navigationView.getMenu();
+        for (int i=0;i<m.size();i++) {
+            MenuItem mi = m.getItem(i);
+            //for aapplying a font to subMenu ...
+            SubMenu subMenu = mi.getSubMenu();
+            if (subMenu!=null && subMenu.size() >0 ) {
+                for (int j=0; j <subMenu.size();j++) {
+                    MenuItem subMenuItem = subMenu.getItem(j);
+                    applyFontToMenuItem(subMenuItem);
+                }
+            }
+            applyFontToMenuItem(mi);
+        }
+        m.getItem(0).setChecked(true);
+        setTitle(m.getItem(0).getTitle());
     }
 
     private ActionBarDrawerToggle setupDrawerToggle() {
@@ -108,14 +132,15 @@ public class MainActivity extends BaseActivity implements MainActivityView {
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        Typeface face = Typeface.createFromAsset(this.getAssets(),"main.ttf");
-        SpannableStringBuilder title = new SpannableStringBuilder(this.getString(R.string.drawer_item_title_main));
-        title.setSpan(face, 0, title.length(), 0);
-        //menu.add(Menu.NONE, R.id.nav_main, 0, title);
-        MenuItem menuItem = menu.findItem(R.id.nav_main);
-        menuItem.setTitle(title);
-        return super.onCreateOptionsMenu(menu);
+    private void applyFontToMenuItem(MenuItem mi) {
+        Typeface font = Typeface.createFromAsset(getAssets(), "main.ttf");
+        SpannableString title = new SpannableString(mi.getTitle());
+        title.setSpan(new CustomTypefaceSpan("", font), 0, title.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        mi.setTitle(title);
     }
+
+    /*@Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(String event) {
+        Log.i("code", "onMainActivity " + event);
+    }*/
 }

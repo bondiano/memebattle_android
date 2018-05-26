@@ -3,22 +3,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="180dp"
+    android:background="@color/main_blue"
     android:gravity="bottom"
+
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <TextView
+    <ImageView
+        android:id="@+id/line_imc2"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/header_username2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/header_username2"
+        app:srcCompat="@drawable/icon_coin" />
+
+    <com.membattle.presentation.widget_plus.TextViewPlus
+        android:id="@+id/header_username2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="33"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="30sp"
+        app:customFont="@string/font_main"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/line_imc2" />
+
+    <com.membattle.presentation.widget_plus.TextViewPlus
         android:id="@+id/header_username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:text="Гость"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textSize="30sp"
+        app:customFont="@string/font_main"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/header_username2"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView

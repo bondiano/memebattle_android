@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,108 +12,127 @@
     tools:layout_editor_absoluteX="8dp"
     tools:layout_editor_absoluteY="8dp">
 
+    <com.membattle.presentation.widget_plus.ButtonPlus
+        android:id="@+id/sign_up_reg"
+        android:layout_width="140dp"
+        android:layout_height="34dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:background="@drawable/button_background_trancparent"
+        android:text="Регистрация"
+        android:textColor="@color/main_blue"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/sign_up_button_back"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_repeat_pass"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <com.membattle.presentation.widget_plus.ButtonPlus
+        android:id="@+id/sign_up_button_back"
+        android:layout_width="140dp"
+        android:layout_height="34dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:background="@drawable/button_background_blue"
+        android:text="Назад"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_repeat_pass"
+        app:layout_constraintVertical_bias="0.7" />
+
     <com.membattle.presentation.widget_plus.TextViewPlus
-        app:customFont="@string/font_title"
         android:id="@+id/textReg"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="20dp"
         android:text="Регистрация"
         android:textAlignment="center"
         android:textColor="@color/main_blue"
-        android:textSize="30sp"/>
+        android:textSize="30sp"
+        app:customFont="@string/font_title"
+        app:layout_constraintBottom_toTopOf="@+id/sign_up_login"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.654" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <com.membattle.presentation.widget_plus.EditTextPlus
+        android:id="@+id/sign_up_mail"
+        style="@android:style/Widget.Holo.EditText"
+        android:layout_width="252dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_margin="5dp"
+        android:ems="10"
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:textSize="24sp"
+        android:theme="@style/Widget.AppCompat.EditText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45" />
 
-        <com.membattle.presentation.widget_plus.EditTextPlus
-            android:id="@+id/sign_up_login"
-            style="@android:style/Widget.Holo.EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:ems="10"
-            android:hint="Логин"
-            android:inputType="textPersonName"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
-            android:textSize="24sp"
-            android:theme="@style/Widget.AppCompat.EditText" />
+    <com.membattle.presentation.widget_plus.EditTextPlus
+        android:id="@+id/sign_up_login"
+        style="@android:style/Widget.Holo.EditText"
+        android:layout_width="252dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:hint="Логин"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:textSize="24sp"
+        android:theme="@style/Widget.AppCompat.EditText"
+        app:layout_constraintBottom_toTopOf="@+id/sign_up_mail"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
-        <com.membattle.presentation.widget_plus.EditTextPlus
-            android:id="@+id/sign_up_mail"
-            style="@android:style/Widget.Holo.EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:ems="10"
-            android:hint="E-mail"
-            android:inputType="textEmailAddress"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
-            android:textSize="24sp"
-            android:theme="@style/Widget.AppCompat.EditText" />
+    <com.membattle.presentation.widget_plus.EditTextPlus
+        android:id="@+id/sign_up_repeat_pass"
+        style="@android:style/Widget.Holo.EditText"
+        android:layout_width="252dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:ems="10"
+        android:hint="Повторите пароль"
+        android:inputType="textPassword"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:textSize="24sp"
+        android:theme="@style/Widget.AppCompat.EditText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_pass" />
 
-        <com.membattle.presentation.widget_plus.EditTextPlus
-            android:id="@+id/sign_up_pass"
-            style="@android:style/Widget.Holo.EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:ems="10"
-            android:hint="Пароль"
-            android:inputType="textPassword"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
-            android:textSize="24sp"
-            android:theme="@style/Widget.AppCompat.EditText" />
+    <com.membattle.presentation.widget_plus.EditTextPlus
+        android:id="@+id/sign_up_pass"
+        style="@android:style/Widget.Holo.EditText"
+        android:layout_width="252dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Пароль"
+        android:inputType="textPassword"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:textSize="24sp"
+        android:theme="@style/Widget.AppCompat.EditText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_mail" />
 
-        <com.membattle.presentation.widget_plus.EditTextPlus
-            android:id="@+id/sign_up_repeat_pass"
-            style="@android:style/Widget.Holo.EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:ems="10"
-            android:hint="Повторите пароль"
-            android:inputType="textPassword"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
-            android:textSize="24sp"
-            android:theme="@style/Widget.AppCompat.EditText" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="15dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <com.membattle.presentation.widget_plus.ButtonPlus
-                android:id="@+id/sign_up_reg"
-                android:layout_width="140dp"
-                android:layout_height="34dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_background_trancparent"
-                android:text="Регистрация"
-                android:textColor="@color/main_blue"
-                android:textSize="24sp" />
-
-            <com.membattle.presentation.widget_plus.ButtonPlus
-                android:id="@+id/sign_up_button_back"
-                android:layout_width="140dp"
-                android:layout_height="34dp"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_background_blue"
-                android:text="Назад"
-                android:textColor="@android:color/white"
-                android:textSize="24sp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

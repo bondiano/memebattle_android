@@ -8,21 +8,6 @@
               android:orientation="vertical">
 
     <com.membattle.presentation.widget_plus.TextViewPlus
-        android:id="@+id/settitle"
-        tools:text="Правила игры"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
-        android:text="Настройки"
-        android:textAlignment="center"
-        app:customFont="@string/font_title"
-
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textColor="@color/main_blue"
-        android:textSize="30sp"/>
-
-    <com.membattle.presentation.widget_plus.TextViewPlus
         android:id="@+id/settings_sign_out"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

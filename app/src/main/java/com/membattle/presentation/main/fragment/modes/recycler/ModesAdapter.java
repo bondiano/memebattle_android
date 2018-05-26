@@ -12,6 +12,7 @@ import com.membattle.R;
 import com.membattle.data.settings.Screens;
 import com.membattle.data.settings.Settings;
 import com.membattle.di.qualifier.Global;
+import com.membattle.di.qualifier.Local;
 
 import java.util.ArrayList;
 
@@ -24,8 +25,8 @@ public class ModesAdapter extends RecyclerView.Adapter<ModesViewHolder> {
     private Context context;
 
     @Inject
-    @Global
-    Router globalRouter;
+    @Local
+    Router router;
 
     public ModesAdapter(ArrayList<Mode> modeList, Context context) {
         this.modeList = modeList;
@@ -55,10 +56,7 @@ public class ModesAdapter extends RecyclerView.Adapter<ModesViewHolder> {
             alert.show();
         });
         holder.Play.setOnClickListener(v -> {
-            globalRouter.navigateTo(Screens.GAME_ACTIVITY, mode.type);
-            /*Intent intent = new Intent(context, GameActivity.class);
-            intent.putExtra(Settings.CURRENT_MODE, mode.type);
-            context.startActivity(intent);*/
+            router.navigateTo(Screens.GAME_SCREEN);
         });
     }
 
