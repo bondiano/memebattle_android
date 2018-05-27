@@ -44,20 +44,20 @@ public class SettingsFragmentPresenter extends MvpPresenter<SettingsFragmentView
         getViewState().gotoActivity(intent);
     }
 
-    public void aboutVersion() {
+    /*public void aboutVersion() {
         getViewState().showDia(1);
-    }
+    }*/
 
     public void clearPrefs() {
         settingsService.signOut();
         getViewState().gotoAuthActivity();
     }
 
-    public void signOut() {
+    /*public void signOut() {
         getViewState().showDia(0);
-    }
+    }*/
 
-    public void setSignOutBuilder(AlertDialog.Builder builder) {
+    /*public void setSignOutBuilder(AlertDialog.Builder builder) {
         builder.setTitle("Выход из аккаунта")
                 .setMessage("Вы действительно хотите выйти из аккаунта?")
                 .setPositiveButton("Да", (dialog, which) -> {
@@ -65,13 +65,13 @@ public class SettingsFragmentPresenter extends MvpPresenter<SettingsFragmentView
                 }).setNegativeButton("Нет", (dialog, which) -> dialog.cancel());
         AlertDialog dialog = builder.create();
         dialog.show();
-    }
+    }*/
 
-    public void setAboutVersionBuilder(AlertDialog.Builder builder) {
+    /*public void setAboutVersionBuilder(AlertDialog.Builder builder) {
         builder.setTitle("О версии")
                 .setMessage("Что нового?\nНовый интерфейс, исправление ошибок, добавление новых\nЧто ожидать в следующих версиях?\nМоре товаров в нашем Мемагазине, чтобы вы могли тратить свои мемоины!")
                 .setPositiveButton("Неплохо", (dialog, which) -> dialog.cancel());
         AlertDialog dialog = builder.create();
         dialog.show();
-    }
+    }*/
 }

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +18,14 @@ import com.membattle.presentation.base.BaseFragment;
 import com.membattle.presentation.main.fragment.modes.recycler.Mode;
 import com.membattle.presentation.main.fragment.modes.recycler.ModesAdapter;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ModesFragment extends BaseFragment implements ModesFragmentView {
+public class ModesFragment extends BaseFragment implements ModesFragmentView, SocketListener{
     @InjectPresenter
     ModesFragmentPresenter presenter;
 
@@ -53,8 +57,12 @@ public class ModesFragment extends BaseFragment implements ModesFragmentView {
 
     @Override
     public void initAdapter(ArrayList<Mode> modes) {
-        recyclerView.setAdapter(new ModesAdapter(modes, getContext()));
+        recyclerView.setAdapter(new ModesAdapter(modes, getActivity()));
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(String pairMem) {
+        Log.i("code", "onMode " + pairMem);
+    }
 
 }

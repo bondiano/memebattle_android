@@ -3,22 +3,29 @@ package com.membattle.presentation.main.fragment.settings;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.membattle.R;
+import com.membattle.domain.dialog.DialogFactory;
+import com.membattle.domain.utils.SocketListener;
 import com.membattle.presentation.auth.activity.AuthActivity;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class SettingsFragment extends MvpAppCompatFragment implements SettingsFragmentView {
+public class SettingsFragment extends MvpAppCompatFragment implements SettingsFragmentView, SocketListener{
+
+    DialogFactory factory;
+
     @InjectPresenter
     SettingsFragmentPresenter presenter;
 
@@ -36,17 +43,20 @@ public class SettingsFragment extends MvpAppCompatFragment implements SettingsFr
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        factory = new DialogFactory(getActivity());
         ButterKnife.bind(this, view);
     }
 
     @OnClick(R.id.settings_sign_out)
     void onSignOutClick() {
-        presenter.signOut();
+        //presenter.signOut();
+        factory.createChooseDialog("Выход", "Вы действительно хотите выйти из аккаунта?");
     }
 
     @OnClick(R.id.settings_about_v)
     void onAboutVersionClick() {
-        presenter.aboutVersion();
+        //presenter.aboutVersion();
+        factory.createInfoDialog("О версии", "Что нового?\nНовый интерфейс, исправление ошибок, добавление новых\nЧто ожидать в следующих версиях?\nМоре товаров в нашем Мемагазине, чтобы вы могли тратить свои мемоины!");
     }
 
     @OnClick(R.id.settings_mark)
@@ -59,10 +69,7 @@ public class SettingsFragment extends MvpAppCompatFragment implements SettingsFr
         presenter.share();
     }
 
-    @Override
-    public void showErrorToast(String error) {
-        Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
-    }
+
 
     @Override
     public void gotoAuthActivity() {
@@ -71,7 +78,7 @@ public class SettingsFragment extends MvpAppCompatFragment implements SettingsFr
         getActivity().finish();
     }
 
-    @Override
+    /*@Override
     public void showDia(int id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         switch (id) {
@@ -80,10 +87,15 @@ public class SettingsFragment extends MvpAppCompatFragment implements SettingsFr
             case 1 :
                 presenter.setAboutVersionBuilder(builder); break;
         }
-    }
+    }*/
 
     @Override
     public void gotoActivity(Intent intent) {
         startActivity(intent);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(String pairMem) {
+        Log.i("code", "onSettings " + pairMem);
     }
 }

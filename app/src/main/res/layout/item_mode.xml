@@ -59,6 +59,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:background="@drawable/new_frame"
+            android:padding="1dp"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />
@@ -70,11 +71,13 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:padding="10dp"
+            android:padding="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textColor="@android:color/white"
             android:textSize="30sp"
-            card_view:customFont="@string/font_main" />
+            card_view:customFont="@string/font_main"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
 
         <com.membattle.presentation.widget_plus.TextViewPlus
             android:id="@+id/item_title"
@@ -83,7 +86,8 @@
             android:layout_alignBottom="@+id/item_image"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="8dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
             android:text="Название какой-то дичи"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat"

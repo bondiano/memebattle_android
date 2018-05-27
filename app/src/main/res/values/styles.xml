@@ -17,25 +17,12 @@
         <item name="android:colorForeground">@color/main_blue</item>
         <item name="colorPrimaryDark">@color/main_blue</item>
         <item name="android:colorBackground">@color/rules_fragment_back</item>
+        <item name="colorPrimary">@color/rules_fragment_back</item>
+        <item name="colorAccent">@color/main_blue</item>
     </style>
 
     <style name="NavigationDrawerStyle">
         <item name="android:textSize">26sp</item><!-- text size in menu-->
         <item name="android:listPreferredItemHeightSmall">60dp</item>
-    </style>
-
-    <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
-        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
-        <item name="android:background">@color/rules_fragment_back</item>
-        <item name="android:textColor">@color/main_blue</item>
-    </style>
-
-    <style name="NegativeButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
-        <item name="android:textColor">@color/main_blue</item>
-    </style>
-
-    <style name="PositiveButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
-        <item name="android:textColor">@color/main_blue</item>
     </style>
 </resources>
