@@ -33,5 +33,6 @@
 
     <color name="rules_fragment_back">#eeeeee</color>
     <color name="empty">#00ffffff</color>
+    <color name="back_toast">#f00c7177</color>
 
 </resources>

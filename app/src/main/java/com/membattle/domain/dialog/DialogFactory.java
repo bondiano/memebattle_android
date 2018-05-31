@@ -2,11 +2,10 @@ package com.membattle.domain.dialog;
 
 import android.app.Activity;
 import android.app.DialogFragment;
-import android.content.Context;
 import android.os.Bundle;
 
-import com.membattle.presentation.main.fragment.dialog.DialogChoose;
-import com.membattle.presentation.main.fragment.dialog.DialogInfo;
+import com.membattle.presentation.custom.dialog.DialogChoose;
+import com.membattle.presentation.custom.dialog.DialogInfo;
 
 public class DialogFactory {
 

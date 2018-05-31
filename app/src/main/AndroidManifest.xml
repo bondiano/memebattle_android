@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/MemeBattle">
         <activity
-            android:name=".presentation.main.activity.MainActivity"
+            android:name=".presentation.screen.main.activity.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,16 +23,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.splash.intro.IntroActivity"
+            android:name=".presentation.screen.splash.intro.IntroActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.splash.SplashActivity"
+            android:name=".presentation.screen.splash.SplashActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.auth.activity.AuthActivity"
+            android:name=".presentation.screen.auth.activity.AuthActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.zoom.ZoomActivity"
+            android:name=".presentation.screen.main.fragment.game.zoom.ZoomActivity"
             android:theme="@style/Theme.AppCompat.Light.Dialog" />
         <activity
             android:name="com.vk.sdk.VKServiceActivity"

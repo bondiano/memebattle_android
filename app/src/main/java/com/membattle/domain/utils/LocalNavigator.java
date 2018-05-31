@@ -4,14 +4,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 import com.membattle.data.settings.Screens;
-import com.membattle.presentation.auth.fragment.sign_in.SignInFragment;
-import com.membattle.presentation.auth.fragment.sign_up.SignUpFragment;
-import com.membattle.presentation.main.fragment.game.GameFragment;
-import com.membattle.presentation.main.fragment.info.InfoFragment;
-import com.membattle.presentation.main.fragment.modes.ModesFragment;
-import com.membattle.presentation.main.fragment.profile.ProfileFragment;
-import com.membattle.presentation.main.fragment.rate.RateFragment;
-import com.membattle.presentation.main.fragment.settings.SettingsFragment;
+import com.membattle.presentation.screen.auth.fragment.sign_in.SignInFragment;
+import com.membattle.presentation.screen.auth.fragment.sign_up.SignUpFragment;
+import com.membattle.presentation.screen.main.fragment.game.GameFragment;
+import com.membattle.presentation.screen.main.fragment.info.InfoFragment;
+import com.membattle.presentation.screen.main.fragment.modes.ModesFragment;
+import com.membattle.presentation.screen.main.fragment.profile.ProfileFragment;
+import com.membattle.presentation.screen.main.fragment.rate.RateFragment;
+import com.membattle.presentation.screen.main.fragment.settings.SettingsFragment;
 
 import ru.terrakok.cicerone.android.SupportFragmentNavigator;
 

@@ -8,6 +8,7 @@ import com.membattle.data.settings.Settings;
 import com.membattle.di.AppComponent;
 import com.membattle.di.DaggerAppComponent;
 import com.membattle.di.module.SharedPreferencesModule;
+import com.membattle.presentation.custom.toast.CustomToast;
 import com.vk.sdk.VKSdk;
 import com.yandex.metrica.YandexMetrica;
 

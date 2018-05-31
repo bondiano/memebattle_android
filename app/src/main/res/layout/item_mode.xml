@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="250dp">
 
-        <com.membattle.presentation.widget_plus.TextViewPlus
+        <com.membattle.presentation.custom.widget_plus.TextViewPlus
             android:id="@+id/item_rules"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
             card_view:layout_constraintTop_toBottomOf="@+id/item_image"
             card_view:layout_constraintVertical_bias="0.515" />
 
-        <com.membattle.presentation.widget_plus.TextViewPlus
+        <com.membattle.presentation.custom.widget_plus.TextViewPlus
             android:id="@+id/item_play"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />
 
-        <com.membattle.presentation.widget_plus.TextViewPlus
+        <com.membattle.presentation.custom.widget_plus.TextViewPlus
             android:id="@+id/item_text_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />
 
-        <com.membattle.presentation.widget_plus.TextViewPlus
+        <com.membattle.presentation.custom.widget_plus.TextViewPlus
             android:id="@+id/item_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

@@ -7,9 +7,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.membattle.data.settings.Screens;
-import com.membattle.data.settings.Settings;
-import com.membattle.presentation.zoom.ZoomActivity;
-import com.membattle.presentation.main.activity.MainActivity;
+import com.membattle.presentation.screen.main.fragment.game.zoom.ZoomActivity;
+import com.membattle.presentation.screen.main.activity.MainActivity;
 
 import ru.terrakok.cicerone.Navigator;
 import ru.terrakok.cicerone.commands.BackTo;

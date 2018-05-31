@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@color/empty">
 
-    <com.membattle.presentation.widget_plus.TextViewPlus
+    <com.membattle.presentation.custom.widget_plus.TextViewPlus
         android:id="@+id/stat_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
 
     </GridView>
 
-    <com.membattle.presentation.widget_plus.ButtonPlus
+    <com.membattle.presentation.custom.widget_plus.ButtonPlus
         android:id="@+id/stat_show_all_but"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

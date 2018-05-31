@@ -1,27 +1,21 @@
 package com.membattle.presentation.base;
 
-import android.annotation.SuppressLint;
-import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.TextPaint;
-import android.text.style.MetricAffectingSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
-import com.membattle.R;
 import com.membattle.domain.font.CustomTypefaceSpan;
 import com.membattle.domain.interactor.SocketService;
 import com.membattle.domain.utils.SocketListener;
-import com.membattle.presentation.widget_plus.TextViewPlus;
+import com.membattle.presentation.custom.toast.CustomToast;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -34,9 +28,14 @@ public abstract class BaseFragment extends MvpAppCompatFragment implements BaseV
     @Inject
     SocketService socketService;
 
+    CustomToast toast;
+
     @Override
     public void showToast(String message) {
-        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+        if(!toast.getView().isShown()) {
+            CustomToast.makeText(getContext(), "Hello World!").show();
+        }
+        //Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
 
     @Nullable

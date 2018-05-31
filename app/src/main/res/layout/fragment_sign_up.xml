@@ -12,7 +12,7 @@
     tools:layout_editor_absoluteX="8dp"
     tools:layout_editor_absoluteY="8dp">
 
-    <com.membattle.presentation.widget_plus.ButtonPlus
+    <com.membattle.presentation.custom.widget_plus.ButtonPlus
         android:id="@+id/sign_up_reg"
         android:layout_width="140dp"
         android:layout_height="34dp"
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/sign_up_repeat_pass"
         app:layout_constraintVertical_bias="1.0" />
 
-    <com.membattle.presentation.widget_plus.ButtonPlus
+    <com.membattle.presentation.custom.widget_plus.ButtonPlus
         android:id="@+id/sign_up_button_back"
         android:layout_width="140dp"
         android:layout_height="34dp"
@@ -47,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/sign_up_repeat_pass"
         app:layout_constraintVertical_bias="0.7" />
 
-    <com.membattle.presentation.widget_plus.TextViewPlus
+    <com.membattle.presentation.custom.widget_plus.TextViewPlus
         android:id="@+id/textReg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.654" />
 
-    <com.membattle.presentation.widget_plus.EditTextPlus
+    <com.membattle.presentation.custom.widget_plus.EditTextPlus
         android:id="@+id/sign_up_mail"
         style="@android:style/Widget.Holo.EditText"
         android:layout_width="252dp"
@@ -82,7 +82,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.45" />
 
-    <com.membattle.presentation.widget_plus.EditTextPlus
+    <com.membattle.presentation.custom.widget_plus.EditTextPlus
         android:id="@+id/sign_up_login"
         style="@android:style/Widget.Holo.EditText"
         android:layout_width="252dp"
@@ -100,7 +100,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
-    <com.membattle.presentation.widget_plus.EditTextPlus
+    <com.membattle.presentation.custom.widget_plus.EditTextPlus
         android:id="@+id/sign_up_repeat_pass"
         style="@android:style/Widget.Holo.EditText"
         android:layout_width="252dp"
@@ -117,7 +117,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_up_pass" />
 
-    <com.membattle.presentation.widget_plus.EditTextPlus
+    <com.membattle.presentation.custom.widget_plus.EditTextPlus
         android:id="@+id/sign_up_pass"
         style="@android:style/Widget.Holo.EditText"
         android:layout_width="252dp"

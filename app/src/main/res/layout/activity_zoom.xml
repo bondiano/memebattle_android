@@ -41,7 +41,7 @@
                 app:srcCompat="@drawable/ic_zoom_out"
                 tools:layout_editor_absoluteX="16dp" />
 
-            <com.membattle.presentation.widget_plus.TextViewPlus
+            <com.membattle.presentation.custom.widget_plus.TextViewPlus
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -74,7 +74,7 @@
                 app:srcCompat="@drawable/ic_download"
                 tools:layout_editor_absoluteX="16dp" />
 
-            <com.membattle.presentation.widget_plus.TextViewPlus
+            <com.membattle.presentation.custom.widget_plus.TextViewPlus
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -107,7 +107,7 @@
                 app:srcCompat="@drawable/ic_sharing_big_symbol"
                 tools:layout_editor_absoluteX="16dp" />
 
-            <com.membattle.presentation.widget_plus.TextViewPlus
+            <com.membattle.presentation.custom.widget_plus.TextViewPlus
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -141,7 +141,7 @@
                 app:srcCompat="@drawable/ic_laughing"
                 tools:layout_editor_absoluteX="16dp" />
 
-            <com.membattle.presentation.widget_plus.TextViewPlus
+            <com.membattle.presentation.custom.widget_plus.TextViewPlus
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

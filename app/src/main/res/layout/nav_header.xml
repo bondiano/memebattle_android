@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="@+id/header_username2"
         app:srcCompat="@drawable/icon_coin" />
 
-    <com.membattle.presentation.widget_plus.TextViewPlus
+    <com.membattle.presentation.custom.widget_plus.TextViewPlus
         android:id="@+id/header_username2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/line_imc2" />
 
-    <com.membattle.presentation.widget_plus.TextViewPlus
+    <com.membattle.presentation.custom.widget_plus.TextViewPlus
         android:id="@+id/header_username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

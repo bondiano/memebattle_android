@@ -6,12 +6,12 @@
     android:layout_height="wrap_content"
     android:background="@color/rules_fragment_back">
 
-    <com.membattle.presentation.widget_plus.TextViewPlus
+    <com.membattle.presentation.custom.widget_plus.TextViewPlus
         android:id="@+id/dialog_choose_no"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
         android:gravity="right"
         android:padding="10dp"
@@ -20,15 +20,15 @@
         android:textSize="26sp"
         app:customFont="@string/font_main"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/dialog_choose_yes"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dialog_choose_message" />
 
-    <com.membattle.presentation.widget_plus.TextViewPlus
+    <com.membattle.presentation.custom.widget_plus.TextViewPlus
         android:id="@+id/dialog_choose_yes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:gravity="right"
         android:padding="10dp"
@@ -37,10 +37,11 @@
         android:textSize="26sp"
         app:customFont="@string/font_main"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dialog_choose_message" />
+        app:layout_constraintEnd_toStartOf="@+id/dialog_choose_no"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_choose_message"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <com.membattle.presentation.widget_plus.TextViewPlus
+    <com.membattle.presentation.custom.widget_plus.TextViewPlus
         android:id="@+id/dialog_choose_message"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
@@ -48,14 +49,14 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Правила"
-        android:textColor="@color/main_blue"
+        android:textColor="@android:color/black"
         android:textSize="22sp"
         app:customFont="@string/font_main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dialog_choose_title" />
 
-    <com.membattle.presentation.widget_plus.TextViewPlus
+    <com.membattle.presentation.custom.widget_plus.TextViewPlus
         android:id="@+id/dialog_choose_title"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
