@@ -1,6 +1,7 @@
 package com.membattle.presentation.screen.main.fragment.game;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -58,10 +60,8 @@ public class GameFragment extends BaseFragment implements GameFragmentView, Sock
     TextViewPlus topAfterLikes;
     @BindView(R.id.game_bottom_after_likes)
     TextViewPlus bottomAfterLikes;
-    @BindView(R.id.game_chronometer)
-    Chronometer chronometer;
-    @BindView(R.id.game_timer)
-    TextViewPlus timer;
+    @BindView(R.id.game_progress)
+    ProgressBar progressBar;
 
     @BindView(R.id.game_top_zoom)
     LinearLayout topZoom;
@@ -162,16 +162,26 @@ public class GameFragment extends BaseFragment implements GameFragmentView, Sock
     }
 
     void startTick() {
+        progressBar.setMax(15000);
+        progressBar.setProgress(15000);
+        MemeTimer memeTimer = new MemeTimer(15000, 10);
+        memeTimer.start();
+        /*
         chronometer.stop();
         tick = 15;//длина баттла
-        timer.setText("15");
+        //timer.setText("15");
+        progressBar.setMax(15000);
+        progressBar.setProgress(tick);
         chronometer.start();
         chronometer.setOnChronometerTickListener(chronometer -> {
             long elapsedMillis = SystemClock.elapsedRealtime()
                     - chronometer.getBase();
-            if (elapsedMillis > 1000) {
+
+            progressBar.setProgress((int) (15000 - elapsedMillis));
+            *//*if (elapsedMillis > 1000) {
                 tick--;
-                timer.setText(tick + "");
+                progressBar.setProgress(tick);
+                //timer.setText(tick + "");
                 elapsedMillis = 0;
                 if (tick == 0) {
                     chronometer.stop();
@@ -185,8 +195,8 @@ public class GameFragment extends BaseFragment implements GameFragmentView, Sock
                     change = !change;
                     startTick();
                 }
-            }
-        });
+            }*//*
+        });*/
     }
 
     @OnClick(R.id.game_top_zoom)
@@ -195,7 +205,36 @@ public class GameFragment extends BaseFragment implements GameFragmentView, Sock
     }
 
     @Override
-    public void injectDependencies(){
+    public void injectDependencies() {
         App.getComponent().inject(this);
+    }
+
+    public class MemeTimer extends CountDownTimer {
+
+        public MemeTimer(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onFinish() {
+            handler.post(() -> {
+                if (change) {
+                    topMem.setImageResource(R.drawable.meme1);
+                    bottomMem.setImageResource(R.drawable.meme2);
+                } else {
+                    topMem.setImageResource(R.drawable.meme2);
+                    bottomMem.setImageResource(R.drawable.meme1);
+                }
+                change = !change;
+                startTick();
+            });
+        }
+
+        public void onTick(long millisUntilFinished) {
+            handler.post(() -> {
+                progressBar.setProgress((int) millisUntilFinished);
+            });
+        }
+
     }
 }
