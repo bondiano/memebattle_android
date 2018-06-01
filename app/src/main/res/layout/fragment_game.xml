@@ -6,37 +6,44 @@
     android:layout_height="match_parent"
     android:background="@color/rules_fragment_back">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="20"
+        android:progressTint="@color/main_blue"
+        app:layout_constraintBottom_toBottomOf="@+id/battle_clockim"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/battle_clockim"
+        app:layout_constraintTop_toTopOf="@+id/battle_clockim" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="16dp"
+        android:foregroundGravity="center"
+        android:gravity="center"
         android:orientation="vertical"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/battle_clockim">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="78dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:layout_weight="1"
-            android:foregroundGravity="center"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
@@ -254,6 +261,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_gravity="center"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toTopOf="@+id/tableLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -267,11 +275,7 @@
             android:id="@+id/constraintLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
             android:layout_weight="1"
-            android:foregroundGravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -490,6 +494,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_gravity="center"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -503,31 +508,15 @@
         android:id="@+id/game_chronometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:paddingBottom="5dp"
         android:paddingTop="5dp"
         android:textAlignment="center"
         android:textColor="@color/main_blue"
         android:textSize="8sp"
         android:visibility="invisible"
-        app:layout_constraintStart_toEndOf="@+id/game_timer"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.membattle.presentation.custom.widget_plus.TextViewPlus
-        android:id="@+id/game_timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="8dp"
-        android:padding="5dp"
-        android:text="..."
-        android:textColor="@color/main_blue"
-        android:textSize="22sp"
-        app:customFont="@string/font_main"
-        app:layout_constraintBottom_toBottomOf="@+id/battle_clockim"
-        app:layout_constraintStart_toEndOf="@+id/battle_clockim"
-        app:layout_constraintTop_toTopOf="@+id/battle_clockim" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
 
     <ImageView
         android:id="@+id/battle_clockim"
