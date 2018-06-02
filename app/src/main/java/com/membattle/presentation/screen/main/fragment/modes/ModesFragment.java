@@ -11,6 +11,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.membattle.App;
 import com.membattle.R;
+import com.membattle.data.settings.Screens;
 import com.membattle.domain.utils.SocketListener;
 import com.membattle.presentation.base.BaseFragment;
 import com.membattle.presentation.screen.main.fragment.modes.recycler.Mode;

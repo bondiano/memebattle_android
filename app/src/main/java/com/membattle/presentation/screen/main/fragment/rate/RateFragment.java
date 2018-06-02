@@ -12,7 +12,10 @@ import android.widget.Toast;
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
+import com.membattle.App;
 import com.membattle.R;
+import com.membattle.data.settings.Screens;
+import com.membattle.presentation.base.BaseFragment;
 import com.membattle.presentation.screen.main.fragment.rate.recycler.LineRate;
 import com.membattle.presentation.screen.main.fragment.rate.recycler.RateAdapter;
 
@@ -21,7 +24,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RateFragment extends MvpAppCompatFragment implements RateFragmentView {
+public class RateFragment extends BaseFragment implements RateFragmentView {
     @InjectPresenter
     RateFragmentPresenter presenter;
 
@@ -40,12 +43,21 @@ public class RateFragment extends MvpAppCompatFragment implements RateFragmentVi
     }
 
     @Override
+    protected void injectDependencies() {
+        App.getComponent().inject(this);
+    }
+
+    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         presenter.getRateList();
+    }
+
+    @Override
+    protected int getLayoutID() {
+        return R.layout.fragment_rate;
     }
 
     @Override

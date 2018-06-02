@@ -36,7 +36,9 @@ public class LocalNavigator extends SupportFragmentNavigator {
         }
         return null;
     }
+
     public Fragment mainFragments(String screenKey) {
+
         switch (screenKey) {
             case Screens.GAME_SCREEN:
                 return new GameFragment();

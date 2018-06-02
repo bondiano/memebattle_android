@@ -18,7 +18,9 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.membattle.App;
 import com.membattle.R;
 import com.membattle.data.api.meme.model.res.game.PairMem.PairMem;
+import com.membattle.data.settings.Screens;
 import com.membattle.domain.utils.SocketListener;
+import com.membattle.presentation.base.BaseActivity;
 import com.membattle.presentation.base.BaseFragment;
 import com.membattle.presentation.custom.widget_plus.TextViewPlus;
 import com.squareup.picasso.Picasso;
@@ -73,7 +75,20 @@ public class GameFragment extends BaseFragment implements GameFragmentView, Sock
     LinearLayout topProoral;
 
     private Handler handler;
-    private int tick = 15;
+    int meme = 0;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //setRetainInstance(true);
+        Log.i("code", "comeback meme " + meme);
+        //BaseActivity.currentFragment = Screens.GAME_SCREEN;
+        /*if (savedInstanceState == null) {
+            Log.i("code", "empty");
+        } else {
+            Log.i("code", "comeback " + savedInstanceState.getInt("lol"));
+        }*/
+    }
 
     @ProvidePresenter
     public GameFragmentPresenter presenter() {
@@ -94,6 +109,7 @@ public class GameFragment extends BaseFragment implements GameFragmentView, Sock
 
     @OnClick(R.id.game_top_mem)
     void onTopMemClick() {
+        meme = 1;
         YandexMetrica.reportEvent("topmemclick");
         Log.i("code", "topmem");
         presenter.emit();
@@ -166,37 +182,6 @@ public class GameFragment extends BaseFragment implements GameFragmentView, Sock
         progressBar.setProgress(15000);
         MemeTimer memeTimer = new MemeTimer(15000, 10);
         memeTimer.start();
-        /*
-        chronometer.stop();
-        tick = 15;//длина баттла
-        //timer.setText("15");
-        progressBar.setMax(15000);
-        progressBar.setProgress(tick);
-        chronometer.start();
-        chronometer.setOnChronometerTickListener(chronometer -> {
-            long elapsedMillis = SystemClock.elapsedRealtime()
-                    - chronometer.getBase();
-
-            progressBar.setProgress((int) (15000 - elapsedMillis));
-            *//*if (elapsedMillis > 1000) {
-                tick--;
-                progressBar.setProgress(tick);
-                //timer.setText(tick + "");
-                elapsedMillis = 0;
-                if (tick == 0) {
-                    chronometer.stop();
-                    if (change) {
-                        topMem.setImageResource(R.drawable.meme1);
-                        bottomMem.setImageResource(R.drawable.meme2);
-                    } else {
-                        topMem.setImageResource(R.drawable.meme2);
-                        bottomMem.setImageResource(R.drawable.meme1);
-                    }
-                    change = !change;
-                    startTick();
-                }
-            }*//*
-        });*/
     }
 
     @OnClick(R.id.game_top_zoom)
@@ -236,5 +221,11 @@ public class GameFragment extends BaseFragment implements GameFragmentView, Sock
             });
         }
 
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("lol", 1);
     }
 }

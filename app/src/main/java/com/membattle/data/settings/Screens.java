@@ -14,8 +14,6 @@ public interface Screens {
     //AuthActivity
     String SIGN_IN_SCREEN = "sign in screen";
     String SIGN_UP_SCREEN = "sign up screen";
-    //GameActivity
-    String GAME_ACTIVITY = "game activity";
     String GAME_SCREEN = "game screen";
     String BACK = "back";
     String RULES_DIALOG = "rules dialog";
@@ -24,4 +22,5 @@ public interface Screens {
     int CONTAINER_AUTH = R.id.auth_container;
     int CONTAINER_MAIN = R.id.main_container;
     String SHARE_IMAGE = "share image";
+    String CURRENT = MODES_SCREEN;
 }

@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.membattle.App;
 import com.membattle.R;
+import com.membattle.data.settings.Screens;
 import com.membattle.domain.utils.SocketListener;
 import com.membattle.presentation.base.BaseFragment;
 import com.membattle.presentation.custom.widget_plus.TextViewPlus;

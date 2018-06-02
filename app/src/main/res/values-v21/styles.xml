@@ -21,5 +21,6 @@
         <item name="android:colorBackground">@color/rules_fragment_back</item>
         <item name="colorPrimary">@color/rules_fragment_back</item>
         <item name="colorAccent">@color/main_blue</item>
+        <item name="android:windowBackground">@drawable/main_background</item>
     </style>
 </resources>

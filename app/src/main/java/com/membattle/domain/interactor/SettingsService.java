@@ -2,6 +2,8 @@ package com.membattle.domain.interactor;
 
 import android.content.SharedPreferences;
 
+import com.membattle.data.settings.Screens;
+
 public class SettingsService {
     private static final String TOKEN_ACCESS = "token access";
     private static final String ID = "id";
@@ -10,6 +12,7 @@ public class SettingsService {
     private final String USERNAME = "username";
     private final String ERROR = "error";
     private final String IMAGE_URL = "image url";
+    private final String CURRENT_FRAGMENT_KEY = "current fragment";
 
     SharedPreferences sharedPreferences;
 

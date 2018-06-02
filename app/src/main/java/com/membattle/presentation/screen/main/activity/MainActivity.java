@@ -62,10 +62,10 @@ public class MainActivity extends BaseActivity implements MainActivityView, Sock
         username.setText(presenter.getUsername());
         ImageView share = headerLayout.findViewById(R.id.header_share);
         share.setOnClickListener(v -> presenter.share());
+        //font for drawer
         Menu m = navigationView.getMenu();
         for (int i=0;i<m.size();i++) {
             MenuItem mi = m.getItem(i);
-            //for aapplying a font to subMenu ...
             SubMenu subMenu = mi.getSubMenu();
             if (subMenu!=null && subMenu.size() >0 ) {
                 for (int j=0; j <subMenu.size();j++) {
@@ -75,6 +75,7 @@ public class MainActivity extends BaseActivity implements MainActivityView, Sock
             }
             applyFontToMenuItem(mi);
         }
+        //first screen
         m.getItem(0).setChecked(true);
         setTitle(m.getItem(0).getTitle());
     }
@@ -131,9 +132,4 @@ public class MainActivity extends BaseActivity implements MainActivityView, Sock
         title.setSpan(new CustomTypefaceSpan("", font), 0, title.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
         mi.setTitle(title);
     }
-
-    /*@Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(String event) {
-        Log.i("code", "onMainActivity " + event);
-    }*/
 }

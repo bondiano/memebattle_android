@@ -6,13 +6,16 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
+import com.membattle.App;
 import com.membattle.domain.font.CustomTypefaceSpan;
+import com.membattle.domain.interactor.SettingsService;
 import com.membattle.domain.interactor.SocketService;
 import com.membattle.domain.utils.SocketListener;
 import com.membattle.presentation.custom.toast.CustomToast;
@@ -27,21 +30,20 @@ public abstract class BaseFragment extends MvpAppCompatFragment implements BaseV
 
     @Inject
     SocketService socketService;
-
     CustomToast toast;
 
     @Override
     public void showToast(String message) {
-        if(!toast.getView().isShown()) {
+        if (!toast.getView().isShown()) {
             CustomToast.makeText(getContext(), "Hello World!").show();
         }
-        //Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         injectDependencies();
+        setRetainInstance(true);
         return inflater.inflate(getLayoutID(), container, false);
     }
 
@@ -82,6 +84,12 @@ public abstract class BaseFragment extends MvpAppCompatFragment implements BaseV
         if (SocketListener.class.isAssignableFrom(getClass())) {
             EventBus.getDefault().unregister(this);
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.i("code", "fragment save inst");
     }
 
     public static SpannableString typeface(CharSequence string, Typeface font) {

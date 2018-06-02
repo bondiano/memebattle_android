@@ -49,36 +49,6 @@ public class ModesAdapter extends RecyclerView.Adapter<ModesViewHolder> {
         holder.Rules.setOnClickListener(v -> {
             DialogFactory factory = new DialogFactory(context);
             factory.createInfoDialog("Правила", Settings.ARRAY_RULES[mode.type]);
-            //CustomToast.makeText(context, "Hello World!").show();
-            /*DialogFragment dialog1 = new DialogInfo();
-            Bundle bundle = new Bundle();
-            bundle.putString("title", "title");
-            bundle.putString("message", "message");
-            dialog1.setArguments(bundle);
-            dialog1.show(context.getFragmentManager(), "dialog1");*/
-            /*Typeface font = Typeface.createFromAsset(context.getAssets(), "main.ttf");
-            View customDialog = context.getLayoutInflater().inflate(R.layout.dialog_info, null);
-            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            builder.setView(customDialog);
-            TextViewPlus message = customDialog.findViewById(R.id.dialog_info_message);
-            message.setText("mem");
-            TextViewPlus title = customDialog.findViewById(R.id.dialog_info_title);
-            title.setText("title");
-            *//*builder.setMessage(typeface("mem", font))
-                    .setTitle(typeface("title", font));*//*
-            builder.setPositiveButton(typeface("OK", font),
-                            (dialog, id) -> dialog.cancel());
-            AlertDialog alert = builder.create();
-            alert.getWindow().setBackgroundDrawableResource(R.color.rules_fragment_back);
-            alert.show();
-            *//*AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            builder.setTitle("Правила")
-                    .setMessage(Settings.ARRAY_RULES[mode.type])
-                    .setCancelable(false)
-                    .setPositiveButton("ОК",
-                            (dialog, id) -> dialog.cancel());
-            AlertDialog alert = builder.create();
-            alert.show();*/
         });
         holder.Play.setOnClickListener(v -> router.navigateTo(Screens.GAME_SCREEN));
     }
@@ -87,11 +57,4 @@ public class ModesAdapter extends RecyclerView.Adapter<ModesViewHolder> {
     public int getItemCount() {
         return modeList.size();
     }
-
-    /*public static SpannableString typeface(CharSequence string, Typeface font) {
-        SpannableString s = new SpannableString(string);
-        s.setSpan(new CustomTypefaceSpan("", font), 0, s.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        return s;
-    }*/
-
 }

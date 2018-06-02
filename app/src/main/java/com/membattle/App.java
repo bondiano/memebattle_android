@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.pm.ApplicationInfo;
 import android.widget.Toast;
 
+import com.membattle.data.settings.Screens;
 import com.membattle.data.settings.Settings;
 import com.membattle.di.AppComponent;
 import com.membattle.di.DaggerAppComponent;
@@ -17,7 +18,7 @@ public class App extends Application {
     public static AppComponent getComponent() {
         return component;
     }
-
+    public static String curScreen = Screens.MODES_SCREEN;
     @Override
     public void onCreate() {
         super.onCreate();

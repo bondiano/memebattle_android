@@ -1,6 +1,7 @@
 package com.membattle.presentation.screen.main.activity;
 
 import android.support.design.widget.NavigationView;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.arellomobile.mvp.InjectViewState;
@@ -11,6 +12,7 @@ import com.membattle.data.settings.Screens;
 import com.membattle.di.qualifier.Global;
 import com.membattle.di.qualifier.Local;
 import com.membattle.domain.interactor.SettingsService;
+import com.membattle.presentation.base.BaseActivity;
 
 import javax.inject.Inject;
 
@@ -44,6 +46,7 @@ public class MainActivityPresenter extends MvpPresenter<MainActivityView> {
     }
 
     private void selectDrawerItem(MenuItem menuItem) {
+        Log.i("code", "select drawer item");
         switch(menuItem.getItemId()) {
             case R.id.nav_main:
                 router.replaceScreen(Screens.MODES_SCREEN);
@@ -56,7 +59,6 @@ public class MainActivityPresenter extends MvpPresenter<MainActivityView> {
             case R.id.nav_settings:
                 router.replaceScreen(Screens.SETTINGS_SCREEN);
                 break;
-
             default:
         }
         menuItem.setChecked(true);
@@ -74,6 +76,7 @@ public class MainActivityPresenter extends MvpPresenter<MainActivityView> {
     @Override
     protected void onFirstViewAttach() {
         super.onFirstViewAttach();
+        Log.i("code", "firstattach");
         router.newRootScreen(Screens.MODES_SCREEN);
     }
 }

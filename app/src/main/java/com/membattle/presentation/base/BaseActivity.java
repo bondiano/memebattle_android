@@ -1,5 +1,6 @@
 package com.membattle.presentation.base;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
@@ -10,9 +11,11 @@ import android.widget.Toast;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
+import com.membattle.App;
 import com.membattle.data.settings.Screens;
 import com.membattle.di.qualifier.Global;
 import com.membattle.di.qualifier.Local;
+import com.membattle.domain.interactor.SettingsService;
 import com.membattle.domain.interactor.SocketService;
 import com.membattle.domain.utils.GlobalNavigator;
 import com.membattle.domain.utils.LocalNavigator;
@@ -28,6 +31,8 @@ import ru.terrakok.cicerone.Router;
 
 public abstract class BaseActivity extends MvpAppCompatActivity implements BaseView {
 
+    boolean save = false;
+
     @Inject
     @Local
     NavigatorHolder localNavigatorHolder;
@@ -42,11 +47,13 @@ public abstract class BaseActivity extends MvpAppCompatActivity implements BaseV
     Router globalRouter;
     @Inject
     SocketService socketService;
+    @Inject
+    SettingsService settingsService;
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.i("code", "stop");
+        //Log.i("code", "stop");
         if (SocketListener.class.isAssignableFrom(getClass())) {
             socketService.close();
         }
@@ -59,18 +66,15 @@ public abstract class BaseActivity extends MvpAppCompatActivity implements BaseV
         injectDependencies();
         setContentView(getLayoutId());
         ButterKnife.bind(this);
-        localRouter.newRootScreen(Screens.SIGN_IN_SCREEN);
+        localNavigatorHolder.setNavigator(new LocalNavigator(getSupportFragmentManager(), getContainerId()));
+        globalNavigatorHolder.setNavigator(new GlobalNavigator(this));
+        if (savedInstanceState == null) {
+            Log.i("code", "save null");
+            localRouter.newRootScreen(Screens.SIGN_IN_SCREEN);
+        }
         if (SocketListener.class.isAssignableFrom(getClass())) {
             socketService.connect();
         }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i("code", "resume");
-        localNavigatorHolder.setNavigator(new LocalNavigator(getSupportFragmentManager(), getContainerId()));
-        globalNavigatorHolder.setNavigator(new GlobalNavigator(this));
     }
 
     protected abstract int getContainerId();
@@ -78,8 +82,9 @@ public abstract class BaseActivity extends MvpAppCompatActivity implements BaseV
     @Override
     protected void onPause() {
         super.onPause();
-        Log.i("code", "activity pause");
-        localNavigatorHolder.removeNavigator();
+        //Log.i("code", "activity pause");
+        if (!save)
+            localNavigatorHolder.removeNavigator();
     }
 
     protected abstract void injectDependencies();
@@ -103,5 +108,13 @@ public abstract class BaseActivity extends MvpAppCompatActivity implements BaseV
                         (dialog, id) -> dialog.cancel());
         AlertDialog alert = builder.create();
         alert.show();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        save = true;
+        Log.i("code", "activity save inst");
+        outState.putString("lol", "lol");
     }
 }
