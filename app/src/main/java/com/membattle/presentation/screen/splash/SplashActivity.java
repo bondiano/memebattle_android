@@ -29,23 +29,21 @@ public class SplashActivity extends Activity {
         App.getComponent().inject(this);
         String[] fingerprints = VKUtil.getCertificateFingerprint(this, this.getPackageName());
         Log.i("code", "fingerprint: " + fingerprints[0]);
-        new Handler().postDelayed(() -> {
-            String login = settingsService.getUsername();
-            Log.i("code", "first: " + login);
-            if (login.equals("no")) {
-                overridePendingTransition(0, 0);
-                TaskStackBuilder.create(getApplicationContext())
-                        .addNextIntentWithParentStack(new Intent(getApplicationContext(), AuthActivity.class))
-                        .addNextIntent(new Intent(getApplicationContext(), IntroActivity.class))
-                        .startActivities();
-                finish();
-            } else {
-                overridePendingTransition(0, 0);
-                Intent i = new Intent(SplashActivity.this, MainActivity.class);
-                startActivity(i);
-                finish();
-            }
-        }, 2000);
+        String login = settingsService.getUsername();
+        Log.i("code", "first: " + login);
+        if (login.equals("error")) {
+            overridePendingTransition(0, 0);
+            TaskStackBuilder.create(getApplicationContext())
+                    .addNextIntentWithParentStack(new Intent(getApplicationContext(), AuthActivity.class))
+                    .addNextIntent(new Intent(getApplicationContext(), IntroActivity.class))
+                    .startActivities();
+            finish();
+        } else {
+            overridePendingTransition(0, 0);
+            Intent i = new Intent(SplashActivity.this, MainActivity.class);
+            startActivity(i);
+            finish();
+        }
     }
 
 }

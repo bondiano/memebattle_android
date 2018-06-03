@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/MemeBattle">
         <activity
-            android:name=".presentation.screen.main.activity.MainActivity">
+            android:name=".presentation.screen.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +24,7 @@
         <activity
             android:name=".presentation.screen.splash.intro.IntroActivity"/>
         <activity
-            android:name=".presentation.screen.splash.SplashActivity"/>
+            android:name=".presentation.screen.main.activity.MainActivity"/>
         <activity
             android:windowSoftInputMode="adjustResize"
             android:name=".presentation.screen.auth.activity.AuthActivity"/>

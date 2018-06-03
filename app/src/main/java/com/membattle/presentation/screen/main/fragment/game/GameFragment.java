@@ -239,7 +239,7 @@ public class GameFragment extends BaseFragment implements GameFragmentView, Sock
         memeTimer.cancel();
     }
 
-    @Override
+    /*@Override
     public void onStop() {
         super.onStop();
         //Log.i("code", "stop");
@@ -256,5 +256,5 @@ public class GameFragment extends BaseFragment implements GameFragmentView, Sock
     public void onResume() {
         super.onResume();
         Log.i("code", "resume");
-    }
+    }*/
 }
