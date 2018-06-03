@@ -36,7 +36,6 @@ import butterknife.OnLongClick;
 public class GameFragment extends BaseFragment implements GameFragmentView, SocketListener {
     //Socket socket = null;
     boolean canClickMem = true;
-    int zoom = 0;
     boolean change = false;
 
     @InjectPresenter
@@ -80,14 +79,8 @@ public class GameFragment extends BaseFragment implements GameFragmentView, Sock
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setRetainInstance(true);
-        Log.i("code", "comeback meme " + meme);
-        //BaseActivity.currentFragment = Screens.GAME_SCREEN;
-        /*if (savedInstanceState == null) {
-            Log.i("code", "empty");
-        } else {
-            Log.i("code", "comeback " + savedInstanceState.getInt("lol"));
-        }*/
+        setRetainInstance(true);
+        handler = new Handler();
     }
 
     @ProvidePresenter
@@ -98,8 +91,14 @@ public class GameFragment extends BaseFragment implements GameFragmentView, Sock
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        handler = new Handler();
-        startTick();
+        if(savedInstanceState != null) {
+            Log.i("code", "comeback game !null");
+            resumeTick(savedInstanceState.getInt("time", 1500));
+        } else {
+            startTick();
+            Log.i("code", "comeback meme null");
+        }
+
     }
 
     @Override
@@ -177,10 +176,18 @@ public class GameFragment extends BaseFragment implements GameFragmentView, Sock
         bottomLike.setVisibility(View.INVISIBLE);
     }
 
+    MemeTimer memeTimer;
     void startTick() {
         progressBar.setMax(15000);
         progressBar.setProgress(15000);
-        MemeTimer memeTimer = new MemeTimer(15000, 10);
+        memeTimer = new MemeTimer(15000, 10);
+        memeTimer.start();
+    }
+
+    void resumeTick(int time) {
+        progressBar.setMax(15000);
+        progressBar.setProgress(time);
+        memeTimer = new MemeTimer(time, 10);
         memeTimer.start();
     }
 
@@ -217,6 +224,7 @@ public class GameFragment extends BaseFragment implements GameFragmentView, Sock
 
         public void onTick(long millisUntilFinished) {
             handler.post(() -> {
+                Log.i("code", "millis " + millisUntilFinished);
                 progressBar.setProgress((int) millisUntilFinished);
             });
         }
@@ -226,6 +234,27 @@ public class GameFragment extends BaseFragment implements GameFragmentView, Sock
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("lol", 1);
+        outState.putInt("time", progressBar.getProgress());
+        Log.i("code", "save");
+        memeTimer.cancel();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        //Log.i("code", "stop");
+        //memeTimer.cancel();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        memeTimer.cancel();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i("code", "resume");
     }
 }

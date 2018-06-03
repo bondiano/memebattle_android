@@ -50,7 +50,7 @@ public class ModesAdapter extends RecyclerView.Adapter<ModesViewHolder> {
             DialogFactory factory = new DialogFactory(context);
             factory.createInfoDialog("Правила", Settings.ARRAY_RULES[mode.type]);
         });
-        holder.Play.setOnClickListener(v -> router.navigateTo(Screens.GAME_SCREEN));
+        holder.Play.setOnClickListener(v -> router.replaceScreen(Screens.GAME_SCREEN));
     }
 
     @Override

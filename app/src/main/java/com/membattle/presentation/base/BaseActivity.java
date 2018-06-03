@@ -66,8 +66,6 @@ public abstract class BaseActivity extends MvpAppCompatActivity implements BaseV
         injectDependencies();
         setContentView(getLayoutId());
         ButterKnife.bind(this);
-        localNavigatorHolder.setNavigator(new LocalNavigator(getSupportFragmentManager(), getContainerId()));
-        globalNavigatorHolder.setNavigator(new GlobalNavigator(this));
         if (savedInstanceState == null) {
             Log.i("code", "save null");
             localRouter.newRootScreen(Screens.SIGN_IN_SCREEN);
@@ -85,6 +83,13 @@ public abstract class BaseActivity extends MvpAppCompatActivity implements BaseV
         //Log.i("code", "activity pause");
         if (!save)
             localNavigatorHolder.removeNavigator();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        localNavigatorHolder.setNavigator(new LocalNavigator(getSupportFragmentManager(), getContainerId()));
+        globalNavigatorHolder.setNavigator(new GlobalNavigator(this));
     }
 
     protected abstract void injectDependencies();

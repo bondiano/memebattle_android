@@ -43,7 +43,7 @@ public abstract class BaseFragment extends MvpAppCompatFragment implements BaseV
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         injectDependencies();
-        setRetainInstance(true);
+        //setRetainInstance(true);
         return inflater.inflate(getLayoutID(), container, false);
     }
 
