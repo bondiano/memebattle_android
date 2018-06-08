@@ -1,17 +1,16 @@
 package com.membattle.presentation.base;
 
-import android.app.Fragment;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
-import com.membattle.App;
 import com.membattle.data.settings.Screens;
 import com.membattle.di.qualifier.Global;
 import com.membattle.di.qualifier.Local;
@@ -21,8 +20,6 @@ import com.membattle.domain.utils.GlobalNavigator;
 import com.membattle.domain.utils.LocalNavigator;
 import com.membattle.domain.utils.SocketListener;
 
-import org.greenrobot.eventbus.EventBus;
-
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
@@ -31,7 +28,7 @@ import ru.terrakok.cicerone.Router;
 
 public abstract class BaseActivity extends MvpAppCompatActivity implements BaseView {
 
-    boolean save = false;
+    //boolean save = false;
 
     @Inject
     @Local
@@ -80,9 +77,8 @@ public abstract class BaseActivity extends MvpAppCompatActivity implements BaseV
     @Override
     protected void onPause() {
         super.onPause();
-        //Log.i("code", "activity pause");
-        if (!save)
-            localNavigatorHolder.removeNavigator();
+        /*if (!save)
+            localNavigatorHolder.removeNavigator();*/
     }
 
     @Override
@@ -118,8 +114,13 @@ public abstract class BaseActivity extends MvpAppCompatActivity implements BaseV
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        save = true;
+        /*save = true;
         Log.i("code", "activity save inst");
-        outState.putString("lol", "lol");
+        outState.putString("lol", "lol");*/
+    }
+
+    @Override
+    public void showSnack(String message, View.OnClickListener snackOnClickListener) {
+        Snackbar.make(getCurrentFocus(), message, Snackbar.LENGTH_LONG).show();
     }
 }

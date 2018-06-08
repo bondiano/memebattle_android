@@ -79,7 +79,6 @@ public class GameFragment extends BaseFragment implements GameFragmentView, Sock
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRetainInstance(true);
         handler = new Handler();
     }
 
@@ -98,7 +97,6 @@ public class GameFragment extends BaseFragment implements GameFragmentView, Sock
             startTick();
             Log.i("code", "comeback meme null");
         }
-
     }
 
     @Override
@@ -109,6 +107,8 @@ public class GameFragment extends BaseFragment implements GameFragmentView, Sock
     @OnClick(R.id.game_top_mem)
     void onTopMemClick() {
         meme = 1;
+        startTick();
+        showSnack("mem", v -> Log.i("code", "snack action"));
         YandexMetrica.reportEvent("topmemclick");
         Log.i("code", "topmem");
         presenter.emit();
@@ -131,7 +131,6 @@ public class GameFragment extends BaseFragment implements GameFragmentView, Sock
     @OnLongClick(R.id.game_top_mem)
     boolean onTopMemLongClick() {
         presenter.zoomMem(true);
-
         return false;
     }
 
